@@ -1,0 +1,1168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="PrintheadBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PrintheadBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15.75pt</value>
+  </data>
+  <data name="PrintheadBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="PrintheadBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>393, 3</value>
+  </data>
+  <data name="PrintheadBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 104</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="PrintheadBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="PrintheadBtn.Text" xml:space="preserve">
+    <value>ПЕЧАТЬ СФЕРОИДАМИ</value>
+  </data>
+  <data name="&gt;&gt;PrintheadBtn.Name" xml:space="preserve">
+    <value>PrintheadBtn</value>
+  </data>
+  <data name="&gt;&gt;PrintheadBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PrintheadBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;PrintheadBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="DiagnosticsBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="DiagnosticsBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 26.25pt</value>
+  </data>
+  <data name="DiagnosticsBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="DiagnosticsBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>781, 3</value>
+  </data>
+  <data name="DiagnosticsBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 104</value>
+  </data>
+  <data name="DiagnosticsBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="DiagnosticsBtn.Text" xml:space="preserve">
+    <value>Diagnostics</value>
+  </data>
+  <data name="&gt;&gt;DiagnosticsBtn.Name" xml:space="preserve">
+    <value>DiagnosticsBtn</value>
+  </data>
+  <data name="&gt;&gt;DiagnosticsBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DiagnosticsBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;DiagnosticsBtn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="SettingsBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="SettingsBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 26.25pt</value>
+  </data>
+  <data name="SettingsBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SettingsBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>588, 3</value>
+  </data>
+  <data name="SettingsBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 104</value>
+  </data>
+  <data name="SettingsBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="SettingsBtn.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;SettingsBtn.Name" xml:space="preserve">
+    <value>SettingsBtn</value>
+  </data>
+  <data name="&gt;&gt;SettingsBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SettingsBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;SettingsBtn.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="AutoBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="AutoBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 26.25pt</value>
+  </data>
+  <data name="AutoBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AutoBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>976, 3</value>
+  </data>
+  <data name="AutoBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 104</value>
+  </data>
+  <data name="AutoBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="AutoBtn.Text" xml:space="preserve">
+    <value>Aut</value>
+  </data>
+  <data name="&gt;&gt;AutoBtn.Name" xml:space="preserve">
+    <value>AutoBtn</value>
+  </data>
+  <data name="&gt;&gt;AutoBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AutoBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;AutoBtn.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ProgramBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ProgramBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 26.25pt</value>
+  </data>
+  <data name="ProgramBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ProgramBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 3</value>
+  </data>
+  <data name="ProgramBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 104</value>
+  </data>
+  <data name="ProgramBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ProgramBtn.Text" xml:space="preserve">
+    <value>Prog</value>
+  </data>
+  <data name="&gt;&gt;ProgramBtn.Name" xml:space="preserve">
+    <value>ProgramBtn</value>
+  </data>
+  <data name="&gt;&gt;ProgramBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ProgramBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ProgramBtn.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ExitBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ExitBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 26.25pt</value>
+  </data>
+  <data name="ExitBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ExitBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1558, 3</value>
+  </data>
+  <data name="ExitBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 104</value>
+  </data>
+  <data name="ExitBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ExitBtn.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="&gt;&gt;ExitBtn.Name" xml:space="preserve">
+    <value>ExitBtn</value>
+  </data>
+  <data name="&gt;&gt;ExitBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExitBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ExitBtn.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ManualBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ManualBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 26.25pt</value>
+  </data>
+  <data name="ManualBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="ManualBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 104</value>
+  </data>
+  <data name="ManualBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ManualBtn.Text" xml:space="preserve">
+    <value>Man</value>
+  </data>
+  <data name="&gt;&gt;ManualBtn.Name" xml:space="preserve">
+    <value>ManualBtn</value>
+  </data>
+  <data name="&gt;&gt;ManualBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ManualBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ManualBtn.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 945</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1750, 110</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="EStopBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="EStopBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="EStopBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 936</value>
+  </data>
+  <data name="EStopBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 100</value>
+  </data>
+  <data name="EStopBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="EStopBtn.Text" xml:space="preserve">
+    <value>EStop</value>
+  </data>
+  <data name="&gt;&gt;EStopBtn.Name" xml:space="preserve">
+    <value>EStopBtn</value>
+  </data>
+  <data name="&gt;&gt;EStopBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EStopBtn.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;EStopBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ResetBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ResetBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ResetBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 321</value>
+  </data>
+  <data name="ResetBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 100</value>
+  </data>
+  <data name="ResetBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="ResetBtn.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="&gt;&gt;ResetBtn.Name" xml:space="preserve">
+    <value>ResetBtn</value>
+  </data>
+  <data name="&gt;&gt;ResetBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ResetBtn.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;ResetBtn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="PauseBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="PauseBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="PauseBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 215</value>
+  </data>
+  <data name="PauseBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 100</value>
+  </data>
+  <data name="PauseBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="PauseBtn.Text" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="&gt;&gt;PauseBtn.Name" xml:space="preserve">
+    <value>PauseBtn</value>
+  </data>
+  <data name="&gt;&gt;PauseBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PauseBtn.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;PauseBtn.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="StopBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="StopBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="StopBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 109</value>
+  </data>
+  <data name="StopBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 100</value>
+  </data>
+  <data name="StopBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="StopBtn.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="&gt;&gt;StopBtn.Name" xml:space="preserve">
+    <value>StopBtn</value>
+  </data>
+  <data name="&gt;&gt;StopBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StopBtn.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;StopBtn.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="StartBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="StartBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="StartBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 3</value>
+  </data>
+  <data name="StartBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 100</value>
+  </data>
+  <data name="StartBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="StartBtn.Text" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="&gt;&gt;StartBtn.Name" xml:space="preserve">
+    <value>StartBtn</value>
+  </data>
+  <data name="&gt;&gt;StartBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StartBtn.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;StartBtn.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1770, 12</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 1042</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="SS_Status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="EnglishTSMI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="EnglishTSMI.Text" xml:space="preserve">
+    <value>English (United States)</value>
+  </data>
+  <data name="RussianTSMI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="RussianTSMI.Text" xml:space="preserve">
+    <value>русский (Россия)</value>
+  </data>
+  <data name="TSDD_Language.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="TSDD_Language.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="TSDD_Language.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 20</value>
+  </data>
+  <data name="TSDD_Language.Text" xml:space="preserve">
+    <value>Выбор языка</value>
+  </data>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="TSDD_Connection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 17</value>
+  </data>
+  <data name="TSDD_Connection.Text" xml:space="preserve">
+    <value>ConnectionStatus</value>
+  </data>
+  <data name="IPAdressLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 17</value>
+  </data>
+  <data name="IPAdressLabel.Text" xml:space="preserve">
+    <value>Not Connected</value>
+  </data>
+  <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel3.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="XStatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 17</value>
+  </data>
+  <data name="XStatusTL.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="toolStripStatusLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel4.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="YStatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 17</value>
+  </data>
+  <data name="YStatusTL.Text" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="toolStripStatusLabel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel5.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="Z1StatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="Z1StatusTL.Text" xml:space="preserve">
+    <value>Z1</value>
+  </data>
+  <data name="toolStripStatusLabel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel6.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="Z2StatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="Z2StatusTL.Text" xml:space="preserve">
+    <value>Z2</value>
+  </data>
+  <data name="toolStripStatusLabel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel7.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="Z3StatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="Z3StatusTL.Text" xml:space="preserve">
+    <value>Z3</value>
+  </data>
+  <data name="toolStripStatusLabel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel8.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="WStatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 17</value>
+  </data>
+  <data name="WStatusTL.Text" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="toolStripStatusLabel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel9.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="AStatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 17</value>
+  </data>
+  <data name="AStatusTL.Text" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="toolStripStatusLabel10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel10.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="S1StatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 17</value>
+  </data>
+  <data name="S1StatusTL.Text" xml:space="preserve">
+    <value>S1</value>
+  </data>
+  <data name="toolStripStatusLabel11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel11.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="S2StatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 17</value>
+  </data>
+  <data name="S2StatusTL.Text" xml:space="preserve">
+    <value>S2</value>
+  </data>
+  <data name="toolStripStatusLabel12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel12.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="S3StatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 17</value>
+  </data>
+  <data name="S3StatusTL.Text" xml:space="preserve">
+    <value>S3</value>
+  </data>
+  <data name="toolStripStatusLabel13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel13.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="PF1StatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 17</value>
+  </data>
+  <data name="PF1StatusTL.Text" xml:space="preserve">
+    <value>PF1</value>
+  </data>
+  <data name="toolStripStatusLabel14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel14.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="PF2StatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 17</value>
+  </data>
+  <data name="PF2StatusTL.Text" xml:space="preserve">
+    <value>PF2</value>
+  </data>
+  <data name="toolStripStatusLabel15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel15.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="BStatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 17</value>
+  </data>
+  <data name="BStatusTL.Text" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="toolStripStatusLabel16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel16.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="DStatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 17</value>
+  </data>
+  <data name="DStatusTL.Text" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="toolStripStatusLabel17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel17.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="CStatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 17</value>
+  </data>
+  <data name="CStatusTL.Text" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="toolStripStatusLabel18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel18.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="ZoomStatusTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 17</value>
+  </data>
+  <data name="ZoomStatusTL.Text" xml:space="preserve">
+    <value>ZOOM</value>
+  </data>
+  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 17</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>| Program Status: </value>
+  </data>
+  <data name="Indicator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 17</value>
+  </data>
+  <data name="Indicator.Text" xml:space="preserve">
+    <value>Indicator</value>
+  </data>
+  <data name="toolStripStatusLabel19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="toolStripStatusLabel19.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="SS_Status.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1039</value>
+  </data>
+  <data name="SS_Status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 22</value>
+  </data>
+  <data name="SS_Status.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="SS_Status.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;SS_Status.Name" xml:space="preserve">
+    <value>SS_Status</value>
+  </data>
+  <data name="&gt;&gt;SS_Status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SS_Status.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SS_Status.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 12</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1750, 927</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 1061</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        /wA=
+</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>MainForm</value>
+  </data>
+  <data name="&gt;&gt;TSDD_Language.Name" xml:space="preserve">
+    <value>TSDD_Language</value>
+  </data>
+  <data name="&gt;&gt;TSDD_Language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EnglishTSMI.Name" xml:space="preserve">
+    <value>EnglishTSMI</value>
+  </data>
+  <data name="&gt;&gt;EnglishTSMI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RussianTSMI.Name" xml:space="preserve">
+    <value>RussianTSMI</value>
+  </data>
+  <data name="&gt;&gt;RussianTSMI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
+    <value>toolStripStatusLabel1</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TSDD_Connection.Name" xml:space="preserve">
+    <value>TSDD_Connection</value>
+  </data>
+  <data name="&gt;&gt;TSDD_Connection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IPAdressLabel.Name" xml:space="preserve">
+    <value>IPAdressLabel</value>
+  </data>
+  <data name="&gt;&gt;IPAdressLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel3.Name" xml:space="preserve">
+    <value>toolStripStatusLabel3</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;XStatusTL.Name" xml:space="preserve">
+    <value>XStatusTL</value>
+  </data>
+  <data name="&gt;&gt;XStatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel4.Name" xml:space="preserve">
+    <value>toolStripStatusLabel4</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;YStatusTL.Name" xml:space="preserve">
+    <value>YStatusTL</value>
+  </data>
+  <data name="&gt;&gt;YStatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel5.Name" xml:space="preserve">
+    <value>toolStripStatusLabel5</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Z1StatusTL.Name" xml:space="preserve">
+    <value>Z1StatusTL</value>
+  </data>
+  <data name="&gt;&gt;Z1StatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel6.Name" xml:space="preserve">
+    <value>toolStripStatusLabel6</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Z2StatusTL.Name" xml:space="preserve">
+    <value>Z2StatusTL</value>
+  </data>
+  <data name="&gt;&gt;Z2StatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel7.Name" xml:space="preserve">
+    <value>toolStripStatusLabel7</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Z3StatusTL.Name" xml:space="preserve">
+    <value>Z3StatusTL</value>
+  </data>
+  <data name="&gt;&gt;Z3StatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel8.Name" xml:space="preserve">
+    <value>toolStripStatusLabel8</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WStatusTL.Name" xml:space="preserve">
+    <value>WStatusTL</value>
+  </data>
+  <data name="&gt;&gt;WStatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel9.Name" xml:space="preserve">
+    <value>toolStripStatusLabel9</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AStatusTL.Name" xml:space="preserve">
+    <value>AStatusTL</value>
+  </data>
+  <data name="&gt;&gt;AStatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel10.Name" xml:space="preserve">
+    <value>toolStripStatusLabel10</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;S1StatusTL.Name" xml:space="preserve">
+    <value>S1StatusTL</value>
+  </data>
+  <data name="&gt;&gt;S1StatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel11.Name" xml:space="preserve">
+    <value>toolStripStatusLabel11</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;S2StatusTL.Name" xml:space="preserve">
+    <value>S2StatusTL</value>
+  </data>
+  <data name="&gt;&gt;S2StatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel12.Name" xml:space="preserve">
+    <value>toolStripStatusLabel12</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;S3StatusTL.Name" xml:space="preserve">
+    <value>S3StatusTL</value>
+  </data>
+  <data name="&gt;&gt;S3StatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel13.Name" xml:space="preserve">
+    <value>toolStripStatusLabel13</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PF1StatusTL.Name" xml:space="preserve">
+    <value>PF1StatusTL</value>
+  </data>
+  <data name="&gt;&gt;PF1StatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel14.Name" xml:space="preserve">
+    <value>toolStripStatusLabel14</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PF2StatusTL.Name" xml:space="preserve">
+    <value>PF2StatusTL</value>
+  </data>
+  <data name="&gt;&gt;PF2StatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel15.Name" xml:space="preserve">
+    <value>toolStripStatusLabel15</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BStatusTL.Name" xml:space="preserve">
+    <value>BStatusTL</value>
+  </data>
+  <data name="&gt;&gt;BStatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel16.Name" xml:space="preserve">
+    <value>toolStripStatusLabel16</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DStatusTL.Name" xml:space="preserve">
+    <value>DStatusTL</value>
+  </data>
+  <data name="&gt;&gt;DStatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel17.Name" xml:space="preserve">
+    <value>toolStripStatusLabel17</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CStatusTL.Name" xml:space="preserve">
+    <value>CStatusTL</value>
+  </data>
+  <data name="&gt;&gt;CStatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel18.Name" xml:space="preserve">
+    <value>toolStripStatusLabel18</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ZoomStatusTL.Name" xml:space="preserve">
+    <value>ZoomStatusTL</value>
+  </data>
+  <data name="&gt;&gt;ZoomStatusTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel2.Name" xml:space="preserve">
+    <value>toolStripStatusLabel2</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Indicator.Name" xml:space="preserve">
+    <value>Indicator</value>
+  </data>
+  <data name="&gt;&gt;Indicator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel19.Name" xml:space="preserve">
+    <value>toolStripStatusLabel19</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Main_frm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

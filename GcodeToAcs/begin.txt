@@ -1,0 +1,54 @@
+﻿local int X=0,Y=1,Z1=5,Z2=6,Z3=2,Zs=5,Zp=6,F1=5,F2=7,F3=3,B=10,D=11,C=12,ZOOM=13,PF1=14,PF2=15
+! ______________________________________________________________
+! 0 -> X 
+! 1 -> Y
+! 2 -> Z1 
+! 3 -> Z2
+! 4 -> Z3
+! 5 -> Zs 
+! 6 -> Zp
+! 7 -> F1 
+! 8 -> F2 
+! 9 -> F3 
+! 10 -> B 
+! 11 -> D 
+! 12 -> C 
+! 13 -> ZOOM 
+! 14 -> PF1 
+! 15 -> PF2 
+!_______________________________________________________________
+
+!axisdef x=0,y=1,z=2,t=3,a=4,b=5,c=6,d=7
+!global int I(100),I0,I1,I2,I3,I4,I5,I6,I7,I8,I9,I90,I91,I92,I93,I94,I95,I96,I97,I98,I99
+!global real V(100),V0,V1,V2,V3,V4,V5,V6,V7,V8,V9,V90,V91,V92,V93,V94,V95,V96,V97,V98,V99
+
+! S1Diameter - ??????? ?????? 1
+! S2Diameter - ??????? ?????? 2
+! S3Diameter - ??????? ?????? 3
+! PF1Diameter - ??????? ???????? 1
+! PF2Diameter - ??????? ???????? 2
+
+
+! ????? ??
+LOCAL REAL PI
+
+LOCAL INT WORKMODE=90
+
+LOCAL REAL ActX
+LOCAL REAL ActY
+LOCAL REAL ActZ
+LOCAL REAL Xact
+LOCAL REAL Yact
+LOCAL REAL Iact
+LOCAL REAL Jact
+LOCAL REAL Zactd
+LOCAL REAL Zactu
+LOCAL REAL CurOffsetX
+LOCAL REAL CurOffsetY
+LOCAL REAL CurOffsetZ
+LOCAL REAL OffsetZ
+LOCAL REAL XSavedOffset
+LOCAL REAL YSavedOffset
+LOCAL REAL ZSavedOffset
+LOCAL INT FirstScan
+
