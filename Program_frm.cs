@@ -45,25 +45,6 @@ namespace BTP
             mViewer.Redraw(true);
         }
 
-        private void mSetup_MachineMatched(clsMachine m)
-        {
-
-        }
-        private void mSetup_MachineLoaded(clsMachine m)
-        {
-
-        }
-
-        private void mSetup_MachineDeleted(string name)
-        {
-
-        }
-
-        private void mSetup_MachineAdded(clsMachine m)
-        {
-
-        }
-
         private void ViewButtonClicked(object sender, EventArgs e)
         {
             string tag = sender.GetType().GetProperty("Tag").GetValue(sender, null).ToString();

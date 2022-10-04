@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Connection;
 
 namespace BTP
 {
     class ChanelOct
     {
+        DeviceMarlin device;
         public int ACSC_BUFFER_0 { get; set; }
         public int ACSC_BUFFER_1 { get; set; }
         public int ACSC_BUFFER_2 { get; set; }
@@ -47,9 +49,13 @@ namespace BTP
         public int ACSC_POSITIVE_DIRECTION { get; internal set; }
         public object ACSC_AMF_RELATIVE { get; internal set; }
 
+        public ChanelOct()
+        {
+            device = new DeviceMarlin("COM1");
+        }
         public void SetVelocity(int Axis, double Value)
         {
-
+            
         }
 
         public void WriteVariable(object Value,string Variable,int nBuf)
@@ -72,7 +78,7 @@ namespace BTP
             return 0;
         }
 
-        public void RunBuffer(int Axis)
+        public void RunBuffer(int Buffer)
         {
         }
 
@@ -221,11 +227,11 @@ namespace BTP
             throw new NotImplementedException();
         }
 
-        internal void ToPoint(object aCSC_AMF_RELATIVE, int aCSC_AXIS_1, int v)
+        internal void ToPoint(object move_type, int Axis, int v)
         {
             throw new NotImplementedException();
         }
-        internal void ToPoint(object aCSC_AMF_RELATIVE, int aCSC_AXIS_1, double v)
+        internal void ToPoint(object move_type, int Axis, double v)
         {
             throw new NotImplementedException();
         }

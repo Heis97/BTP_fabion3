@@ -133,6 +133,10 @@
       <DependentUpon>Camera2_frm.cs</DependentUpon>
     </Compile>
     <Compile Include="ChanelOct.cs" />
+    <Compile Include="Connection\DeviceArduino.cs" />
+    <Compile Include="Connection\DevicesArduino\DeviceMarlin.cs" />
+    <Compile Include="Connection\DevicesArduino\Tensom.cs" />
+    <Compile Include="Connection\TCPconnect.cs" />
     <Compile Include="ConvertToACS.cs" />
     <Compile Include="clsMachine.cs" />
     <Compile Include="clsMotion.cs" />
