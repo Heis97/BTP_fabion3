@@ -112,21 +112,21 @@ namespace BTP
                 if (ConnectionData.ProgramStart == 10)
                 {
                         groupBox2.Enabled = true;
-                        if (ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_0) != 0)
+                        if ((double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_0) != 0)
                         {
-                            StopVelocityX = ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_0);
+                            StopVelocityX = (double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_0);
                         }
-                        if (ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_1) != 0)
+                        if ((double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_1) != 0)
                         {
-                            StopVelocityY = ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_1);
+                            StopVelocityY = (double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_1);
                         }
-                        if (ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_7) != 0)
+                        if ((double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_7) != 0)
                         {
-                            StopVelocityS = ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_7);
+                            StopVelocityS = (double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_7);
                         }
-                        if (ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_14) != 0)
+                        if ((double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_14) != 0)
                         {
-                            StopVelocityPF = ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_14);
+                            StopVelocityPF = (double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_14);
                         }
                   }
                 else if (ConnectionData.ProgramStart == 20)
@@ -134,7 +134,7 @@ namespace BTP
                     groupBox2.Enabled = false;
                 }
 
-                if (Convert.ToBoolean(ConnectionData.Value.GetProgramState(ConnectionData.Value.ACSC_BUFFER_2) & ConnectionData.Value.ACSC_PST_RUN) == false)
+                if (Convert.ToBoolean((bool)ConnectionData.Value.GetProgramState(ConnectionData.Value.ACSC_BUFFER_2) & (bool)ConnectionData.Value.ACSC_PST_RUN) == false)
                 {
                     if (ConnectionData.ProgramStart == 10)
                   {
@@ -151,7 +151,7 @@ namespace BTP
                             GCodeBox.Items.Clear();
                             list.Clear();
 
-                            string[] words = ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2).Split(new char[] { (char)10 });
+                            string[] words =((string) ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2)).Split(new char[] { (char)10 });
 
                             foreach (string s in words)
                             {
@@ -381,7 +381,7 @@ namespace BTP
                             GCodeBox.Items.Clear();
                             list.Clear();
 
-                            string[] words = ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2).Split(new char[] { (char)10 });
+                            string[] words = ((string)ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2)).Split(new char[] { (char)10 });
 
                             foreach (string s in words)
                                 {
@@ -391,7 +391,7 @@ namespace BTP
 
                             string TempFile = Application.StartupPath + "\\Temp\\CNC.tmp";
 
-                            System.IO.File.WriteAllText(TempFile, ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2));
+                            System.IO.File.WriteAllText(TempFile, (string)ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2));
 
                             if (Properties.Settings.Default.Virgin == true)
                                 {

@@ -222,7 +222,6 @@ namespace BTP
             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_6, ConnectionData.SetZVel);
             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_7, ConnectionData.SetPtVel);
 
-            
             // Запись диаметров
             ConnectionData.Value.WriteVariable(ConnectionData.S1Diameter, "S1Diameter", ConnectionData.Value.ACSC_NONE);
             ConnectionData.Value.WriteVariable(ConnectionData.S2Diameter, "S2Diameter", ConnectionData.Value.ACSC_NONE);
@@ -544,22 +543,22 @@ namespace BTP
                     ConnectionData.YAoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 6, 6);
 
                     // Чтение состояния конечных выключателей
-                    ConnectionData.XLLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(X) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.XRLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(X) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.YLLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(Y) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.YRLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(Y) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS1LLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z1) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS1RLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z1) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS2LLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z2) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS2RLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z2) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS3LLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z3) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS3RLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z3) & ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.XLLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(X) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.XRLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(X) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.YLLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Y) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.YRLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Y) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.ZS1LLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z1) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.ZS1RLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z1) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.ZS2LLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z2) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.ZS2RLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z2) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.ZS3LLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z3) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.ZS3RLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z3) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
                     
                     // Чтение номера строки выполняемой в буффере 1 - исполнение G-кода
-                    ConnectionData.ExecLine =           ConnectionData.Value.ReadVariable("PEXL",   ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferSize =         ConnectionData.Value.ReadVariable("PCHARS",  ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferError =        ConnectionData.Value.ReadVariable("PERR",    ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferErrorString =  ConnectionData.Value.ReadVariable("PERL",    ConnectionData.Value.ACSC_NONE, 2, 2);
+                    ConnectionData.ExecLine = (int)ConnectionData.Value.ReadVariable("PEXL",   ConnectionData.Value.ACSC_NONE, 2, 2);
+                    ConnectionData.BufferSize = (int)ConnectionData.Value.ReadVariable("PCHARS",  ConnectionData.Value.ACSC_NONE, 2, 2);
+                    ConnectionData.BufferError = (int)ConnectionData.Value.ReadVariable("PERR",    ConnectionData.Value.ACSC_NONE, 2, 2);
+                    ConnectionData.BufferErrorString = (int)ConnectionData.Value.ReadVariable("PERL",    ConnectionData.Value.ACSC_NONE, 2, 2);
 
                     //label1.Text = (ConnectionData.Value.GetFault(ConnectionData.Value.ACSC_AXIS_0)).ToString();
 
@@ -670,7 +669,7 @@ namespace BTP
         // Установка связи с контроллером
         public void SetCommunication()
         {
-            ConnectionData.Value = new SPIIPLUSCOM660Lib.Channel();
+            ConnectionData.Value = new ChanelOct();
             axes = new int[]
                             {
                              ConnectionData.Value.ACSC_AXIS_0,
@@ -693,7 +692,9 @@ namespace BTP
                 else
                 {
                     // Работа с настоящим контроллером
-                    ConnectionData.Value.OpenCommEthernet(ConnectionData.ControllerIP, ConnectionData.Value.ACSC_SOCKET_STREAM_PORT);
+                    ConnectionData.Value.OpenCommEthernet(
+                        ConnectionData.ControllerIP,
+                        ConnectionData.Value.ACSC_SOCKET_STREAM_PORT);
                 }
                 // Запуск потока
                 // Организация потока данных
@@ -856,7 +857,11 @@ namespace BTP
             //ConnectionData.ProgramStart = false;
             if (ConnectionData.ProgramStart == 30)
             {
-                ConnectionData.Value.ExtToPointM(ConnectionData.Value.ACSC_AMF_VELOCITY, ax, SaveCoordinates, ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0), ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0));
+                ConnectionData.Value.ExtToPointM(
+                    ConnectionData.Value.ACSC_AMF_VELOCITY, ax, 
+                    SaveCoordinates,
+                    ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0),
+                    ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0));
                 //ConnectionData.Value.HaltM(ax);
                 ConnectionData.Value.EndSequenceM(ax);
                 ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_0, 100000);
@@ -873,9 +878,12 @@ namespace BTP
             else
             {
 
-                if (Convert.ToBoolean((ConnectionData.Value.GetProgramState(programm_buffer)) & (ConnectionData.Value.ACSC_PST_RUN)) == false)
+                if (Convert.ToBoolean(
+                    ((bool)ConnectionData.Value.GetProgramState(programm_buffer)) &
+                   (bool) (ConnectionData.Value.ACSC_PST_RUN)) == false)
                 {
-                    if (Convert.ToBoolean(ConnectionData.Value.GetProgramState(programm_buffer) & (ConnectionData.Value.ACSC_PST_COMPILED)) == true)
+                    if (Convert.ToBoolean((bool)ConnectionData.Value.GetProgramState(programm_buffer)
+                        & (bool)(ConnectionData.Value.ACSC_PST_COMPILED)) == true)
                     {
 
                         ConnectionData.Value.RunBuffer(programm_buffer);

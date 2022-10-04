@@ -145,7 +145,8 @@ namespace BTP
     // Универсальные данные
     static class ConnectionData
     {
-        public static SPIIPLUSCOM660Lib.Channel Value { get; set; }
+       // public static SPIIPLUSCOM660Lib.Channel Value { get; set; }
+        public static ChanelOct Value { get; set; }
         public static Camera Camera1 { get; set; }
         public static Camera Camera2 { get; set; }
         public static FileStream fileStream { get; set; }

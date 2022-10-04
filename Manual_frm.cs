@@ -514,83 +514,83 @@ namespace BTP
 
         private void XPos001_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  0.01);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  0.01);
         }
 
 
         private void Xpos01_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  0.1);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  0.1);
         }
 
         private void PosX1_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  1);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  1);
         }
 
         private void PosX10_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  10);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  10);
         }
 
         private void XMin001_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.01);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.01);
         }
 
         private void XMin10_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
         }
 
         private void XMin01_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
         }
 
         private void XMin1_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  -1);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -1);
         }
 
         private void YNeg001_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.01);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.01);
         }
 
         private void YNeg01_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.1);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.1);
         }
 
         private void YNeg1_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  -1);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -1);
         }
 
         private void YNeg10_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  -10);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -10);
         }
 
         private void YPos001_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  0.01);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  0.01);
         }
 
         private void YPos01_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  0.1);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  0.1);
         }
 
         private void YPos1_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  1);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  1);
         }
 
         private void YPos10_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  10);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  10);
         }
 
         private void LBBtn_MouseUp(object sender, MouseEventArgs e)
@@ -1146,42 +1146,42 @@ namespace BTP
 
         private void ZS1Pos001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
         }
 
         private void ZS1Pos01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
         }
 
         private void ZS1Pos1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
         }
 
         private void ZS1Pos10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
         }
 
         private void ZS1Min001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.01);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.01);
         }
 
         private void ZS1Min01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
         }
 
         private void ZS1Min1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
         }
 
         private void ZS1Min10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
         }
 
         private void JogZS1Pos_MouseUp(object sender, MouseEventArgs e)
@@ -1651,79 +1651,79 @@ namespace BTP
 
         private void ZS2Pos10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
         }
         private void ZS2Pos1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
         }
         private void ZS2Pos01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
         }
         private void ZS2Pos001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
         }
 
         private void ZS2Min001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE,-0.01);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,-0.01);
         }
 
         private void ZS2Min01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
         }
 
         private void ZS2Min1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
         }
 
         private void ZS2Min10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
         }
 
         private void ZS3Pos10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
         }
 
         private void ZS3Pos1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
         }
 
         private void ZS3Pos01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
         }
 
         private void ZS3Pos001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
         }
 
         private void ZS3Min001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.01);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.01);
         }
 
         private void ZS3Min01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
         }
 
         private void ZS3Min1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
         }
 
         private void ZS3Min10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
         }
 
         private void ZSPPos10_Click(object sender, EventArgs e)

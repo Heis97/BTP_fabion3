@@ -132,6 +132,7 @@
     <Compile Include="Camera2_frm.Designer.cs">
       <DependentUpon>Camera2_frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChanelOct.cs" />
     <Compile Include="ConvertToACS.cs" />
     <Compile Include="clsMachine.cs" />
     <Compile Include="clsMotion.cs" />
