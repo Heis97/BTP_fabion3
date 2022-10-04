@@ -31,6 +31,25 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manual_frm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CBVelocityTB = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.CBVelocity = new System.Windows.Forms.TrackBar();
+            this.CTVelocityTB = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.CTVelocity = new System.Windows.Forms.TrackBar();
+            this.PFVelocityTB = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.PFVelocity = new System.Windows.Forms.TrackBar();
+            this.PtVelocityTB = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PtVelocity = new System.Windows.Forms.TrackBar();
+            this.ZVelocityTB = new System.Windows.Forms.TextBox();
+            this.XYVelocityTB = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Zvelocity = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.XYVelocity = new System.Windows.Forms.TrackBar();
             this.label44 = new System.Windows.Forms.Label();
             this.Accuracy2_Btn = new System.Windows.Forms.Button();
             this.Accuracy1_Btn = new System.Windows.Forms.Button();
@@ -50,8 +69,6 @@
             this.CustomRB = new System.Windows.Forms.RadioButton();
             this.SetMachineZero = new System.Windows.Forms.Button();
             this.SetWorkZero = new System.Windows.Forms.Button();
-            this.PFBtn = new System.Windows.Forms.Button();
-            this.SpBtn = new System.Windows.Forms.Button();
             this.S3Btn = new System.Windows.Forms.Button();
             this.S2Btn = new System.Windows.Forms.Button();
             this.S1Btn = new System.Windows.Forms.Button();
@@ -98,25 +115,6 @@
             this.MachinePosX = new System.Windows.Forms.Label();
             this.XPos001 = new System.Windows.Forms.Button();
             this.CameraImage = new System.Windows.Forms.ImageList(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.CBVelocityTB = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.CBVelocity = new System.Windows.Forms.TrackBar();
-            this.CTVelocityTB = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.CTVelocity = new System.Windows.Forms.TrackBar();
-            this.PFVelocityTB = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.PFVelocity = new System.Windows.Forms.TrackBar();
-            this.PtVelocityTB = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.PtVelocity = new System.Windows.Forms.TrackBar();
-            this.ZVelocityTB = new System.Windows.Forms.TextBox();
-            this.XYVelocityTB = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Zvelocity = new System.Windows.Forms.TrackBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.XYVelocity = new System.Windows.Forms.TrackBar();
             this.S1GB = new System.Windows.Forms.GroupBox();
             this.S1DiamPrTB = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
@@ -295,10 +293,6 @@
             this.MixTrackBar = new System.Windows.Forms.TrackBar();
             this.Preeflow_Timer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.YLL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YRL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.XLL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.XRL)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CBVelocity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CTVelocity)).BeginInit();
@@ -306,6 +300,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PtVelocity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Zvelocity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XYVelocity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YLL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YRL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XLL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XRL)).BeginInit();
             this.S1GB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZS1RL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZS1LL)).BeginInit();
@@ -328,6 +326,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.label44);
             this.groupBox1.Controls.Add(this.Accuracy2_Btn);
             this.groupBox1.Controls.Add(this.Accuracy1_Btn);
@@ -347,8 +346,6 @@
             this.groupBox1.Controls.Add(this.CustomRB);
             this.groupBox1.Controls.Add(this.SetMachineZero);
             this.groupBox1.Controls.Add(this.SetWorkZero);
-            this.groupBox1.Controls.Add(this.PFBtn);
-            this.groupBox1.Controls.Add(this.SpBtn);
             this.groupBox1.Controls.Add(this.S3Btn);
             this.groupBox1.Controls.Add(this.S2Btn);
             this.groupBox1.Controls.Add(this.S1Btn);
@@ -394,6 +391,156 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.CBVelocityTB);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.CBVelocity);
+            this.groupBox4.Controls.Add(this.CTVelocityTB);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.CTVelocity);
+            this.groupBox4.Controls.Add(this.PFVelocityTB);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.PFVelocity);
+            this.groupBox4.Controls.Add(this.PtVelocityTB);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.PtVelocity);
+            this.groupBox4.Controls.Add(this.ZVelocityTB);
+            this.groupBox4.Controls.Add(this.XYVelocityTB);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.Zvelocity);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.XYVelocity);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // CBVelocityTB
+            // 
+            resources.ApplyResources(this.CBVelocityTB, "CBVelocityTB");
+            this.CBVelocityTB.Name = "CBVelocityTB";
+            this.CBVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CBVelocityTB_KeyDown);
+            this.CBVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CBVelocityTB_KeyPress);
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // CBVelocity
+            // 
+            resources.ApplyResources(this.CBVelocity, "CBVelocity");
+            this.CBVelocity.Maximum = 100;
+            this.CBVelocity.Name = "CBVelocity";
+            this.CBVelocity.TickFrequency = 10;
+            this.CBVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.CBVelocity.Scroll += new System.EventHandler(this.CBVelocity_Scroll);
+            // 
+            // CTVelocityTB
+            // 
+            resources.ApplyResources(this.CTVelocityTB, "CTVelocityTB");
+            this.CTVelocityTB.Name = "CTVelocityTB";
+            this.CTVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTVelocityTB_KeyDown);
+            this.CTVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CTVelocityTB_KeyPress);
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // CTVelocity
+            // 
+            resources.ApplyResources(this.CTVelocity, "CTVelocity");
+            this.CTVelocity.Maximum = 100;
+            this.CTVelocity.Name = "CTVelocity";
+            this.CTVelocity.TickFrequency = 10;
+            this.CTVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.CTVelocity.Scroll += new System.EventHandler(this.CTVelocity_Scroll);
+            // 
+            // PFVelocityTB
+            // 
+            resources.ApplyResources(this.PFVelocityTB, "PFVelocityTB");
+            this.PFVelocityTB.Name = "PFVelocityTB";
+            this.PFVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PFVelocityTB_KeyDown);
+            this.PFVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PFVelocityTB_KeyPress);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // PFVelocity
+            // 
+            resources.ApplyResources(this.PFVelocity, "PFVelocity");
+            this.PFVelocity.Maximum = 100;
+            this.PFVelocity.Name = "PFVelocity";
+            this.PFVelocity.TickFrequency = 10;
+            this.PFVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.PFVelocity.Scroll += new System.EventHandler(this.PFVelocity_Scroll);
+            // 
+            // PtVelocityTB
+            // 
+            resources.ApplyResources(this.PtVelocityTB, "PtVelocityTB");
+            this.PtVelocityTB.Name = "PtVelocityTB";
+            this.PtVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PtVelocityTB_KeyDown);
+            this.PtVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PtVelocityTB_KeyPress);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // PtVelocity
+            // 
+            resources.ApplyResources(this.PtVelocity, "PtVelocity");
+            this.PtVelocity.Maximum = 100;
+            this.PtVelocity.Name = "PtVelocity";
+            this.PtVelocity.TickFrequency = 10;
+            this.PtVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.PtVelocity.Scroll += new System.EventHandler(this.PtVelocity_Scroll);
+            // 
+            // ZVelocityTB
+            // 
+            resources.ApplyResources(this.ZVelocityTB, "ZVelocityTB");
+            this.ZVelocityTB.Name = "ZVelocityTB";
+            this.ZVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ZVelocityTB_KeyDown);
+            this.ZVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZVelocityTB_KeyPress);
+            // 
+            // XYVelocityTB
+            // 
+            resources.ApplyResources(this.XYVelocityTB, "XYVelocityTB");
+            this.XYVelocityTB.Name = "XYVelocityTB";
+            this.XYVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.XYVelocityTB_KeyDown);
+            this.XYVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.XYVelocityTB_KeyPress);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // Zvelocity
+            // 
+            resources.ApplyResources(this.Zvelocity, "Zvelocity");
+            this.Zvelocity.Maximum = 100;
+            this.Zvelocity.Name = "Zvelocity";
+            this.Zvelocity.TickFrequency = 10;
+            this.Zvelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.Zvelocity.Scroll += new System.EventHandler(this.Zvelocity_Scroll);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // XYVelocity
+            // 
+            resources.ApplyResources(this.XYVelocity, "XYVelocity");
+            this.XYVelocity.Maximum = 100;
+            this.XYVelocity.Name = "XYVelocity";
+            this.XYVelocity.TickFrequency = 10;
+            this.XYVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.XYVelocity.Scroll += new System.EventHandler(this.XYVelocity_Scroll);
             // 
             // label44
             // 
@@ -520,20 +667,6 @@
             this.SetWorkZero.Name = "SetWorkZero";
             this.SetWorkZero.UseVisualStyleBackColor = true;
             this.SetWorkZero.Click += new System.EventHandler(this.SetWorkZero_Click);
-            // 
-            // PFBtn
-            // 
-            resources.ApplyResources(this.PFBtn, "PFBtn");
-            this.PFBtn.Name = "PFBtn";
-            this.PFBtn.UseVisualStyleBackColor = true;
-            this.PFBtn.Click += new System.EventHandler(this.PFBtn_Click);
-            // 
-            // SpBtn
-            // 
-            resources.ApplyResources(this.SpBtn, "SpBtn");
-            this.SpBtn.Name = "SpBtn";
-            this.SpBtn.UseVisualStyleBackColor = true;
-            this.SpBtn.Click += new System.EventHandler(this.SpBtn_Click);
             // 
             // S3Btn
             // 
@@ -905,156 +1038,6 @@
             this.CameraImage.Images.SetKeyName(3, "Arrow_up.png");
             this.CameraImage.Images.SetKeyName(4, "Zoom_In.png");
             this.CameraImage.Images.SetKeyName(5, "Zoom_Out.png");
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.CBVelocityTB);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.CBVelocity);
-            this.groupBox4.Controls.Add(this.CTVelocityTB);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.CTVelocity);
-            this.groupBox4.Controls.Add(this.PFVelocityTB);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.PFVelocity);
-            this.groupBox4.Controls.Add(this.PtVelocityTB);
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.PtVelocity);
-            this.groupBox4.Controls.Add(this.ZVelocityTB);
-            this.groupBox4.Controls.Add(this.XYVelocityTB);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.Zvelocity);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.XYVelocity);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            // 
-            // CBVelocityTB
-            // 
-            resources.ApplyResources(this.CBVelocityTB, "CBVelocityTB");
-            this.CBVelocityTB.Name = "CBVelocityTB";
-            this.CBVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CBVelocityTB_KeyDown);
-            this.CBVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CBVelocityTB_KeyPress);
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // CBVelocity
-            // 
-            resources.ApplyResources(this.CBVelocity, "CBVelocity");
-            this.CBVelocity.Maximum = 100;
-            this.CBVelocity.Name = "CBVelocity";
-            this.CBVelocity.TickFrequency = 10;
-            this.CBVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.CBVelocity.Scroll += new System.EventHandler(this.CBVelocity_Scroll);
-            // 
-            // CTVelocityTB
-            // 
-            resources.ApplyResources(this.CTVelocityTB, "CTVelocityTB");
-            this.CTVelocityTB.Name = "CTVelocityTB";
-            this.CTVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTVelocityTB_KeyDown);
-            this.CTVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CTVelocityTB_KeyPress);
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
-            // CTVelocity
-            // 
-            resources.ApplyResources(this.CTVelocity, "CTVelocity");
-            this.CTVelocity.Maximum = 100;
-            this.CTVelocity.Name = "CTVelocity";
-            this.CTVelocity.TickFrequency = 10;
-            this.CTVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.CTVelocity.Scroll += new System.EventHandler(this.CTVelocity_Scroll);
-            // 
-            // PFVelocityTB
-            // 
-            resources.ApplyResources(this.PFVelocityTB, "PFVelocityTB");
-            this.PFVelocityTB.Name = "PFVelocityTB";
-            this.PFVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PFVelocityTB_KeyDown);
-            this.PFVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PFVelocityTB_KeyPress);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // PFVelocity
-            // 
-            resources.ApplyResources(this.PFVelocity, "PFVelocity");
-            this.PFVelocity.Maximum = 100;
-            this.PFVelocity.Name = "PFVelocity";
-            this.PFVelocity.TickFrequency = 10;
-            this.PFVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.PFVelocity.Scroll += new System.EventHandler(this.PFVelocity_Scroll);
-            // 
-            // PtVelocityTB
-            // 
-            resources.ApplyResources(this.PtVelocityTB, "PtVelocityTB");
-            this.PtVelocityTB.Name = "PtVelocityTB";
-            this.PtVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PtVelocityTB_KeyDown);
-            this.PtVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PtVelocityTB_KeyPress);
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // PtVelocity
-            // 
-            resources.ApplyResources(this.PtVelocity, "PtVelocity");
-            this.PtVelocity.Maximum = 100;
-            this.PtVelocity.Name = "PtVelocity";
-            this.PtVelocity.TickFrequency = 10;
-            this.PtVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.PtVelocity.Scroll += new System.EventHandler(this.PtVelocity_Scroll);
-            // 
-            // ZVelocityTB
-            // 
-            resources.ApplyResources(this.ZVelocityTB, "ZVelocityTB");
-            this.ZVelocityTB.Name = "ZVelocityTB";
-            this.ZVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ZVelocityTB_KeyDown);
-            this.ZVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZVelocityTB_KeyPress);
-            // 
-            // XYVelocityTB
-            // 
-            resources.ApplyResources(this.XYVelocityTB, "XYVelocityTB");
-            this.XYVelocityTB.Name = "XYVelocityTB";
-            this.XYVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.XYVelocityTB_KeyDown);
-            this.XYVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.XYVelocityTB_KeyPress);
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // Zvelocity
-            // 
-            resources.ApplyResources(this.Zvelocity, "Zvelocity");
-            this.Zvelocity.Maximum = 100;
-            this.Zvelocity.Name = "Zvelocity";
-            this.Zvelocity.TickFrequency = 10;
-            this.Zvelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.Zvelocity.Scroll += new System.EventHandler(this.Zvelocity_Scroll);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // XYVelocity
-            // 
-            resources.ApplyResources(this.XYVelocity, "XYVelocity");
-            this.XYVelocity.Maximum = 100;
-            this.XYVelocity.Name = "XYVelocity";
-            this.XYVelocity.TickFrequency = 10;
-            this.XYVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.XYVelocity.Scroll += new System.EventHandler(this.XYVelocity_Scroll);
             // 
             // S1GB
             // 
@@ -2585,7 +2568,6 @@
             this.Controls.Add(this.S3GB);
             this.Controls.Add(this.S2GB);
             this.Controls.Add(this.S1GB);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
@@ -2597,10 +2579,6 @@
             this.Shown += new System.EventHandler(this.Manual_frm_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.YLL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YRL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.XLL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.XRL)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CBVelocity)).EndInit();
@@ -2609,6 +2587,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PtVelocity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Zvelocity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XYVelocity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YLL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YRL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XLL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XRL)).EndInit();
             this.S1GB.ResumeLayout(false);
             this.S1GB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZS1RL)).EndInit();
@@ -2704,8 +2686,6 @@
         private System.Windows.Forms.TextBox PtVelocityTB;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TrackBar PtVelocity;
-        private System.Windows.Forms.Button PFBtn;
-        private System.Windows.Forms.Button SpBtn;
         private System.Windows.Forms.Button S3Btn;
         private System.Windows.Forms.Button S2Btn;
         private System.Windows.Forms.Button S1Btn;

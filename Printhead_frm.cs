@@ -9,9 +9,9 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
 using System.Threading;
-using System.Text.Json;
 using Active_Directory_Worker.Interfaces;
 using System.Runtime.InteropServices;
+
 
 namespace BTP
 {

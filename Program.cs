@@ -291,7 +291,13 @@ namespace BTP
         public static string Ard5 { get; set; }
         public static string Ard6 { get; set; }
 
+        public static double X_Laser_offset { get; set; }
+        public static double Y_Laser_offset { get; set; }
+        public static double Z_Laser_offset { get; set; }
 
+        public static int Z1Calibrated { get; set; }
+        public static int Z2Calibrated { get; set; }
+        public static int Z3Calibrated { get; set; }
     }
 
 }

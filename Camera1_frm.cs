@@ -117,6 +117,7 @@ namespace BTP
         // Отображение на экране
         public static void ContinuousShot(Camera cam)
             {
+            
                 if (cam != null)
                 {
                     try

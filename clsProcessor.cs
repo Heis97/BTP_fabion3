@@ -958,6 +958,7 @@ class clsProcessor
                 //Word 
                 mCurAddress.Label = Char.ToUpper(ncWord.Value[0]);
                 mCurAddress.StringValue = ncWord.Groups[1].Value;
+                Console.WriteLine(ncWord.Groups[1].Value);
                 mCurAddress.Value = float.Parse(ncWord.Groups[1].Value);
                 if (mCurAddress.Matches(mMotion.SubCall))
                 {
