@@ -514,83 +514,83 @@ namespace BTP
 
         private void XPos001_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  0.01);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  0.01);
         }
 
 
         private void Xpos01_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  0.1);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  0.1);
         }
 
         private void PosX1_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  1);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  1);
         }
 
         private void PosX10_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  10);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  10);
         }
 
         private void XMin001_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.01);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.01);
         }
 
         private void XMin10_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
         }
 
         private void XMin01_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
         }
 
         private void XMin1_Click(object sender, EventArgs e)
         {
-            moveAxis(X, ConnectionData.Value.ACSC_AMF_RELATIVE,  -1);
+            moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -1);
         }
 
         private void YNeg001_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.01);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.01);
         }
 
         private void YNeg01_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.1);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -0.1);
         }
 
         private void YNeg1_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  -1);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -1);
         }
 
         private void YNeg10_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  -10);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  -10);
         }
 
         private void YPos001_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  0.01);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  0.01);
         }
 
         private void YPos01_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  0.1);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  0.1);
         }
 
         private void YPos1_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  1);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  1);
         }
 
         private void YPos10_Click(object sender, EventArgs e)
         {
-            moveAxis(Y, ConnectionData.Value.ACSC_AMF_RELATIVE,  10);
+            moveAxis(Y, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  10);
         }
 
         private void LBBtn_MouseUp(object sender, MouseEventArgs e)
@@ -813,8 +813,6 @@ namespace BTP
                     ConnectionData.HeadNum = 2;
                     S2Btn.BackColor = SystemColors.Control;
                     S3Btn.BackColor = SystemColors.Control;
-                    SpBtn.BackColor = SystemColors.Control;
-                    PFBtn.BackColor = SystemColors.Control;
                     S1GB.Enabled = true;
                     S2GB.Enabled = false;
                     S3GB.Enabled = false;
@@ -888,8 +886,6 @@ namespace BTP
                     ConnectionData.HeadNum = 3;
                     S1Btn.BackColor = SystemColors.Control;
                     S3Btn.BackColor = SystemColors.Control;
-                    SpBtn.BackColor = SystemColors.Control;
-                    PFBtn.BackColor = SystemColors.Control;
                     S1GB.Enabled = false;
                     S2GB.Enabled = true;
                     S3GB.Enabled = false;
@@ -963,8 +959,6 @@ namespace BTP
                     ConnectionData.HeadNum = 4;
                     S1Btn.BackColor = SystemColors.Control;
                     S2Btn.BackColor = SystemColors.Control;
-                    SpBtn.BackColor = SystemColors.Control;
-                    PFBtn.BackColor = SystemColors.Control;
                     S1GB.Enabled = false;
                     S2GB.Enabled = false;
                     S3GB.Enabled = true;
@@ -1027,156 +1021,15 @@ namespace BTP
 
         }
 
-        private void SpBtn_Click(object sender, EventArgs e)
-        {
-            if (ConnectionData.bConnected)
-            {
-                if (SpBtn.BackColor == SystemColors.Control)
-                {
-                    prev_head = head;
-                    SpBtn.BackColor = Color.YellowGreen;
-                    head = 4;
-                    ConnectionData.HeadNum = 5;
-                    S1Btn.BackColor = SystemColors.Control;
-                    S2Btn.BackColor = SystemColors.Control;
-                    S3Btn.BackColor = SystemColors.Control;
-                    PFBtn.BackColor = SystemColors.Control;
-                    S1GB.Enabled = false;
-                    S2GB.Enabled = false;
-                    S3GB.Enabled = false;
-                    SpGB.Enabled = true;
-                    PFGB.Enabled = false;
-                    PF2GB.Enabled = false;
-
-                    switch (prev_head)
-                    {
-                        case 1:
-                            minX = ConnectionData.XZoffsets;
-                            minY = ConnectionData.YZoffsets;
-                            break;
-                        case 2:
-                            minX = ConnectionData.XUoffsets;
-                            minY = ConnectionData.YUoffsets;
-                            break;
-                        case 3:
-                            minX = ConnectionData.XVoffsets;
-                            minY = ConnectionData.YVoffsets;
-                            break;
-                        case 4:
-                            minX = ConnectionData.WXaxis;
-                            minY = ConnectionData.WYaxis;
-                            break;
-                        case 5:
-                            minX = ConnectionData.XAoffsets;
-                            minY = ConnectionData.YAoffsets;
-                            break;
-                        default:
-                            minX = 0;
-                            minY = 0;
-                            break;
-                    }
-
-                    OffsetX = ConnectionData.FeedBackX - ConnectionData.ToolX + ConnectionData.WXaxis - minX;
-                    OffsetY = ConnectionData.FeedBackY - ConnectionData.ToolY + ConnectionData.WYaxis - minY;
-
-                    // Включение осей спрея
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_5);
-                    // Выключение осей шприца 1
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_2);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_7);
-                    // Выключение осей шприца 2
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_3);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_8);
-                    // Выключение осей шприца 3
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_4);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_9);
-                    // Выключение осей дозатора
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_6);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_10);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_11);
-                }
-
-            }
-        }
-
-        private void PFBtn_Click(object sender, EventArgs e)
-        {
-            if (ConnectionData.bConnected)
-            {
-                if (PFBtn.BackColor == SystemColors.Control)
-                {
-                    prev_head = head;
-                    PFBtn.BackColor = Color.YellowGreen;
-                    head = 5;
-                    ConnectionData.HeadNum = 6;
-                    S1Btn.BackColor = SystemColors.Control;
-                    S2Btn.BackColor = SystemColors.Control;
-                    S3Btn.BackColor = SystemColors.Control;
-                    SpBtn.BackColor = SystemColors.Control;
-                    S1GB.Enabled = false;
-                    S2GB.Enabled = false;
-                    S3GB.Enabled = false;
-                    SpGB.Enabled = false;
-                    PFGB.Enabled = true;
-                    PF2GB.Enabled = true;
-
-                    switch (prev_head)
-                    {
-                        case 1:
-                            minX = ConnectionData.XZoffsets;
-                            minY = ConnectionData.YZoffsets;
-                            break;
-                        case 2:
-                            minX = ConnectionData.XUoffsets;
-                            minY = ConnectionData.YUoffsets;
-                            break;
-                        case 3:
-                            minX = ConnectionData.XVoffsets;
-                            minY = ConnectionData.YVoffsets;
-                            break;
-                        case 4:
-                            minX = ConnectionData.WXaxis;
-                            minY = ConnectionData.WYaxis;
-                            break;
-                        case 5:
-                            minX = ConnectionData.XAoffsets;
-                            minY = ConnectionData.YAoffsets;
-                            break;
-                        default:
-                            minX = 0;
-                            minY = 0;
-                            break;
-                    }
-
-                    OffsetX = ConnectionData.FeedBackX - ConnectionData.ToolX + ConnectionData.XAoffsets - minX;
-                    OffsetY = ConnectionData.FeedBackY - ConnectionData.ToolY + ConnectionData.YAoffsets - minY;
-
-                    // Включение осей дозатора
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_6);
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_10);
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_11);
-                    // Выключение осей шприца 1
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_2);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_7);
-                    // Выключение осей шприца 2
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_3);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_8);
-                    // Выключение осей шприца 3
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_4);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_9);
-                    // Выключение осей спрея
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_5);
-
-                    // Отключение спрея
-                    SPOnOff.BackColor = SystemColors.Control;
-                    //ConnectionData.Value.SetOutput(0, 3, 0); // Выключение выхода OUT(0).3
-                }
-            }
-        }
+       
+        
 
         private void SetWorkZero_Click(object sender, EventArgs e)
         {
-            point = new double[3]
+            ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_4);
+
+
+            /* point = new double[3]
                             {
                                 0,
                                 0,
@@ -1259,7 +1112,9 @@ namespace BTP
                 {
                     ErorMsg(Ex);
                 }
-            }
+            }*/
+
+
         }
 
         private void ErorMsg(COMException Ex)
@@ -1291,42 +1146,42 @@ namespace BTP
 
         private void ZS1Pos001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
         }
 
         private void ZS1Pos01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
         }
 
         private void ZS1Pos1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
         }
 
         private void ZS1Pos10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
         }
 
         private void ZS1Min001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.01);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.01);
         }
 
         private void ZS1Min01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
         }
 
         private void ZS1Min1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
         }
 
         private void ZS1Min10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z1, ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
+            moveAxis(Z1, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
         }
 
         private void JogZS1Pos_MouseUp(object sender, MouseEventArgs e)
@@ -1355,21 +1210,23 @@ namespace BTP
             {
                 string CurDir = Application.StartupPath + "\\Macro";
                 MacroList.Items.Clear();
-
+                
                 XYVelocity.Value = (int)(100 * ConnectionData.SetXYVel / ConnectionData.MaxXYVel);
                 Zvelocity.Value = (int)(100 * ConnectionData.SetZVel / ConnectionData.MaxZVel);
+                Console.WriteLine("ConnectionData.SetPtVel: " + ConnectionData.SetPtVel);
+                Console.WriteLine("ConnectionData.MaxPtVel: " + ConnectionData.MaxPtVel);
                 PtVelocity.Value = (int)(100 * ConnectionData.SetPtVel / ConnectionData.MaxPtVel);
-                PFVelocity.Value = (int)(100 * ConnectionData.SetPFVel / ConnectionData.MaxPFVel);
+                /*PFVelocity.Value = (int)(100 * ConnectionData.SetPFVel / ConnectionData.MaxPFVel);
                 CTVelocity.Value = (int)(100 * ConnectionData.SetCTVel / ConnectionData.MaxCTVel);
-                CBVelocity.Value = (int)(100 * ConnectionData.SetCBVel / ConnectionData.MaxCBVel);
+                CBVelocity.Value = (int)(100 * ConnectionData.SetCBVel / ConnectionData.MaxCBVel);*/
                 MixTrackBar.Value = (int)(ConnectionData.PfMix);
 
                 XYVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetXYVel);
                 ZVelocityTB.Text =  string.Format("{0:F2}", ConnectionData.SetZVel);
                 PtVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetPtVel);
-                PFVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetPFVel);
+                /*PFVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetPFVel);
                 CTVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetCTVel);
-                CBVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetCBVel);
+                CBVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetCBVel);*/
 
                 S1DiamTB.Text =     string.Format("{0:F2}", ConnectionData.S1Diameter);
                 S2DiamTB.Text =     string.Format("{0:F2}", ConnectionData.S2Diameter);
@@ -1382,7 +1239,7 @@ namespace BTP
                 PfMixTB.Text =      string.Format("{0:F2}", ConnectionData.PfMix);
                 PetriDishTB.Text =  string.Format("{0:F2}", ConnectionData.PetriDishDiam);
                 WellCountTB.Text =  string.Format("{0:F2}", ConnectionData.WellNum);
-
+                
                 DirectoryInfo dir = new DirectoryInfo(@CurDir);
 
                 foreach (var item in dir.GetFiles("*.mcr"))
@@ -1794,79 +1651,79 @@ namespace BTP
 
         private void ZS2Pos10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
         }
         private void ZS2Pos1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
         }
         private void ZS2Pos01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
         }
         private void ZS2Pos001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
         }
 
         private void ZS2Min001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE,-0.01);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,-0.01);
         }
 
         private void ZS2Min01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
         }
 
         private void ZS2Min1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
         }
 
         private void ZS2Min10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z2, ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
+            moveAxis(Z2, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
         }
 
         private void ZS3Pos10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 10);
         }
 
         private void ZS3Pos1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 1);
         }
 
         private void ZS3Pos01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.1);
         }
 
         private void ZS3Pos001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0.01);
         }
 
         private void ZS3Min001_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.01);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.01);
         }
 
         private void ZS3Min01_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -0.1);
         }
 
         private void ZS3Min1_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -1);
         }
 
         private void ZS3Min10_Click(object sender, EventArgs e)
         {
-            moveAxis(Z3, ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
+            moveAxis(Z3, (int)ConnectionData.Value.ACSC_AMF_RELATIVE, -10);
         }
 
         private void ZSPPos10_Click(object sender, EventArgs e)

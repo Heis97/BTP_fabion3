@@ -145,7 +145,8 @@ namespace BTP
     // Универсальные данные
     static class ConnectionData
     {
-        public static SPIIPLUSCOM660Lib.Channel Value { get; set; }
+       // public static SPIIPLUSCOM660Lib.Channel Value { get; set; }
+        public static ChanelOct Value { get; set; }
         public static Camera Camera1 { get; set; }
         public static Camera Camera2 { get; set; }
         public static FileStream fileStream { get; set; }
@@ -291,7 +292,13 @@ namespace BTP
         public static string Ard5 { get; set; }
         public static string Ard6 { get; set; }
 
+        public static double X_Laser_offset { get; set; }
+        public static double Y_Laser_offset { get; set; }
+        public static double Z_Laser_offset { get; set; }
 
+        public static int Z1Calibrated { get; set; }
+        public static int Z2Calibrated { get; set; }
+        public static int Z3Calibrated { get; set; }
     }
 
 }

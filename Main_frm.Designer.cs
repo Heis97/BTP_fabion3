@@ -519,10 +519,10 @@
             resources.ApplyResources(this, "$this");
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ControlBox = false;
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.SS_Status);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.SS_Status);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Main_frm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

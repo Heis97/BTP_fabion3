@@ -97,7 +97,6 @@
             // 
             // Positions
             // 
-            resources.ApplyResources(this.Positions, "Positions");
             this.Positions.Controls.Add(this.PfPosRefText);
             this.Positions.Controls.Add(this.SpPosRefText);
             this.Positions.Controls.Add(this.P3PosRefText);
@@ -142,6 +141,7 @@
             this.Positions.Controls.Add(this.label3);
             this.Positions.Controls.Add(this.label2);
             this.Positions.Controls.Add(this.label1);
+            resources.ApplyResources(this.Positions, "Positions");
             this.Positions.Name = "Positions";
             this.Positions.TabStop = false;
             // 
@@ -417,10 +417,10 @@
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.P3RemainsTextBox);
             this.groupBox1.Controls.Add(this.P2RemainsTextBox);
             this.groupBox1.Controls.Add(this.P1RemainsTextBox);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -444,15 +444,15 @@
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.LogData_RTB);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
             // LogData_RTB
             // 
-            resources.ApplyResources(this.LogData_RTB, "LogData_RTB");
             this.LogData_RTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.LogData_RTB, "LogData_RTB");
             this.LogData_RTB.Name = "LogData_RTB";
             this.LogData_RTB.ReadOnly = true;
             this.LogData_RTB.TextChanged += new System.EventHandler(this.LogData_RTB_TextChanged);

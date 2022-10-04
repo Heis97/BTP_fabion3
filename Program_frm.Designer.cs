@@ -70,8 +70,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.G_code_name);
             this.groupBox1.Controls.Add(this.GCodeInputBox);
+            this.groupBox1.Controls.Add(this.G_code_name);
             this.groupBox1.Controls.Add(this.PasteBtn);
             this.groupBox1.Controls.Add(this.CopyBtn);
             this.groupBox1.Controls.Add(this.CutBtn);
@@ -224,6 +224,7 @@
             this.GCodeViewerProgram.Name = "GCodeViewerProgram";
             this.GCodeViewerProgram.Pitch = 0F;
             this.GCodeViewerProgram.Roll = 0F;
+            this.GCodeViewerProgram.RotaryType = MacGen.RotaryMotionType.BMC;
             this.GCodeViewerProgram.ViewManipMode = MacGen.GcodeViewer.ManipMode.SELECTION;
             this.GCodeViewerProgram.Yaw = 0F;
             // 

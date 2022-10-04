@@ -69,6 +69,7 @@ namespace BTP
             PauseBtn.Enabled = true;
             ResetBtn.Enabled = true;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
 
         }
         // Кнопка работы по программе
@@ -92,6 +93,7 @@ namespace BTP
             PauseBtn.Enabled = true;
             ResetBtn.Enabled = true;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
         }
         // Кнопка автоматического режима 
         private void AutoBtn_Click(object sender, EventArgs e)
@@ -115,6 +117,7 @@ namespace BTP
             PauseBtn.Enabled = true;
             ResetBtn.Enabled = true;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
         }
         // Кнопка настроек
         private void SettingsBtn_Click(object sender, EventArgs e)
@@ -137,6 +140,7 @@ namespace BTP
             PauseBtn.Enabled = false;
             ResetBtn.Enabled = false;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
         }
         // Кнопка диагностики
         private void DiagnosticsBtn_Click(object sender, EventArgs e)
@@ -159,6 +163,7 @@ namespace BTP
             PauseBtn.Enabled = true;
             ResetBtn.Enabled = true;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
         }
         private void PrintheadBtn_Click(object sender, EventArgs e)
         {
@@ -200,7 +205,7 @@ namespace BTP
                 ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_0);
                 ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_9);
                 ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_8);
-                //ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_4);
+               // ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_4);
             }
         }
 
@@ -217,12 +222,15 @@ namespace BTP
             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_6, ConnectionData.SetZVel);
             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_7, ConnectionData.SetPtVel);
 
-            Console.WriteLine("after send_ax");
             // Запись диаметров
-            Console.WriteLine("after pf diam_ax");
-            // Установка программных конечных выключателей
-            Console.WriteLine("after send_lim");
-            //Задание скоростей поиска нулевой точки
+            ConnectionData.Value.WriteVariable(ConnectionData.S1Diameter, "S1Diameter", ConnectionData.Value.ACSC_NONE);
+            ConnectionData.Value.WriteVariable(ConnectionData.S2Diameter, "S2Diameter", ConnectionData.Value.ACSC_NONE);
+            ConnectionData.Value.WriteVariable(ConnectionData.S3Diameter, "S3Diameter", ConnectionData.Value.ACSC_NONE);
+
+            ConnectionData.Value.WriteVariable(ConnectionData.X_Laser_offset, "X_Laser_offset", ConnectionData.Value.ACSC_NONE);
+            ConnectionData.Value.WriteVariable(ConnectionData.Y_Laser_offset, "Y_Laser_offset", ConnectionData.Value.ACSC_NONE);
+            ConnectionData.Value.WriteVariable(ConnectionData.Z_Laser_offset, "Z_Laser_offset", ConnectionData.Value.ACSC_NONE);
+
             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityX,    "VelX", ConnectionData.Value.ACSC_BUFFER_4);
             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityY,    "VelY", ConnectionData.Value.ACSC_BUFFER_4);
             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityCam,  "VelCam", ConnectionData.Value.ACSC_BUFFER_4);
@@ -231,8 +239,6 @@ namespace BTP
             Console.WriteLine("after send_vel");
             // Системые переменные
             ConnectionData.Value.WriteVariable(0.01, "XSEGRMIN", ConnectionData.Value.ACSC_NONE);
-
-            ConnectionData.Value.WriteVariable(ConnectionData.PreeflowDiam,     "PFDose", ConnectionData.Value.ACSC_NONE);
         }
 
         // Загрузка данных при старте из файла+-
@@ -278,7 +284,13 @@ namespace BTP
             ConnectionData.PetriDishDiam = Convert.ToDouble(manager.GetPrivateString("Data", "PetriDishDiam"));
             ConnectionData.WellNum = Convert.ToDouble(manager.GetPrivateString("Data", "WellCount"));
 
-            // Чтение параметров для камеры
+            //ConnectionData.X_Laser_offset = Convert.ToDouble(manager.GetPrivateString("Data", "X_Laser_offset"));
+            //ConnectionData.Y_Laser_offset = Convert.ToDouble(manager.GetPrivateString("Data", "Y_Laser_offset"));
+            //ConnectionData.Z_Laser_offset = Convert.ToDouble(manager.GetPrivateString("Data", "Z_Laser_offset"));
+            ConnectionData.X_Laser_offset = 67.76;
+            ConnectionData.Y_Laser_offset = 73.24;
+            ConnectionData.Z_Laser_offset = -5.51;
+            //Чтение параметров для камеры
             ConnectionData.Camera1SN = manager.GetPrivateString("Cameras", "SerialNumberCam1");
             ConnectionData.Camera2SN = manager.GetPrivateString("Cameras", "SerialNumberCam2");
             ConnectionData.ScaleCam1 = Convert.ToDouble(manager.GetPrivateString("Cameras", "ScaleCam1"));
@@ -373,7 +385,7 @@ namespace BTP
             manager.WritePrivateString("Homing", "HomeVelocityZ", ConnectionData.HomeVelocityZ.ToString());
             manager.WritePrivateString("Homing", "HomeVelocityCam", ConnectionData.HomeVelocityCam.ToString());
 
-            // Установленные скорости
+            // Установленные скорости.
             manager.WritePrivateString("Dynamic", "XYVeloc", ConnectionData.SetXYVel.ToString());
             manager.WritePrivateString("Dynamic", "ZVeloc", ConnectionData.SetZVel.ToString());
             manager.WritePrivateString("Dynamic", "PtVeloc", ConnectionData.SetPtVel.ToString());
@@ -394,6 +406,9 @@ namespace BTP
             manager.WritePrivateString("Data", "PetriDishDiam", ConnectionData.PetriDishDiam.ToString());
             manager.WritePrivateString("Data", "WellCount", ConnectionData.WellNum.ToString());
 
+            manager.WritePrivateString("Data", "X_Laser_offset", ConnectionData.X_Laser_offset.ToString());
+            manager.WritePrivateString("Data", "Y_Laser_offset", ConnectionData.Y_Laser_offset.ToString());
+            manager.WritePrivateString("Data", "Z_Laser_offset", ConnectionData.Z_Laser_offset.ToString());
             // Параметры для камер
             manager.WritePrivateString("Cameras", "SerialNumberCam1", ConnectionData.Camera1SN);
             manager.WritePrivateString("Cameras", "SerialNumberCam2", ConnectionData.Camera2SN);
@@ -528,22 +543,22 @@ namespace BTP
                     ConnectionData.YAoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 6, 6);
 
                     // Чтение состояния конечных выключателей
-                    ConnectionData.XLLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(X) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.XRLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(X) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.YLLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(Y) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.YRLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(Y) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS1LLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z1) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS1RLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z1) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS2LLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z2) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS2RLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z2) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS3LLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z3) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS3RLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z3) & ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.XLLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(X) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.XRLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(X) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.YLLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Y) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.YRLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Y) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.ZS1LLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z1) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.ZS1RLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z1) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.ZS2LLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z2) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.ZS2RLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z2) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
+                    ConnectionData.ZS3LLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z3) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
+                    ConnectionData.ZS3RLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z3) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
                     
                     // Чтение номера строки выполняемой в буффере 1 - исполнение G-кода
-                    ConnectionData.ExecLine =           ConnectionData.Value.ReadVariable("PEXL",   ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferSize =         ConnectionData.Value.ReadVariable("PCHARS",  ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferError =        ConnectionData.Value.ReadVariable("PERR",    ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferErrorString =  ConnectionData.Value.ReadVariable("PERL",    ConnectionData.Value.ACSC_NONE, 2, 2);
+                    ConnectionData.ExecLine = (int)ConnectionData.Value.ReadVariable("PEXL",   ConnectionData.Value.ACSC_NONE, 2, 2);
+                    ConnectionData.BufferSize = (int)ConnectionData.Value.ReadVariable("PCHARS",  ConnectionData.Value.ACSC_NONE, 2, 2);
+                    ConnectionData.BufferError = (int)ConnectionData.Value.ReadVariable("PERR",    ConnectionData.Value.ACSC_NONE, 2, 2);
+                    ConnectionData.BufferErrorString = (int)ConnectionData.Value.ReadVariable("PERL",    ConnectionData.Value.ACSC_NONE, 2, 2);
 
                     //label1.Text = (ConnectionData.Value.GetFault(ConnectionData.Value.ACSC_AXIS_0)).ToString();
 
@@ -654,7 +669,7 @@ namespace BTP
         // Установка связи с контроллером
         public void SetCommunication()
         {
-            ConnectionData.Value = new SPIIPLUSCOM660Lib.Channel();
+            ConnectionData.Value = new ChanelOct();
             axes = new int[]
                             {
                              ConnectionData.Value.ACSC_AXIS_0,
@@ -677,16 +692,15 @@ namespace BTP
                 else
                 {
                     // Работа с настоящим контроллером
-                    ConnectionData.Value.OpenCommEthernet(ConnectionData.ControllerIP, ConnectionData.Value.ACSC_SOCKET_STREAM_PORT);
+                    ConnectionData.Value.OpenCommEthernet(
+                        ConnectionData.ControllerIP,
+                        ConnectionData.Value.ACSC_SOCKET_STREAM_PORT);
                 }
-                Console.WriteLine("before thread");
                 // Запуск потока
                 // Организация потока данных
                 MotorStateThr = new Thread(new ThreadStart(GetMotorState));
-                Console.WriteLine("after thread");
                 MotorStateThr.IsBackground = true;
                 MotorStateThr.Start();
-                Console.WriteLine("after motState Start");
                 // MotorStateThr.Suspend();
                 // MotorStateThr.Resume();
                 // Вывод информации в трей
@@ -843,7 +857,11 @@ namespace BTP
             //ConnectionData.ProgramStart = false;
             if (ConnectionData.ProgramStart == 30)
             {
-                ConnectionData.Value.ExtToPointM(ConnectionData.Value.ACSC_AMF_VELOCITY, ax, SaveCoordinates, ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0), ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0));
+                ConnectionData.Value.ExtToPointM(
+                    ConnectionData.Value.ACSC_AMF_VELOCITY, ax, 
+                    SaveCoordinates,
+                    ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0),
+                    ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0));
                 //ConnectionData.Value.HaltM(ax);
                 ConnectionData.Value.EndSequenceM(ax);
                 ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_0, 100000);
@@ -860,9 +878,12 @@ namespace BTP
             else
             {
 
-                if (Convert.ToBoolean((ConnectionData.Value.GetProgramState(programm_buffer)) & (ConnectionData.Value.ACSC_PST_RUN)) == false)
+                if (Convert.ToBoolean(
+                    ((bool)ConnectionData.Value.GetProgramState(programm_buffer)) &
+                   (bool) (ConnectionData.Value.ACSC_PST_RUN)) == false)
                 {
-                    if (Convert.ToBoolean(ConnectionData.Value.GetProgramState(programm_buffer) & (ConnectionData.Value.ACSC_PST_COMPILED)) == true)
+                    if (Convert.ToBoolean((bool)ConnectionData.Value.GetProgramState(programm_buffer)
+                        & (bool)(ConnectionData.Value.ACSC_PST_COMPILED)) == true)
                     {
 
                         ConnectionData.Value.RunBuffer(programm_buffer);
@@ -952,6 +973,7 @@ namespace BTP
         {
             try
             {
+                /*
                 if (ConnectionData.Camera1 != null)
                     {
                     ConnectionData.Camera1.Close();
@@ -965,7 +987,7 @@ namespace BTP
                     ConnectionData.Camera2.Dispose();
                     ConnectionData.Camera2 = null;
                 }
-
+                */
 
                 if (ConnectionData.bConnected)
                 {

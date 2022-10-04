@@ -82,8 +82,8 @@ namespace BTP
                 ZoomLable.Text = Dict.LangStrings.Zoom + string.Format("{0:F0}", 4) + "X";
             }
 
-                if (Convert.ToBoolean(ConnectionData.Value.ReadVariable("MFLAGS", ConnectionData.Value.ACSC_NONE, 11, 11) & 8) &&
-                Convert.ToBoolean(ConnectionData.Value.ReadVariable("MFLAGS", ConnectionData.Value.ACSC_NONE, 10, 10) & 8))
+                if (Convert.ToBoolean((int)ConnectionData.Value.ReadVariable("MFLAGS", ConnectionData.Value.ACSC_NONE, 11, 11) & 8) &&
+                Convert.ToBoolean((int)ConnectionData.Value.ReadVariable("MFLAGS", ConnectionData.Value.ACSC_NONE, 10, 10) & 8))
             {
                 if ((ConnectionData.FeedBackCam2Y < 0) || (ConnectionData.FeedBackCam2Y > ConnectionData.Camera2YStrokeMax))
                 {
@@ -117,6 +117,7 @@ namespace BTP
         // Отображение на экране
         public static void ContinuousShot(Camera cam)
             {
+            
                 if (cam != null)
                 {
                     try

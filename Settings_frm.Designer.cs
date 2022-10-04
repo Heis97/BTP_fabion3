@@ -253,20 +253,20 @@
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.IPAddressTB);
             this.groupBox1.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // IPAddressTB
             // 
-            resources.ApplyResources(this.IPAddressTB, "IPAddressTB");
             this.IPAddressTB.AllowInternalTab = false;
             this.IPAddressTB.AutoHeight = true;
             this.IPAddressTB.BackColor = System.Drawing.SystemColors.Window;
             this.IPAddressTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.IPAddressTB.Cursor = System.Windows.Forms.Cursors.IBeam;
+            resources.ApplyResources(this.IPAddressTB, "IPAddressTB");
             this.IPAddressTB.Name = "IPAddressTB";
             this.IPAddressTB.ReadOnly = false;
             this.IPAddressTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IPAddressTB_KeyDown_1);
@@ -278,7 +278,6 @@
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.Camera1ZoomStroke);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.Camera2YStroke);
@@ -293,6 +292,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.Camera1SNTB);
             this.groupBox2.Controls.Add(this.label2);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -380,7 +380,6 @@
             // 
             // groupBox3
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.CBVelocityTB);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.CTVelocityTB);
@@ -393,6 +392,7 @@
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.XYVelocityTB);
             this.groupBox3.Controls.Add(this.label6);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -470,7 +470,6 @@
             // 
             // groupBox4
             // 
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.ZPFOffsetTB);
             this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.ZSPOffsetTB);
@@ -485,6 +484,7 @@
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.XoffsetTB);
             this.groupBox4.Controls.Add(this.label13);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
@@ -574,7 +574,6 @@
             // 
             // groupBox5
             // 
-            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Controls.Add(this.groupBox18);
             this.groupBox5.Controls.Add(this.groupBox9);
             this.groupBox5.Controls.Add(this.groupBox8);
@@ -592,16 +591,17 @@
             this.groupBox5.Controls.Add(this.label27);
             this.groupBox5.Controls.Add(this.CalDistX);
             this.groupBox5.Controls.Add(this.label28);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
             // groupBox18
             // 
-            resources.ApplyResources(this.groupBox18, "groupBox18");
             this.groupBox18.Controls.Add(this.Accuracy100_TB);
             this.groupBox18.Controls.Add(this.Accuracy50_TB);
             this.groupBox18.Controls.Add(this.Accuracy100Select_CB);
             this.groupBox18.Controls.Add(this.Accuracy50Select_CB);
+            resources.ApplyResources(this.groupBox18, "groupBox18");
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.TabStop = false;
             // 
@@ -635,11 +635,11 @@
             // 
             // groupBox9
             // 
-            resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Controls.Add(this.AYAxisSP);
             this.groupBox9.Controls.Add(this.label35);
             this.groupBox9.Controls.Add(this.AXAxisSP);
             this.groupBox9.Controls.Add(this.label36);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.TabStop = false;
             // 
@@ -669,11 +669,11 @@
             // 
             // groupBox8
             // 
-            resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Controls.Add(this.VYAxisSP);
             this.groupBox8.Controls.Add(this.label33);
             this.groupBox8.Controls.Add(this.VXAxisSP);
             this.groupBox8.Controls.Add(this.label34);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
             // 
@@ -703,11 +703,11 @@
             // 
             // groupBox7
             // 
-            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Controls.Add(this.UYAxisSP);
             this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Controls.Add(this.UXAxisSP);
             this.groupBox7.Controls.Add(this.label32);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
             // 
@@ -737,11 +737,11 @@
             // 
             // groupBox6
             // 
-            resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Controls.Add(this.ZYAxisSP);
             this.groupBox6.Controls.Add(this.label30);
             this.groupBox6.Controls.Add(this.ZXAxisSP);
             this.groupBox6.Controls.Add(this.label29);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             // 
@@ -843,7 +843,6 @@
             // 
             // groupBox10
             // 
-            resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Controls.Add(this.HomeVelocityCam);
             this.groupBox10.Controls.Add(this.label39);
             this.groupBox10.Controls.Add(this.HomeVelocityY);
@@ -852,6 +851,7 @@
             this.groupBox10.Controls.Add(this.label37);
             this.groupBox10.Controls.Add(this.HomeVelocityZ);
             this.groupBox10.Controls.Add(this.label22);
+            resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
             // 
@@ -905,15 +905,14 @@
             // 
             // groupBox11
             // 
-            resources.ApplyResources(this.groupBox11, "groupBox11");
             this.groupBox11.Controls.Add(this.groupBox14);
             this.groupBox11.Controls.Add(this.Camera1EnableCheckBox);
+            resources.ApplyResources(this.groupBox11, "groupBox11");
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.TabStop = false;
             // 
             // groupBox14
             // 
-            resources.ApplyResources(this.groupBox14, "groupBox14");
             this.groupBox14.Controls.Add(this.label45);
             this.groupBox14.Controls.Add(this.label47);
             this.groupBox14.Controls.Add(this.Camera1ContrastUpDown);
@@ -948,6 +947,7 @@
             this.groupBox14.Controls.Add(this.Camera1GainButtonCont);
             this.groupBox14.Controls.Add(this.Camera1GainTrackBar);
             this.groupBox14.Controls.Add(this.label46);
+            resources.ApplyResources(this.groupBox14, "groupBox14");
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.TabStop = false;
             // 
@@ -963,8 +963,8 @@
             // 
             // Camera1ContrastUpDown
             // 
-            resources.ApplyResources(this.Camera1ContrastUpDown, "Camera1ContrastUpDown");
             this.Camera1ContrastUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera1ContrastUpDown, "Camera1ContrastUpDown");
             this.Camera1ContrastUpDown.Name = "Camera1ContrastUpDown";
             this.Camera1ContrastUpDown.ValueChanged += new System.EventHandler(this.Camera1ContrastUpDown_ValueChanged);
             // 
@@ -1011,8 +1011,8 @@
             // 
             // Camera1ExposureUpDown
             // 
-            resources.ApplyResources(this.Camera1ExposureUpDown, "Camera1ExposureUpDown");
             this.Camera1ExposureUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera1ExposureUpDown, "Camera1ExposureUpDown");
             this.Camera1ExposureUpDown.Name = "Camera1ExposureUpDown";
             this.Camera1ExposureUpDown.ValueChanged += new System.EventHandler(this.Camera1ExposureUpDown_ValueChanged);
             // 
@@ -1052,8 +1052,8 @@
             // 
             // Camera1GammaUpDown
             // 
-            resources.ApplyResources(this.Camera1GammaUpDown, "Camera1GammaUpDown");
             this.Camera1GammaUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera1GammaUpDown, "Camera1GammaUpDown");
             this.Camera1GammaUpDown.Name = "Camera1GammaUpDown";
             this.Camera1GammaUpDown.ValueChanged += new System.EventHandler(this.Camera1GammaUpDown_ValueChanged);
             // 
@@ -1081,8 +1081,8 @@
             // 
             // Camera1BlckLvlUpDown
             // 
-            resources.ApplyResources(this.Camera1BlckLvlUpDown, "Camera1BlckLvlUpDown");
             this.Camera1BlckLvlUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera1BlckLvlUpDown, "Camera1BlckLvlUpDown");
             this.Camera1BlckLvlUpDown.Name = "Camera1BlckLvlUpDown";
             this.Camera1BlckLvlUpDown.ValueChanged += new System.EventHandler(this.Camera1BlckLvlUpDown_ValueChanged);
             // 
@@ -1112,8 +1112,8 @@
             // 
             // Camera1GainUpDown
             // 
-            resources.ApplyResources(this.Camera1GainUpDown, "Camera1GainUpDown");
             this.Camera1GainUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera1GainUpDown, "Camera1GainUpDown");
             this.Camera1GainUpDown.Name = "Camera1GainUpDown";
             this.Camera1GainUpDown.ValueChanged += new System.EventHandler(this.Camera1GainUpDown_ValueChanged);
             // 
@@ -1160,15 +1160,14 @@
             // 
             // groupBox12
             // 
-            resources.ApplyResources(this.groupBox12, "groupBox12");
             this.groupBox12.Controls.Add(this.groupBox13);
             this.groupBox12.Controls.Add(this.Camera2EnableCheckBox);
+            resources.ApplyResources(this.groupBox12, "groupBox12");
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.TabStop = false;
             // 
             // groupBox13
             // 
-            resources.ApplyResources(this.groupBox13, "groupBox13");
             this.groupBox13.Controls.Add(this.label44);
             this.groupBox13.Controls.Add(this.Camera2ContrastUpDown);
             this.groupBox13.Controls.Add(this.Camera2ContrastMax);
@@ -1203,6 +1202,7 @@
             this.groupBox13.Controls.Add(this.Camera2GainButtonCont);
             this.groupBox13.Controls.Add(this.Camera2GainTrackBar);
             this.groupBox13.Controls.Add(this.label65);
+            resources.ApplyResources(this.groupBox13, "groupBox13");
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.TabStop = false;
             // 
@@ -1213,8 +1213,8 @@
             // 
             // Camera2ContrastUpDown
             // 
-            resources.ApplyResources(this.Camera2ContrastUpDown, "Camera2ContrastUpDown");
             this.Camera2ContrastUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera2ContrastUpDown, "Camera2ContrastUpDown");
             this.Camera2ContrastUpDown.Name = "Camera2ContrastUpDown";
             this.Camera2ContrastUpDown.ValueChanged += new System.EventHandler(this.Camera2ContrastTrackBar_ValueChanged);
             // 
@@ -1261,8 +1261,8 @@
             // 
             // Camera2ExposureUpDown
             // 
-            resources.ApplyResources(this.Camera2ExposureUpDown, "Camera2ExposureUpDown");
             this.Camera2ExposureUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera2ExposureUpDown, "Camera2ExposureUpDown");
             this.Camera2ExposureUpDown.Name = "Camera2ExposureUpDown";
             this.Camera2ExposureUpDown.ValueChanged += new System.EventHandler(this.Camera2ExposureUpDown_ValueChanged);
             // 
@@ -1302,8 +1302,8 @@
             // 
             // Camera2GammaUpDown
             // 
-            resources.ApplyResources(this.Camera2GammaUpDown, "Camera2GammaUpDown");
             this.Camera2GammaUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera2GammaUpDown, "Camera2GammaUpDown");
             this.Camera2GammaUpDown.Name = "Camera2GammaUpDown";
             this.Camera2GammaUpDown.ValueChanged += new System.EventHandler(this.Camera2GammaUpDown_ValueChanged);
             // 
@@ -1331,8 +1331,8 @@
             // 
             // Camera2BlckLvlUpDown
             // 
-            resources.ApplyResources(this.Camera2BlckLvlUpDown, "Camera2BlckLvlUpDown");
             this.Camera2BlckLvlUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera2BlckLvlUpDown, "Camera2BlckLvlUpDown");
             this.Camera2BlckLvlUpDown.Name = "Camera2BlckLvlUpDown";
             this.Camera2BlckLvlUpDown.ValueChanged += new System.EventHandler(this.Camera2BlckLvlUpDown_ValueChanged);
             // 
@@ -1367,8 +1367,8 @@
             // 
             // Camera2GainUpDown
             // 
-            resources.ApplyResources(this.Camera2GainUpDown, "Camera2GainUpDown");
             this.Camera2GainUpDown.DecimalPlaces = 2;
+            resources.ApplyResources(this.Camera2GainUpDown, "Camera2GainUpDown");
             this.Camera2GainUpDown.Name = "Camera2GainUpDown";
             this.Camera2GainUpDown.ValueChanged += new System.EventHandler(this.Camera2GainUpDown_ValueChanged);
             // 
@@ -1415,11 +1415,11 @@
             // 
             // groupBox15
             // 
-            resources.ApplyResources(this.groupBox15, "groupBox15");
             this.groupBox15.Controls.Add(this.WYAxisSP);
             this.groupBox15.Controls.Add(this.label51);
             this.groupBox15.Controls.Add(this.WXAxisSP);
             this.groupBox15.Controls.Add(this.label52);
+            resources.ApplyResources(this.groupBox15, "groupBox15");
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.TabStop = false;
             // 
@@ -1449,11 +1449,11 @@
             // 
             // groupBox16
             // 
-            resources.ApplyResources(this.groupBox16, "groupBox16");
             this.groupBox16.Controls.Add(this.PF2Diameter_TB);
             this.groupBox16.Controls.Add(this.label59);
             this.groupBox16.Controls.Add(this.PF1Diameter_TB);
             this.groupBox16.Controls.Add(this.label55);
+            resources.ApplyResources(this.groupBox16, "groupBox16");
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.TabStop = false;
             // 
@@ -1483,11 +1483,11 @@
             // 
             // groupBox17
             // 
-            resources.ApplyResources(this.groupBox17, "groupBox17");
             this.groupBox17.Controls.Add(this.PetiYDistance);
             this.groupBox17.Controls.Add(this.label57);
             this.groupBox17.Controls.Add(this.PetiXDistance);
             this.groupBox17.Controls.Add(this.label60);
+            resources.ApplyResources(this.groupBox17, "groupBox17");
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.TabStop = false;
             // 
