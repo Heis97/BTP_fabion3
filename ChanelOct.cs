@@ -9,7 +9,7 @@ namespace BTP
 {
     class ChanelOct
     {
-        DeviceMarlin device;
+        public DeviceMarlin device;
         public int ACSC_BUFFER_0 { get; set; }
         public int ACSC_BUFFER_1 { get; set; }
         public int ACSC_BUFFER_2 { get; set; }
@@ -46,12 +46,42 @@ namespace BTP
         public object ACSC_PST_RUN { get; internal set; }
         public object ACSC_PST_COMPILED { get; internal set; }
         public int ACSC_NEGATIVE_DIRECTION { get; internal set; }
-        public int ACSC_POSITIVE_DIRECTION { get; internal set; }
+        public int ACSC_POSITIVE_DIRECTION  { get; internal set; }
         public object ACSC_AMF_RELATIVE { get; internal set; }
+
 
         public ChanelOct()
         {
-            device = new DeviceMarlin("COM1");
+            ACSC_AMF_RELATIVE = 1;
+            device = new DeviceMarlin(ConnectionData.Comport);
+        }
+        public void HomeAll()
+        {
+            device.sendCommand("G28", new string[] { }, new object[] {  });
+        }
+        internal void ToPoint(object move_type, int Axis, int v)
+        {
+            device.sendCommand("G1", new string[] { axis_from_num(Axis) }, new object[] { v });
+            throw new NotImplementedException();
+        }
+        internal void ToPoint(object move_type, int Axis, double v)
+        {
+            device.sendCommand("G1", new string[] { axis_from_num(Axis) }, new object[] { v });
+            throw new NotImplementedException();
+        }
+
+        string axis_from_num(int axis)
+        {
+            string ax = "";
+            switch (axis)
+            {
+                case 0: ax = "X"; break;
+                case 1: ax = "Y"; break;
+                case 2: ax = "Z"; break;
+                case 3: ax = "A"; break;
+                case 4: ax = "B"; break;
+            }
+            return ax;
         }
         public void SetVelocity(int Axis, double Value)
         {
@@ -80,6 +110,7 @@ namespace BTP
 
         public void RunBuffer(int Buffer)
         {
+
         }
 
         internal double ReadVariable(string v1, int aCSC_NONE, int v2, int v3)
@@ -94,6 +125,7 @@ namespace BTP
 
         internal void OpenCommDirect()
         {
+
             throw new NotImplementedException();
         }
 
@@ -227,16 +259,7 @@ namespace BTP
             throw new NotImplementedException();
         }
 
-        internal void ToPoint(object move_type, int Axis, int v)
-        {
-            throw new NotImplementedException();
-        }
-        internal void ToPoint(object move_type, int Axis, double v)
-        {
-
-            throw new NotImplementedException();
-        }
-
+        
         internal void LoadBuffersFromFile(string macrofile)
         {
             throw new NotImplementedException();

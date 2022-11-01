@@ -34,6 +34,7 @@
             this.SimulatorRadioBtn = new System.Windows.Forms.RadioButton();
             this.ControllerRadioBtn = new System.Windows.Forms.RadioButton();
             this.IPMaskedText = new IPAddressControlLib.IPAddressControl();
+            this.tb_comport = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CancelBtn
@@ -77,11 +78,17 @@
             this.IPMaskedText.Name = "IPMaskedText";
             this.IPMaskedText.ReadOnly = false;
             // 
+            // tb_comport
+            // 
+            resources.ApplyResources(this.tb_comport, "tb_comport");
+            this.tb_comport.Name = "tb_comport";
+            // 
             // SelectDriver_frm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ControlBox = false;
+            this.Controls.Add(this.tb_comport);
             this.Controls.Add(this.IPMaskedText);
             this.Controls.Add(this.ControllerRadioBtn);
             this.Controls.Add(this.SimulatorRadioBtn);
@@ -104,5 +111,6 @@
         private System.Windows.Forms.RadioButton SimulatorRadioBtn;
         private System.Windows.Forms.RadioButton ControllerRadioBtn;
         private IPAddressControlLib.IPAddressControl IPMaskedText;
+        private System.Windows.Forms.TextBox tb_comport;
     }
 }

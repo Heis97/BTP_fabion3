@@ -802,8 +802,7 @@ namespace BTP
         // Выбор дозатора S1 для отображения координат
         private void S1Btn_Click(object sender, EventArgs e)
         {
-            if (ConnectionData.bConnected)
-            {
+            
                 if (S1Btn.BackColor == SystemColors.Control)
                 {
                     
@@ -871,13 +870,12 @@ namespace BTP
                     SPOnOff.BackColor = SystemColors.Control;
                    // ConnectionData.Value.SetOutput(0, 3, 0); // Выключение выхода OUT(0).3
                 }
-            }
+            
         }
 
         private void S2Btn_Click(object sender, EventArgs e)
         {
-            if (ConnectionData.bConnected)
-            {
+           
                 if (S2Btn.BackColor == SystemColors.Control)
                 {
                     prev_head = head;
@@ -944,13 +942,12 @@ namespace BTP
                     SPOnOff.BackColor = SystemColors.Control;
                     //ConnectionData.Value.SetOutput(0, 3, 0); // Выключение выхода OUT(0).3
                 }
-            }
+            
         }
 
         private void S3Btn_Click(object sender, EventArgs e)
         {
-            if (ConnectionData.bConnected)
-            {
+           
                 if (S3Btn.BackColor == SystemColors.Control)
                 {
                     prev_head = head;
@@ -1017,12 +1014,9 @@ namespace BTP
                     SPOnOff.BackColor = SystemColors.Control;
                     //ConnectionData.Value.SetOutput(0, 3, 0); // Выключение выхода OUT(0).3
                 }
-            }
-
+            
         }
 
-       
-        
 
         private void SetWorkZero_Click(object sender, EventArgs e)
         {
@@ -1127,7 +1121,8 @@ namespace BTP
 
         private void SetMachineZero_Click(object sender, EventArgs e)
         {
-            point = new double[2] { 0, 0 };
+            ConnectionData.Value.HomeAll();
+            /*point = new double[2] { 0, 0 };
             if (ConnectionData.bConnected)
             {
                 try
@@ -1141,7 +1136,7 @@ namespace BTP
                     {
                         ErorMsg(Ex);
                     }
-            }
+            }*/
         }
 
         private void ZS1Pos001_Click(object sender, EventArgs e)

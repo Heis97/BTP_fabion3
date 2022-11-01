@@ -44,7 +44,10 @@ namespace BTP
         // Кнопка завершения работы
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-                Close();
+            MotorStateThr.Abort();
+            ConnectionData.Value.device.connectStop();
+            
+            Close();
         }
 
         // Кнопка ручного режима работы
@@ -665,11 +668,25 @@ namespace BTP
                 //Thread.Sleep(10);
             }
         }
-
+        void check_message()
+        {
+            while(true)
+            {
+                Console.WriteLine(ConnectionData.Value.device.reseav());
+                Thread.Sleep(1000);
+            }
+            
+        }
         // Установка связи с контроллером
         public void SetCommunication()
         {
+            ConnectionData.Comport = SelectDrv.getPort();
             ConnectionData.Value = new ChanelOct();
+            //ConnectionData.Value.device.connectStart();
+            Console.WriteLine(ConnectionData.Value.device.reseav());
+            MotorStateThr = new Thread(check_message);
+            MotorStateThr.Start();
+
             axes = new int[]
                             {
                              ConnectionData.Value.ACSC_AXIS_0,
@@ -682,54 +699,7 @@ namespace BTP
                              ConnectionData.Value.ACSC_AXIS_7,
                              -1
                             };
-             try
-            {
-                if (ConnectionData.ControllerIP == "localhost")
-                {
-                    // Работа с симулятором
-                    ConnectionData.Value.OpenCommDirect(); 
-                }
-                else
-                {
-                    // Работа с настоящим контроллером
-                    ConnectionData.Value.OpenCommEthernet(
-                        ConnectionData.ControllerIP,
-                        ConnectionData.Value.ACSC_SOCKET_STREAM_PORT);
-                }
-                // Запуск потока
-                // Организация потока данных
-                MotorStateThr = new Thread(new ThreadStart(GetMotorState));
-                MotorStateThr.IsBackground = true;
-                MotorStateThr.Start();
-                // MotorStateThr.Suspend();
-                // MotorStateThr.Resume();
-                // Вывод информации в трей
-                ConnectionData.bConnected = true;
 
-                // Запуск осей
-                try
-                {
-                    SendDiam();
-                    ConnectionData.Value.EnableM(axes);
-                    // ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_9);
-                    Console.WriteLine("after run buf");
-                    ConnectionData.Value.OpenMessageBuffer(5000);
-                    Console.WriteLine("after open");
-                    FindHome();
-                    Console.WriteLine("after home");
-                }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-                SelectDrv.Hide();
-                SelectDrv.Show(this);
-                //SelectDrv.Owner = this;
-            }
         }
 
         private void BTP_Load(object sender, EventArgs e)

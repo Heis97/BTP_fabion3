@@ -8,17 +8,19 @@ namespace Connection
 {
     public class DeviceMarlin : DeviceArduino
     {
-        string port;
-        int baudrate = 115200;
+        public string port;
+        int baudrate = 250000;
         int cur_com = 1;
 
         
-        public DeviceMarlin(string _port)
+        public DeviceMarlin(string _port) : base()
         {
+
             port = _port;
-            connect(port, baudrate);
             serialPort.RtsEnable = true;
             serialPort.DtrEnable = true;
+            connect(port, baudrate);
+            
         }
 
         int calcSum(string command)
@@ -44,8 +46,8 @@ namespace Connection
             Console.WriteLine(command);
             serialPort.Write(command);
             cur_com++;
-            var res_all =reseav();
-            Console.WriteLine(res_all);
+            var res_all = reseav();
+            Console.WriteLine("res_all: "+res_all+" end");
             try
             {
                 var res_all_arr = res_all.Split('\n');
@@ -53,14 +55,18 @@ namespace Connection
                 {
                     if (res.Contains("Resend"))
                     {
+
                         var ind_err = res.IndexOf("Resend");
                         var res_sub = res.Substring(ind_err);
                         var res_spl = res_sub.Split(':');
-                        
+                       
                         var err = Convert.ToInt32(res_spl[1].Trim());
+                        Console.WriteLine("err :" + err);
                         cur_com = err;
+                        sendCommand(com, vars, vals);
                     }
-                }                
+                }
+                
             }
             catch
             {

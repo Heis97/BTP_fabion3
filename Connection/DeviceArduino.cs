@@ -19,8 +19,6 @@ namespace Connection
         {
             serialPort = new SerialPort();
         }
-        string portArd;
-
         static public void find_ports(ComboBox comboBox_portsArd)
         {
              
@@ -49,8 +47,10 @@ namespace Connection
         {
             try
             {
+                Console.WriteLine("try open1 " + port + " " + baudrate);
                 serialPort.PortName = port;
                 serialPort.BaudRate = baudrate;
+                Console.WriteLine("try open2 " + port + " " + baudrate);
                 serialPort.Open();
                 isConnected = true;
                 Console.WriteLine("open " + port + " " + baudrate);
@@ -58,6 +58,7 @@ namespace Connection
             }
             catch
             {
+                Console.WriteLine("open failed");
                 return false;
             }
         }
@@ -120,7 +121,15 @@ namespace Connection
         }
         public  string reseav()
         {
-            return serialPort.ReadExisting();
+            try
+            {
+                return serialPort.ReadExisting();
+            }
+            catch
+            {
+                return "PORT closed";
+            }
+            
         }
         private async void func(int val,int var)
         {
