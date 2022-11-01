@@ -80,6 +80,8 @@
             this.P1RemainsTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LogData_RTB = new System.Windows.Forms.RichTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.but_send_com = new System.Windows.Forms.Button();
             this.Positions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PfPosTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpPosTrackBar)).BeginInit();
@@ -457,10 +459,23 @@
             this.LogData_RTB.ReadOnly = true;
             this.LogData_RTB.TextChanged += new System.EventHandler(this.LogData_RTB_TextChanged);
             // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            // 
+            // but_send_com
+            // 
+            resources.ApplyResources(this.but_send_com, "but_send_com");
+            this.but_send_com.Name = "but_send_com";
+            this.but_send_com.UseVisualStyleBackColor = true;
+            // 
             // Diagnostics_frm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.but_send_com);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Positions);
@@ -487,6 +502,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -543,5 +559,7 @@
         private System.Windows.Forms.TextBox P1RemainsTextBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RichTextBox LogData_RTB;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button but_send_com;
     }
 }

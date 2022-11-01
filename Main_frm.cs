@@ -672,8 +672,11 @@ namespace BTP
         {
             while(true)
             {
-                Console.WriteLine(ConnectionData.Value.device.reseav());
-                Thread.Sleep(1000);
+                var res = ConnectionData.Value.device.reseav();
+                if (res!=null)
+                  if(res.Length!=0)
+                    Console.Write(res);
+                Thread.Sleep(10);
             }
             
         }
@@ -683,9 +686,11 @@ namespace BTP
             ConnectionData.Comport = SelectDrv.getPort();
             ConnectionData.Value = new ChanelOct();
             //ConnectionData.Value.device.connectStart();
-            Console.WriteLine(ConnectionData.Value.device.reseav());
+
             MotorStateThr = new Thread(check_message);
             MotorStateThr.Start();
+
+            ConnectionData.bConnected = true;
 
             axes = new int[]
                             {

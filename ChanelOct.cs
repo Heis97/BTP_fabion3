@@ -59,17 +59,34 @@ namespace BTP
         {
             device.sendCommand("G28", new string[] { }, new object[] {  });
         }
+        public void calibrateDisp()
+        {
+            device.sendCommand("G25", new string[] { }, new object[] { });
+        }
+        internal void setActiveDisp(int num)
+        {
+            device.sendCommand("M302", new string[] { "S"}, new object[] {0 });
+            device.sendCommand("", new string[] {"T" }, new object[] { num});
+        }
         internal void ToPoint(object move_type, int Axis, int v)
         {
+            device.sendCommand("G91", new string[] { }, new object[] { });
             device.sendCommand("G1", new string[] { axis_from_num(Axis) }, new object[] { v });
-            throw new NotImplementedException();
         }
         internal void ToPoint(object move_type, int Axis, double v)
         {
+            device.sendCommand("G91", new string[] { }, new object[] { });
             device.sendCommand("G1", new string[] { axis_from_num(Axis) }, new object[] { v });
-            throw new NotImplementedException();
         }
 
+        internal void fan_on( int num)
+        {
+            device.sendCommand("M106", new string[] { "P"}, new object[] {num });
+        }
+        internal void fan_off(int num)
+        {
+            device.sendCommand("M107", new string[] { "P" }, new object[] { num });
+        }
         string axis_from_num(int axis)
         {
             string ax = "";
@@ -77,9 +94,10 @@ namespace BTP
             {
                 case 0: ax = "X"; break;
                 case 1: ax = "Y"; break;
-                case 2: ax = "Z"; break;
-                case 3: ax = "A"; break;
-                case 4: ax = "B"; break;
+                case 4: ax = "Z"; break;
+                case 2: ax = "A"; break;
+                case 6: ax = "B"; break;
+                case 7: ax = "E"; break;
             }
             return ax;
         }
@@ -246,12 +264,12 @@ namespace BTP
 
         internal void JogM(object aCSC_AMF_VELOCITY, int[] axes, int[] directions, double setXYVel)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         internal void Jog(object aCSC_AMF_VELOCITY, int aCSC_AXIS_1, double v)
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         internal void Kill(int aCSC_AXIS_0)

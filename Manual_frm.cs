@@ -17,13 +17,12 @@ namespace BTP
         int Y = 1;
 
         int Z3 = 2;
-        int F3 = 3;
+        int Z2 = 4;        
+        int Z1 = 6;
 
-        int Z1 = 4;
-        int F1 = 5;
-
-        int Z2 = 6;
+        int F1 = 7;
         int F2 = 7;
+        int F3 = 7;
         public Manual_frm()
         {
             CallBackMy2.callbackEventHandler = new CallBackMy2.callbackEvent(this.Reload);
@@ -484,32 +483,30 @@ namespace BTP
         }
         private void moveAxis(int axis,int type_moving,double dist)
         {
-            if (ConnectionData.bConnected)
+            try
             {
-                try
-                {
-                    ConnectionData.Value.ToPoint(type_moving, axis, dist);
-                }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
+                Console.WriteLine(type_moving + " " + axis + " " + dist);
+                ConnectionData.Value.ToPoint(type_moving, axis, dist);
             }
+            catch (COMException Ex)
+            {
+                ErorMsg(Ex);
+            }
+            
         }
 
         private void jogAxis(int axis, double veloc)
         {
-            if (ConnectionData.bConnected)
+            
+            try
             {
-                try
-                {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, axis, veloc);
-                }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
+                ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, axis, veloc);
             }
+            catch (COMException Ex)
+            {
+                ErorMsg(Ex);
+            }
+            
         }
 
         private void XPos001_Click(object sender, EventArgs e)
@@ -530,6 +527,7 @@ namespace BTP
 
         private void PosX10_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("moveAx "+X + " " + (int)ConnectionData.Value.ACSC_AMF_RELATIVE + " ");
             moveAxis(X, (int)ConnectionData.Value.ACSC_AMF_RELATIVE,  10);
         }
 
@@ -624,12 +622,12 @@ namespace BTP
                 if (HotPlateBtn.BackColor == SystemColors.Control)
                 {
                     HotPlateBtn.BackColor = Color.YellowGreen;
-                    ConnectionData.Value.WriteVariable(ConnectionData.Value.ReadVariable("OutVar", ConnectionData.Value.ACSC_NONE) + 1, "OutVar", ConnectionData.Value.ACSC_NONE); // Включение выхода OUT(0).0
+                    ConnectionData.Value.fan_on(1);
                 }
                 else
                 {
                     HotPlateBtn.BackColor = SystemColors.Control;
-                    ConnectionData.Value.WriteVariable(ConnectionData.Value.ReadVariable("OutVar", ConnectionData.Value.ACSC_NONE) - 1, "OutVar", ConnectionData.Value.ACSC_NONE);
+                    ConnectionData.Value.fan_off(1);
                 }
             }
         }
@@ -641,14 +639,12 @@ namespace BTP
                 if (CoolingBtn.BackColor == SystemColors.Control)
                 {
                     CoolingBtn.BackColor = Color.YellowGreen;
-                    ConnectionData.Value.WriteVariable(ConnectionData.Value.ReadVariable("OutVar", ConnectionData.Value.ACSC_NONE) + 2, "OutVar", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.SetOutput(3, 9, 1); // Включение выхода OUT(0).1
+                    ConnectionData.Value.fan_on(0);
                 }
                 else
                 {
                     CoolingBtn.BackColor = SystemColors.Control;
-                    ConnectionData.Value.WriteVariable(ConnectionData.Value.ReadVariable("OutVar", ConnectionData.Value.ACSC_NONE) - 2, "OutVar", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.SetOutput(3, 9, 0); // Выключение выхода OUT(0).1
+                    ConnectionData.Value.fan_off(0);
                 }
             }
         }
@@ -802,7 +798,7 @@ namespace BTP
         // Выбор дозатора S1 для отображения координат
         private void S1Btn_Click(object sender, EventArgs e)
         {
-            
+            ConnectionData.Value.setActiveDisp(2);
                 if (S1Btn.BackColor == SystemColors.Control)
                 {
                     
@@ -875,8 +871,8 @@ namespace BTP
 
         private void S2Btn_Click(object sender, EventArgs e)
         {
-           
-                if (S2Btn.BackColor == SystemColors.Control)
+            ConnectionData.Value.setActiveDisp(0);
+            if (S2Btn.BackColor == SystemColors.Control)
                 {
                     prev_head = head;
                     S2Btn.BackColor = Color.YellowGreen;
@@ -947,8 +943,8 @@ namespace BTP
 
         private void S3Btn_Click(object sender, EventArgs e)
         {
-           
-                if (S3Btn.BackColor == SystemColors.Control)
+            ConnectionData.Value.setActiveDisp(1);
+            if (S3Btn.BackColor == SystemColors.Control)
                 {
                     prev_head = head;
                     S3Btn.BackColor = Color.YellowGreen;
@@ -1523,7 +1519,7 @@ namespace BTP
                 }
             }
         }
-
+        #region z_but
         private void JogZS2Pos_MouseDown(object sender, MouseEventArgs e)
         {
             jogAxis(Z2, ConnectionData.SetZVel);
@@ -2074,22 +2070,22 @@ namespace BTP
             ConnectionData.Value.WriteVariable(0, "XPF1", ConnectionData.Value.ACSC_NONE);
             ConnectionData.Value.WriteVariable(0, "XPF2", ConnectionData.Value.ACSC_NONE);
         }
-
+        #endregion
         private void moveDisp(int axis, string diam, double volume)
         {
-            if (ConnectionData.bConnected)
+            
+            try
             {
-                try
-                {
-                    double Dia = Convert.ToDouble(diam);
-                    ConnectionData.Value.ToPoint(ConnectionData.Value.ACSC_AMF_RELATIVE, axis, volume / ((Math.PI * Math.Pow(Dia, 2) / 4)));
-                }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
+                double Dia = Convert.ToDouble(diam);
+                ConnectionData.Value.ToPoint(ConnectionData.Value.ACSC_AMF_RELATIVE, axis, volume / ((Math.PI * Math.Pow(Dia, 2) / 4)));
             }
+            catch (COMException Ex)
+            {
+                ErorMsg(Ex);
+            }
+            
         }
+        #region disp_but
         private void S1PistPos100_Click(object sender, EventArgs e)
         {
             moveDisp(F1, S1DiamTB.Text, 100);
@@ -2380,7 +2376,7 @@ namespace BTP
                 }
             }
         }
-
+        #endregion
         private void ModifyText(string ProgramFile, string ReplacedText, string ReplaceText)
         {
             string str = string.Empty;
@@ -2741,33 +2737,11 @@ namespace BTP
                 if (S1CalibrateBtn.BackColor == SystemColors.Control)
                 {
                     S1CalibrateBtn.BackColor = Color.YellowGreen;
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityX, "VelX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityY, "VelY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityZ, "VelZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceX, "DistX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceY, "DistY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceZ, "DistZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.ZXaxis, "StartX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.ZYaxis, "StartY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(0, "StartZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(Z1, "AxisNum", ConnectionData.Value.ACSC_BUFFER_3);
-                    
-                    if (ConnectionData.AccuracySelect == 1)
-                    {
-                        ConnectionData.Value.WriteVariable(ConnectionData.Accuracy1 / 1000, "ACCURACY", ConnectionData.Value.ACSC_BUFFER_3);
-                    }
-                    else if (ConnectionData.AccuracySelect == 2)
-                    {
-                        ConnectionData.Value.WriteVariable(ConnectionData.Accuracy2 / 1000, "ACCURACY", ConnectionData.Value.ACSC_BUFFER_3);
-                    }
-                    ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_3);
-                    //ConnectionData.Value.SetOutput(0, 4, 1);        // Выключение выхода OUT(0).4
+                    ConnectionData.Value.calibrateDisp();
                 }
                 else
                 {
                     S1CalibrateBtn.BackColor = SystemColors.Control;
-                    ConnectionData.Value.KillM(axes);
-                    ConnectionData.Value.StopBuffer(ConnectionData.Value.ACSC_BUFFER_3);
                     //ConnectionData.Value.SetOutput(0, 4, 0);        // Выключение выхода OUT(0).4
                 }
             }
@@ -2780,33 +2754,11 @@ namespace BTP
                 if (S2CalibrateBtn.BackColor == SystemColors.Control)
                 {
                     S2CalibrateBtn.BackColor = Color.YellowGreen;
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityX, "VelX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityY, "VelY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityZ, "VelZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceX, "DistX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceY, "DistY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceZ, "DistZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.UXaxis, "StartX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.UYaxis, "StartY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(0, "StartZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(Z2, "AxisNum", ConnectionData.Value.ACSC_BUFFER_3);
-                    if (ConnectionData.AccuracySelect == 1)
-                    {
-                        ConnectionData.Value.WriteVariable(ConnectionData.Accuracy1 / 1000, "ACCURACY", ConnectionData.Value.ACSC_BUFFER_3);
-                    }
-                    else if (ConnectionData.AccuracySelect == 2)
-                    {
-                        ConnectionData.Value.WriteVariable(ConnectionData.Accuracy2 / 1000, "ACCURACY", ConnectionData.Value.ACSC_BUFFER_3);
-                    }
-                    ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_3);
-                    //ConnectionData.Value.SetOutput(0, 5, 1);        // Выключение выхода OUT(0).5
+                    ConnectionData.Value.calibrateDisp();
                 }
                 else
                 {
                     S2CalibrateBtn.BackColor = SystemColors.Control;
-                    ConnectionData.Value.KillM(axes);
-                    ConnectionData.Value.StopBuffer(ConnectionData.Value.ACSC_BUFFER_3);
-                    //ConnectionData.Value.SetOutput(0, 5, 0);        // Выключение выхода OUT(0).5
                 }
             }
         }
@@ -2818,33 +2770,11 @@ namespace BTP
                 if (S3CalibrateBtn.BackColor == SystemColors.Control)
                 {
                     S3CalibrateBtn.BackColor = Color.YellowGreen;
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityX, "VelX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityY, "VelY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityZ, "VelZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceX, "DistX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceY, "DistY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceZ, "DistZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.VXaxis, "StartX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.VYaxis, "StartY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(0, "StartZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(Z3, "AxisNum", ConnectionData.Value.ACSC_BUFFER_3);
-                    if (ConnectionData.AccuracySelect == 1)
-                    {
-                        ConnectionData.Value.WriteVariable(ConnectionData.Accuracy1 / 1000, "ACCURACY", ConnectionData.Value.ACSC_BUFFER_3);
-                    }
-                    else if (ConnectionData.AccuracySelect == 2)
-                    {
-                        ConnectionData.Value.WriteVariable(ConnectionData.Accuracy2 / 1000, "ACCURACY", ConnectionData.Value.ACSC_BUFFER_3);
-                    }
-                    ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_3);
-                    //ConnectionData.Value.SetOutput(0, 6, 1);        // Выключение выхода OUT(0).6
+                    ConnectionData.Value.calibrateDisp();
                 }
                 else
                 {
                     S3CalibrateBtn.BackColor = SystemColors.Control;
-                    ConnectionData.Value.KillM(axes);
-                    ConnectionData.Value.StopBuffer(ConnectionData.Value.ACSC_BUFFER_3);
-                    //ConnectionData.Value.SetOutput(0, 6, 0);        // Выключение выхода OUT(0).6
                 }
             }
         }

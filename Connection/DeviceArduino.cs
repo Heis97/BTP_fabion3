@@ -14,10 +14,12 @@ namespace Connection
     {
         protected SerialPort serialPort;
         protected bool isConnected = false;
+        public StringBuilder buff;
 
         protected DeviceArduino()
         {
             serialPort = new SerialPort();
+            buff = new StringBuilder();
         }
         static public void find_ports(ComboBox comboBox_portsArd)
         {
@@ -123,7 +125,11 @@ namespace Connection
         {
             try
             {
-                return serialPort.ReadExisting();
+                var res = serialPort.ReadExisting();
+                if(res!=null)
+                    if(res.Length!=0)
+                        buff.Append(res);
+                return res;
             }
             catch
             {
