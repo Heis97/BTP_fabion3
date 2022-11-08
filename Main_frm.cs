@@ -44,9 +44,7 @@ namespace BTP
         // Кнопка завершения работы
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            MotorStateThr.Abort();
-            ConnectionData.Value.device.connectStop();
-            
+            ConnectionData.Value.device.connectStop();           
             Close();
         }
 
@@ -482,216 +480,21 @@ namespace BTP
         }
 
         bool init_bit = false;
-        
-        // Связь с контроллером ACS
-        private void GetMotorState()
+
+        private void timer_printer_res_Tick(object sender, EventArgs e)
         {
-            int X = ConnectionData.Value.ACSC_AXIS_0;
-            int Y = ConnectionData.Value.ACSC_AXIS_1;
 
-            int Z3 = ConnectionData.Value.ACSC_AXIS_2;
-            int F3 = ConnectionData.Value.ACSC_AXIS_3;
-
-            int Z1 = ConnectionData.Value.ACSC_AXIS_4;
-            int F1 = ConnectionData.Value.ACSC_AXIS_5;
-
-            int Z2 = ConnectionData.Value.ACSC_AXIS_6;
-            int F2 = ConnectionData.Value.ACSC_AXIS_7;
-            while (true)
-            {
-                try
-                {
-                    CheckForIllegalCrossThreadCalls = false;
-
-                    switch (ConnectionData.ProgramStart)
-                    {
-                        case 10:
-                            Indicator.BackColor = Color.YellowGreen;
-                            Indicator.Text = Dict.LangStrings.StatusRun;
-                            break;
-                        case 20:
-                            Indicator.BackColor = Color.Red;
-                            Indicator.Text = Dict.LangStrings.StatusStop;
-                            break;
-                        case 30:
-                            Indicator.BackColor = Color.Yellow;
-                            Indicator.Text = Dict.LangStrings.StatusPause;
-                            break;
-                        default:
-                            Indicator.BackColor = Color.LightBlue;
-                            Indicator.Text = Dict.LangStrings.StatusManual;
-                            break;
-                    }
-
-                    // Текущее положение осей
-                    ConnectionData.FeedBackX =   ConnectionData.Value.GetFPosition(X);
-                    ConnectionData.FeedBackY =   ConnectionData.Value.GetFPosition(Y);
-                    ConnectionData.FeedBackZ1 = ConnectionData.Value.GetFPosition(Z1);
-                    ConnectionData.FeedBackZ2 = ConnectionData.Value.GetFPosition(Z2);
-                    ConnectionData.FeedBackZ3 = ConnectionData.Value.GetFPosition(Z3);
-
-                    ConnectionData.GlobalX = ConnectionData.Value.ReadVariable("XGLOBAL", ConnectionData.Value.ACSC_NONE, 0, 0);
-                    ConnectionData.GlobalY = ConnectionData.Value.ReadVariable("YGLOBAL", ConnectionData.Value.ACSC_NONE, 0, 0);
-
-                    ConnectionData.XZoffsets = ConnectionData.Value.ReadVariable("OffsetX", ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.YZoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 2, 2);
-
-                    ConnectionData.XUoffsets = ConnectionData.Value.ReadVariable("OffsetX", ConnectionData.Value.ACSC_NONE, 3, 3);
-                    ConnectionData.YUoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 3, 3);
-
-                    ConnectionData.XVoffsets = ConnectionData.Value.ReadVariable("OffsetX", ConnectionData.Value.ACSC_NONE, 4, 4);
-                    ConnectionData.YVoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 4, 4);
-
-                    ConnectionData.XAoffsets = ConnectionData.Value.ReadVariable("OffsetX", ConnectionData.Value.ACSC_NONE, 6, 6);
-                    ConnectionData.YAoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 6, 6);
-
-                    // Чтение состояния конечных выключателей
-                    ConnectionData.XLLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(X) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.XRLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(X) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.YLLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Y) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.YRLimit =    Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Y) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS1LLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z1) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS1RLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z1) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS2LLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z2) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS2RLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z2) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS3LLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z3) & (bool)ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS3RLimit =  Convert.ToBoolean((bool)ConnectionData.Value.GetFault(Z3) & (bool)ConnectionData.Value.ACSC_SAFETY_RL);
-                    
-                    // Чтение номера строки выполняемой в буффере 1 - исполнение G-кода
-                    ConnectionData.ExecLine = (int)ConnectionData.Value.ReadVariable("PEXL",   ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferSize = (int)ConnectionData.Value.ReadVariable("PCHARS",  ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferError = (int)ConnectionData.Value.ReadVariable("PERR",    ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferErrorString = (int)ConnectionData.Value.ReadVariable("PERL",    ConnectionData.Value.ACSC_NONE, 2, 2);
-
-                    //label1.Text = (ConnectionData.Value.GetFault(ConnectionData.Value.ACSC_AXIS_0)).ToString();
-
-                    // Обновление данные на других осях
-                    //CallBackMy.callbackEventHandler("UpdateCamera");
-                    CallBackMy2.callbackEventHandler("UpdateManual");
-                    CallBackMy3.callbackEventHandler("UpdateAuto");
-                    //CallBackMy4.callbackEventHandler("UpdateSettings");
-                    CallBackMy5.callbackEventHandler("UpdateDiagnostics");
-                    CallBackMy6.callbackEventHandler("UpdatePrinthead");
-                    IPAdressLabel.Text = ConnectionData.ControllerIP;
-
-
-                    IPAdressLabel.Text = ConnectionData.ControllerIP;
-
-                    // Статус осей
-                    int MotorStateX = ConnectionData.Value.GetMotorState(X);
-                    int MotorStateY = ConnectionData.Value.GetMotorState(Y);
-                    int MotorStateZ1 = ConnectionData.Value.GetMotorState(Z1);
-                    int MotorStateZ2 = ConnectionData.Value.GetMotorState(Z2);
-                    int MotorStateZ3 = ConnectionData.Value.GetMotorState(Z3);
-                    int MotorStateS1 = ConnectionData.Value.GetMotorState(F1);
-                    int MotorStateS2 = ConnectionData.Value.GetMotorState(F2);
-                    int MotorStateS3 = ConnectionData.Value.GetMotorState(F3);
-
-                    if (Convert.ToBoolean(MotorStateX & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            XStatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            XStatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateY & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            YStatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            YStatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateZ1 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            Z1StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            Z1StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateZ2 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            Z2StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            Z2StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateZ3 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            Z3StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            Z3StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateS1 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            S1StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            S1StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateS2 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            S2StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            S2StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateS3 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            S3StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            S3StatusTL.BackColor = SystemColors.Control;
-                        }
-/*
-                   */
-                }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
-                //Thread.Sleep(10);
-            }
         }
-        void check_message()
-        {
-            while(true)
-            {
-                var res = ConnectionData.Value.device.reseav();
-                if (res!=null)
-                  if(res.Length!=0)
-                    Console.Write(res);
-                Thread.Sleep(10);
-            }
-            
-        }
-        // Установка связи с контроллером
+
         public void SetCommunication()
         {
             ConnectionData.Comport = SelectDrv.getPort();
             ConnectionData.Value = new ChanelOct();
             //ConnectionData.Value.device.connectStart();
-
-            MotorStateThr = new Thread(check_message);
-            MotorStateThr.Start();
+            
 
             ConnectionData.bConnected = true;
-
+            Manual.startTimer();
             axes = new int[]
                             {
                              ConnectionData.Value.ACSC_AXIS_0,

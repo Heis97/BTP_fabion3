@@ -57,11 +57,24 @@ namespace BTP
         }
         public void HomeAll()
         {
-            device.sendCommand("G28", new string[] { }, new object[] {  });
+            device.sendCommand("G28");
+        }
+
+        public void HomeDisp(int num)
+        {
+            device.sendCommand("G28 "+axis_from_num(num));
         }
         public void calibrateDisp()
         {
-            device.sendCommand("G25", new string[] { }, new object[] { });
+            device.sendCommand("G25");
+        }
+        public void startAutoPos()
+        {
+            device.sendCommand("M154 S15");
+        }
+        public void zeroDisp(int num)
+        {
+            device.sendCommand("G92", new string[] { "X","Y", axis_from_num(num) }, new object[] { 0,0,0 });
         }
         internal void setActiveDisp(int num)
         {
@@ -71,12 +84,12 @@ namespace BTP
         internal void ToPoint(object move_type, int Axis, int v)
         {
             device.sendCommand("G91", new string[] { }, new object[] { });
-            device.sendCommand("G1", new string[] { axis_from_num(Axis) }, new object[] { v });
+            device.sendCommand("G1", new string[] { axis_from_num(Axis),"F" }, new object[] { v,300 });
         }
         internal void ToPoint(object move_type, int Axis, double v)
         {
             device.sendCommand("G91", new string[] { }, new object[] { });
-            device.sendCommand("G1", new string[] { axis_from_num(Axis) }, new object[] { v });
+            device.sendCommand("G1", new string[] { axis_from_num(Axis), "F" }, new object[] { v,300 });
         }
 
         internal void fan_on( int num)

@@ -41,102 +41,24 @@ namespace BTP
         double OffsetGl = 0;
         double TimerTime = 0;
         double StopTime = 0;
-        
-        
-
-
+        public void startTimer()
+        {
+            if (ConnectionData.bConnected)
+            {
+                if (!timer_printer_pos.Enabled)
+                {
+                    timer_printer_pos.Enabled = true;
+                    ConnectionData.Value.startAutoPos();
+                }
+            }
+        }
         void Reload(string param)
         {
-            X = ConnectionData.Value.ACSC_AXIS_0;
-            Y = ConnectionData.Value.ACSC_AXIS_1;
 
-            Z3 = ConnectionData.Value.ACSC_AXIS_2;
-            F3 = ConnectionData.Value.ACSC_AXIS_3;
-
-            Z1 = ConnectionData.Value.ACSC_AXIS_4;
-            F1= ConnectionData.Value.ACSC_AXIS_5;
-
-            Z2 = ConnectionData.Value.ACSC_AXIS_6;
-            F2 = ConnectionData.Value.ACSC_AXIS_7;
-            if (ConnectionData.ProgramStart == 10)
-            {
-                groupBox4.Enabled = false;
-            }
-            else
-            {
-                groupBox4.Enabled = true;
-            }
-
-            OffsetGl = ConnectionData.Value.ReadVariable("ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-
-            MachinePosX.Text = string.Format("{0:F2}", ConnectionData.FeedBackX);
-            MachinePosY.Text = string.Format("{0:F2}", ConnectionData.FeedBackY);
-            XToolPos.Text = string.Format("{0:F2}", ConnectionData.ToolX);
-            YToolPos.Text = string.Format("{0:F2}", ConnectionData.ToolY);
+            vels_GP.Enabled = true;
             
-            S1ZPosition.Text = string.Format("{0:F2}", ConnectionData.FeedBackZ1);
-            S2ZPosition.Text = string.Format("{0:F2}", ConnectionData.FeedBackZ2);
-            S3ZPosition.Text = string.Format("{0:F2}", ConnectionData.FeedBackZ3);
 
-            switch(StartTool)
-            {
-                case 1:
-                    ConnectionData.DrawDishX = ConnectionData.GlobalX - (ConnectionData.XZoffsets + ConnectionData.PetriX);
-                    ConnectionData.DrawDishY = ConnectionData.GlobalY - (ConnectionData.YZoffsets + ConnectionData.PetriY);
-                    break;
-                case 2:
-                    ConnectionData.DrawDishX = ConnectionData.GlobalX - (ConnectionData.XUoffsets + ConnectionData.PetriX);
-                    ConnectionData.DrawDishY = ConnectionData.GlobalY - (ConnectionData.YUoffsets + ConnectionData.PetriY);
-                    break;
-                case 3:
-                    ConnectionData.DrawDishX = ConnectionData.GlobalX - (ConnectionData.XVoffsets + ConnectionData.PetriX);
-                    ConnectionData.DrawDishY = ConnectionData.GlobalY - (ConnectionData.YVoffsets + ConnectionData.PetriY);
-                    break;
-                case 4:
-                    ConnectionData.DrawDishX = -ConnectionData.GlobalX - (ConnectionData.WXaxis + ConnectionData.PetriX);
-                    ConnectionData.DrawDishY = -ConnectionData.GlobalY - (ConnectionData.WYaxis + ConnectionData.PetriY);
-                    break;
-                case 5:
-                    ConnectionData.DrawDishX = -ConnectionData.GlobalX - (ConnectionData.XAoffsets + ConnectionData.PetriX);
-                    ConnectionData.DrawDishY = -ConnectionData.GlobalY - (ConnectionData.YAoffsets + ConnectionData.PetriY);
-                    break;
-                default:
-                    break;
-            }
-     
-            switch (head)
-            {
-                case 1:
-                    ZToolPos.Text = string.Format("{0:F2}", ConnectionData.FeedBackZ1 );
-                    MachinePosZ.Text = string.Format("{0:F2}", ConnectionData.FeedBackZ1);
-                    ConnectionData.ToolX = ConnectionData.FeedBackX - OffsetX;
-                    ConnectionData.ToolY = ConnectionData.FeedBackY - OffsetY;
-                    break;
-                case 2:
-                    ZToolPos.Text = string.Format("{0:F2}", ConnectionData.FeedBackZ2 - OffsetGl);
-                    MachinePosZ.Text = string.Format("{0:F2}", ConnectionData.FeedBackZ2);
-                    ConnectionData.ToolX = ConnectionData.FeedBackX - OffsetX;
-                    ConnectionData.ToolY = ConnectionData.FeedBackY - OffsetY;
-
-                    break;
-                case 3:
-                    ZToolPos.Text = string.Format("{0:F2}", ConnectionData.FeedBackZ3 - OffsetGl);
-                    MachinePosZ.Text = string.Format("{0:F2}", ConnectionData.FeedBackZ3);
-                    ConnectionData.ToolX = ConnectionData.FeedBackX - OffsetX;
-                    ConnectionData.ToolY = ConnectionData.FeedBackY - OffsetY;
-
-                    break;
-                case 4:
-                    ZToolPos.Text    = string.Format("{0:F2}", ConnectionData.FeedBackZSp - OffsetGl);
-                    MachinePosZ.Text = string.Format("{0:F2}", ConnectionData.FeedBackZSp);
-                    ConnectionData.ToolX = ConnectionData.FeedBackX - OffsetX;
-                    ConnectionData.ToolY = ConnectionData.FeedBackY - OffsetY;
-                    break;
-
-                default:
-                    break;
-            }
-
+            #region endstop_color
             if (ConnectionData.XRLimit)
             {
                 XRL.BackColor = Color.Red;
@@ -221,9 +143,9 @@ namespace BTP
             {
                 ZS3LL.BackColor = SystemColors.Control;
             }
+            #endregion
 
-            
-    }
+        }
 
         int StartTool;
 /*
@@ -460,18 +382,6 @@ namespace BTP
 
         private void Manual_frm_Load(object sender, EventArgs e)
         {
-            Accuracy1_Btn.Text = string.Format("{0:F1}", ConnectionData.Accuracy1);
-            Accuracy2_Btn.Text = string.Format("{0:F1}", ConnectionData.Accuracy2);
-            if (ConnectionData.AccuracySelect == 1)
-            {
-                Accuracy1_Btn.BackColor = Color.YellowGreen;
-                Accuracy2_Btn.BackColor = SystemColors.Control;
-            }
-            else if (ConnectionData.AccuracySelect == 2)
-            {
-                Accuracy2_Btn.BackColor = Color.YellowGreen;
-                Accuracy1_Btn.BackColor = SystemColors.Control;
-            }
 
             DoubleBuffered = true;
             axes = new int[3]
@@ -811,9 +721,6 @@ namespace BTP
                     S1GB.Enabled = true;
                     S2GB.Enabled = false;
                     S3GB.Enabled = false;
-                    SpGB.Enabled = false;
-                    PFGB.Enabled = false;
-                    PF2GB.Enabled = false;
 
                     switch (prev_head)
                     {
@@ -846,25 +753,7 @@ namespace BTP
                     OffsetX = ConnectionData.FeedBackX - ConnectionData.ToolX + ConnectionData.XZoffsets - minX;
                     OffsetY = ConnectionData.FeedBackY - ConnectionData.ToolY + ConnectionData.YZoffsets - minY;
 
-                    // Включение осей шприца 1
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_2);
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_7);
-                    // Выключение осей шприца 2
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_3);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_8);
-                    // Выключение осей шприца 3
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_4);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_9);
-                    // Выключение осей спрея
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_5);
-                    // Выключение осей дозатора
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_6);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_10);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_11);
 
-                    // Отключение спрея
-                    SPOnOff.BackColor = SystemColors.Control;
-                   // ConnectionData.Value.SetOutput(0, 3, 0); // Выключение выхода OUT(0).3
                 }
             
         }
@@ -883,9 +772,6 @@ namespace BTP
                     S1GB.Enabled = false;
                     S2GB.Enabled = true;
                     S3GB.Enabled = false;
-                    SpGB.Enabled = false;
-                    PFGB.Enabled = false;
-                    PF2GB.Enabled = false;
 
                     switch (prev_head)
                     {
@@ -918,25 +804,7 @@ namespace BTP
                     OffsetX = ConnectionData.FeedBackX - ConnectionData.ToolX + ConnectionData.XUoffsets - minX;
                     OffsetY = ConnectionData.FeedBackY - ConnectionData.ToolY + ConnectionData.YUoffsets - minY;
 
-                    // Включение осей шприца 2
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_3);
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_8);
-                    // Выключение осей шприца 1
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_2);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_7);
-                    // Выключение осей шприца 3
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_4);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_9);
-                    // Выключение осей спрея
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_5);
-                    // Выключение осей дозатора
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_6);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_10);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_11);
 
-                    // Отключение спрея
-                    SPOnOff.BackColor = SystemColors.Control;
-                    //ConnectionData.Value.SetOutput(0, 3, 0); // Выключение выхода OUT(0).3
                 }
             
         }
@@ -954,10 +822,7 @@ namespace BTP
                     S2Btn.BackColor = SystemColors.Control;
                     S1GB.Enabled = false;
                     S2GB.Enabled = false;
-                    S3GB.Enabled = true;
-                    SpGB.Enabled = false;
-                    PFGB.Enabled = false;
-                    PF2GB.Enabled = false;
+
 
                     switch (prev_head)
                     {
@@ -990,25 +855,7 @@ namespace BTP
                     OffsetX = ConnectionData.FeedBackX - ConnectionData.ToolX + ConnectionData.XVoffsets - minX;
                     OffsetY = ConnectionData.FeedBackY - ConnectionData.ToolY + ConnectionData.YVoffsets - minY;
 
-                    // Включение осей шприца 3
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_4);
-                    //ConnectionData.Value.Enable(ConnectionData.Value.ACSC_AXIS_9);
-                    // Выключение осей шприца 1
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_2);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_7);
-                    // Выключение осей шприца 2
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_3);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_8);
-                    // Выключение осей спрея
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_5);
-                    // Выключение осей дозатора
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_6);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_10);
-                    //ConnectionData.Value.Disable(ConnectionData.Value.ACSC_AXIS_11);
 
-                    // Отключение спрея
-                    SPOnOff.BackColor = SystemColors.Control;
-                    //ConnectionData.Value.SetOutput(0, 3, 0); // Выключение выхода OUT(0).3
                 }
             
         }
@@ -1200,24 +1047,16 @@ namespace BTP
             if (ConnectionData.bConnected)
             {
                 string CurDir = Application.StartupPath + "\\Macro";
-                MacroList.Items.Clear();
-                
+
                 XYVelocity.Value = (int)(100 * ConnectionData.SetXYVel / ConnectionData.MaxXYVel);
                 Zvelocity.Value = (int)(100 * ConnectionData.SetZVel / ConnectionData.MaxZVel);
                 Console.WriteLine("ConnectionData.SetPtVel: " + ConnectionData.SetPtVel);
                 Console.WriteLine("ConnectionData.MaxPtVel: " + ConnectionData.MaxPtVel);
                 PtVelocity.Value = (int)(100 * ConnectionData.SetPtVel / ConnectionData.MaxPtVel);
-                /*PFVelocity.Value = (int)(100 * ConnectionData.SetPFVel / ConnectionData.MaxPFVel);
-                CTVelocity.Value = (int)(100 * ConnectionData.SetCTVel / ConnectionData.MaxCTVel);
-                CBVelocity.Value = (int)(100 * ConnectionData.SetCBVel / ConnectionData.MaxCBVel);*/
-                MixTrackBar.Value = (int)(ConnectionData.PfMix);
 
                 XYVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetXYVel);
                 ZVelocityTB.Text =  string.Format("{0:F2}", ConnectionData.SetZVel);
                 PtVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetPtVel);
-                /*PFVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetPFVel);
-                CTVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetCTVel);
-                CBVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetCBVel);*/
 
                 S1DiamTB.Text =     string.Format("{0:F2}", ConnectionData.S1Diameter);
                 S2DiamTB.Text =     string.Format("{0:F2}", ConnectionData.S2Diameter);
@@ -1227,16 +1066,9 @@ namespace BTP
                 S2DiamPrTB.Text = string.Format("{0:F0}", ConnectionData.S2ProcDiameter);
                 S3DiamPrTB.Text = string.Format("{0:F0}", ConnectionData.S3ProcDiameter);
 
-                PfMixTB.Text =      string.Format("{0:F2}", ConnectionData.PfMix);
-                PetriDishTB.Text =  string.Format("{0:F2}", ConnectionData.PetriDishDiam);
-                WellCountTB.Text =  string.Format("{0:F2}", ConnectionData.WellNum);
-                
+
                 DirectoryInfo dir = new DirectoryInfo(@CurDir);
 
-                foreach (var item in dir.GetFiles("*.mcr"))
-                {
-                    MacroList.Items.Add(item.Name);
-                }
 
                 //UpdateDataThread = new Thread(new ThreadStart(UpdateData));
                 //UpdateDataThread.IsBackground = true;
@@ -1251,15 +1083,11 @@ namespace BTP
                         S1GetZeroBtn.BackColor = SystemColors.Control;
                         S2GetZeroBtn.BackColor = SystemColors.Control;
                         S3GetZeroBtn.BackColor = SystemColors.Control;
-                        PFGetZeroBtn.BackColor = SystemColors.Control;
-                        SpGetZeroBtn.BackColor = SystemColors.Control;
                         break;
                     case 1:
                         S1GetZeroBtn.BackColor = Color.YellowGreen;
                         S2GetZeroBtn.BackColor = SystemColors.Control;
                         S3GetZeroBtn.BackColor = SystemColors.Control;
-                        PFGetZeroBtn.BackColor = SystemColors.Control;
-                        SpGetZeroBtn.BackColor = SystemColors.Control;
                         OffsetZ1 = ConnectionData.OffsetZZero;
                         ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
                         ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
@@ -1272,8 +1100,6 @@ namespace BTP
                         S1GetZeroBtn.BackColor = SystemColors.Control;
                         S2GetZeroBtn.BackColor = Color.YellowGreen;
                         S3GetZeroBtn.BackColor = SystemColors.Control;
-                        PFGetZeroBtn.BackColor = SystemColors.Control;
-                        SpGetZeroBtn.BackColor = SystemColors.Control;
                         OffsetZ2 = ConnectionData.OffsetZZero;
                         ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
                         ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
@@ -1286,8 +1112,6 @@ namespace BTP
                         S1GetZeroBtn.BackColor = SystemColors.Control;
                         S2GetZeroBtn.BackColor = SystemColors.Control;
                         S3GetZeroBtn.BackColor = Color.YellowGreen;
-                        PFGetZeroBtn.BackColor = SystemColors.Control;
-                        SpGetZeroBtn.BackColor = SystemColors.Control;
                         OffsetZ3 = ConnectionData.OffsetZZero;
                         ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
                         ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
@@ -1300,8 +1124,6 @@ namespace BTP
                         S1GetZeroBtn.BackColor = SystemColors.Control;
                         S2GetZeroBtn.BackColor = SystemColors.Control;
                         S3GetZeroBtn.BackColor = SystemColors.Control;
-                        PFGetZeroBtn.BackColor = Color.YellowGreen;
-                        SpGetZeroBtn.BackColor = SystemColors.Control;
                         OffsetW = ConnectionData.OffsetZZero;
                         ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
                         ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
@@ -1314,8 +1136,6 @@ namespace BTP
                         S1GetZeroBtn.BackColor = SystemColors.Control;
                         S2GetZeroBtn.BackColor = SystemColors.Control;
                         S3GetZeroBtn.BackColor = SystemColors.Control;
-                        PFGetZeroBtn.BackColor = SystemColors.Control;
-                        SpGetZeroBtn.BackColor = Color.YellowGreen;
                         OffsetA = ConnectionData.OffsetZZero;
                         ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
                         ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
@@ -1425,100 +1245,6 @@ namespace BTP
             }
         }
 
-        private void MixTrackBar_Scroll(object sender, EventArgs e)
-        {
-            ConnectionData.PfMix = (double)MixTrackBar.Value;
-            PfMixTB.Text = string.Format("{0:F2}", ConnectionData.PfMix);
-        }
-
-        private void PfMixTB_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                ConnectionData.PfMix = Convert.ToDouble(PfMixTB.Text);
-                MixTrackBar.Value = (int)(ConnectionData.PfMix);
-            }
-        }
-
-        private void CustomRB_CheckedChanged(object sender, EventArgs e)
-        {
-            PetriDishRB.Checked = false;
-            WellCNTRB.Checked = false;
-            PetriDishTB.Enabled = false;
-            WellCountTB.Enabled = false;
-            ConnectionData.DrawMode = 0;
-        }
-
-        private void PetriDishRB_CheckedChanged(object sender, EventArgs e)
-        {
-            CustomRB.Checked = false;
-            WellCNTRB.Checked = false;
-            PetriDishTB.Enabled = true;
-            WellCountTB.Enabled = false;
-            ConnectionData.DrawMode = 10;
-        }
-
-        private void WellCNTRB_CheckedChanged(object sender, EventArgs e)
-        {
-
-            CustomRB.Checked = false;
-            PetriDishRB.Checked = false;
-            PetriDishTB.Enabled = false;
-            WellCountTB.Enabled = true;
-            ConnectionData.DrawMode = 20;
-        }
-
-        private void CustomRB_Click(object sender, EventArgs e)
-        {
-            CustomRB.Checked = true;
-        }
-
-        private void PetriDishRB_Click(object sender, EventArgs e)
-        {
-            PetriDishRB.Checked = true;
-        }
-
-        private void WellCNTRB_Click(object sender, EventArgs e)
-        {
-            WellCNTRB.Checked = true;
-        }
-
-        private void PetriDishTB_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                ConnectionData.PetriDishDiam = Convert.ToDouble(PetriDishTB.Text);
-            }
-        }
-
-        private void WellCountTB_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                ConnectionData.WellNum = Convert.ToDouble(WellCountTB.Text);
-            }
-        }
-
-        private void SPOnOff_Click(object sender, EventArgs e)
-        {
-            if (ConnectionData.bConnected)
-            {
-                if (SPOnOff.BackColor == SystemColors.Control)
-                {
-                    SPOnOff.BackColor = Color.YellowGreen;
-                    ConnectionData.Value.WriteVariable(ConnectionData.Value.ReadVariable("OutVar", ConnectionData.Value.ACSC_NONE) + 8, "OutVar", ConnectionData.Value.ACSC_NONE); // Включение выхода OUT(0).0
-
-                   // ConnectionData.Value.SetOutput(3, 11, 1); // Включение выхода OUT(0).3
-                }
-                else
-                {
-                    SPOnOff.BackColor = SystemColors.Control;
-                    ConnectionData.Value.WriteVariable(ConnectionData.Value.ReadVariable("OutVar", ConnectionData.Value.ACSC_NONE) - 8, "OutVar", ConnectionData.Value.ACSC_NONE); // Включение выхода OUT(0).0
-
-                    //ConnectionData.Value.SetOutput(3, 11, 0); // Выключение выхода OUT(0).3
-                }
-            }
-        }
         #region z_but
         private void JogZS2Pos_MouseDown(object sender, MouseEventArgs e)
         {
@@ -2394,18 +2120,19 @@ namespace BTP
 
         private void S1HomeBtn_Click(object sender, EventArgs e)
         {
-            //string Homefile = Application.StartupPath + "\\Data\\Homing.prg";
             if (ConnectionData.bConnected)
             {
                 try
                 {
-                    //ModifyText(Homefile, "iAxis = ", "iAxis = 2");                                  // Изменяем содержание файла поиска нулевой точки
-                    //ConnectionData.Value.LoadBuffersFromFile(Homefile);                             // Загружаем данные в буфер
-                    //OffsetZ = 0;
-                    ConnectionData.Value.WriteVariable(Z1, "iAxis", ConnectionData.Value.ACSC_BUFFER_0);
-                    ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityZ, "Veloc", ConnectionData.Value.ACSC_BUFFER_0);
-                    ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_0);             // Выполняем буфер
-                    //ModifyText(Homefile, "iAxis = 2", "iAxis = ");                                  // Изменяем файл в исходное состояние для следующего использования
+                    if(S1HomeBtn.BackColor == Color.YellowGreen)
+                    {
+                        S1HomeBtn.BackColor = SystemColors.Control;
+                    }
+                    else
+                    {
+                        ConnectionData.Value.HomeDisp(Z1);
+                        S1HomeBtn.BackColor = Color.YellowGreen;
+                    }
                 }
                 catch (COMException Ex)
                 {
@@ -2421,13 +2148,15 @@ namespace BTP
             {
                 try
                 {
-                    //ModifyText(Homefile, "iAxis = ", "iAxis = 3");                                  // Изменяем содержание файла поиска нулевой точки
-                    //ConnectionData.Value.LoadBuffersFromFile(Homefile);                             // Загружаем данные в буфер
-                    //OffsetU = 0;
-                    ConnectionData.Value.WriteVariable(Z2, "iAxis", ConnectionData.Value.ACSC_BUFFER_0);
-                    ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityZ, "Veloc", ConnectionData.Value.ACSC_BUFFER_0);
-                    ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_0);             // Выполняем буфер
-                    //ModifyText(Homefile, "iAxis = 3", "iAxis = ");                                  // Изменяем файл в исходное состояние для следующего использования
+                    if (S1HomeBtn.BackColor == Color.YellowGreen)
+                    {
+                        S1HomeBtn.BackColor = SystemColors.Control;
+                    }
+                    else
+                    {
+                        ConnectionData.Value.HomeDisp(Z2);
+                        S1HomeBtn.BackColor = Color.YellowGreen;
+                    }
                 }
                 catch (COMException Ex)
                 {
@@ -2438,18 +2167,19 @@ namespace BTP
 
         private void S3HomeBtn_Click(object sender, EventArgs e)
         {
-            //string Homefile = Application.StartupPath + "\\Data\\Homing.prg";
             if (ConnectionData.bConnected)
             {
                 try
                 {
-                    //ModifyText(Homefile, "iAxis = ", "iAxis = 4");                                  // Изменяем содержание файла поиска нулевой точки
-                    //ConnectionData.Value.LoadBuffersFromFile(Homefile);                             // Загружаем данные в буфер
-                    //OffsetV = 0;
-                    ConnectionData.Value.WriteVariable(Z3, "iAxis", ConnectionData.Value.ACSC_BUFFER_0);
-                    ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityZ, "Veloc", ConnectionData.Value.ACSC_BUFFER_0);
-                    ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_0);             // Выполняем буфер
-                    //ModifyText(Homefile, "iAxis = 4", "iAxis = ");                                  // Изменяем файл в исходное состояние для следующего использования
+                    if (S1HomeBtn.BackColor == Color.YellowGreen)
+                    {
+                        S1HomeBtn.BackColor = SystemColors.Control;
+                    }
+                    else
+                    {
+                        ConnectionData.Value.HomeDisp(Z3);
+                        S1HomeBtn.BackColor = Color.YellowGreen;
+                    }
                 }
                 catch (COMException Ex)
                 {
@@ -2508,38 +2238,10 @@ namespace BTP
             {
                 try
                 {
+                    ConnectionData.Value.zeroDisp(Z1);
                     S1GetZeroBtn.BackColor = Color.YellowGreen;
                     S2GetZeroBtn.BackColor = SystemColors.Control;
-                    S3GetZeroBtn.BackColor = SystemColors.Control;
-                    PFGetZeroBtn.BackColor = SystemColors.Control;
-                    SpGetZeroBtn.BackColor = SystemColors.Control;
-                    //   OffsetZ = OffsetZ + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_2);
-                    //   OffsetX = OffsetX + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0);
-                    //   OffsetY = OffsetY + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1);
-                    //   ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0) + ConnectionData.GlobalX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //   ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1) + ConnectionData.GlobalY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //   ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_2, 0);
-                    //   ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_0, 0);
-                    //   ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_1, 0);
-                    OffsetX = OffsetX + ConnectionData.ToolX;
-                    OffsetY = OffsetY + ConnectionData.ToolY;
-                    OffsetZ1 = OffsetZ1 + ConnectionData.FeedBackZ1; //Convert.ToDouble(ZToolPos.Text);
- 
-                    //OffsetGl = OffsetGl + Convert.ToDouble(ZToolPos.Text);
-
-                    ConnectionData.OffsetXZero = OffsetX;
-                    ConnectionData.OffsetYZero = OffsetY;
-                    ConnectionData.OffsetZZero = OffsetZ1;
-                    ConnectionData.XZero = ConnectionData.FeedBackX;
-                    ConnectionData.YZero = ConnectionData.FeedBackY;
-                    ConnectionData.ZZero = ConnectionData.FeedBackZ1;
-                    ConnectionData.ZeroHead = 1;
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackZ1, "ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(2, "PrevTool", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(2, "StartTool", ConnectionData.Value.ACSC_NONE);
-                    StartTool = 1;
+                    S3GetZeroBtn.BackColor = SystemColors.Control;                   
                 }
                 catch (COMException Ex)
                 {
@@ -2554,37 +2256,10 @@ namespace BTP
             {
                 try
                 {
-                    S2GetZeroBtn.BackColor = Color.YellowGreen;
+                    ConnectionData.Value.zeroDisp(Z2);
                     S1GetZeroBtn.BackColor = SystemColors.Control;
+                    S2GetZeroBtn.BackColor = Color.YellowGreen;
                     S3GetZeroBtn.BackColor = SystemColors.Control;
-                    PFGetZeroBtn.BackColor = SystemColors.Control;
-                    SpGetZeroBtn.BackColor = SystemColors.Control;
-                    //  OffsetU = OffsetU + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_3);
-                    //  OffsetX = OffsetX + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0);
-                    //  OffsetY = OffsetY + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0) + ConnectionData.GlobalX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1) + ConnectionData.GlobalY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_3, 0);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_0, 0);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_1, 0);
-                    OffsetX = OffsetX + ConnectionData.ToolX;
-                    OffsetY = OffsetY + ConnectionData.ToolY;
-                    OffsetZ2 = OffsetZ2 + ConnectionData.FeedBackZ2; //Convert.ToDouble(ZToolPos.Text);
-                                                                    //OffsetGl = OffsetGl + Convert.ToDouble(ZToolPos.Text);
-                    ConnectionData.OffsetXZero = OffsetX;
-                    ConnectionData.OffsetYZero = OffsetY;
-                    ConnectionData.OffsetZZero = OffsetZ2;
-                    ConnectionData.XZero = ConnectionData.FeedBackX;
-                    ConnectionData.YZero = ConnectionData.FeedBackY;
-                    ConnectionData.ZZero = ConnectionData.FeedBackZ2;
-                    ConnectionData.ZeroHead = 2;
-
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackZ2, "ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(3, "PrevTool", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(3, "StartTool", ConnectionData.Value.ACSC_NONE);
-                    StartTool = 2;
                 }
                 catch (COMException Ex)
                 {
@@ -2599,128 +2274,16 @@ namespace BTP
             {
                 try
                 {
+                    ConnectionData.Value.zeroDisp(Z3);
+                    S1GetZeroBtn.BackColor = SystemColors.Control;
+                    S2GetZeroBtn.BackColor = SystemColors.Control;
                     S3GetZeroBtn.BackColor = Color.YellowGreen;
-                    S1GetZeroBtn.BackColor = SystemColors.Control;
-                    S2GetZeroBtn.BackColor = SystemColors.Control;
-                    PFGetZeroBtn.BackColor = SystemColors.Control;
-                    SpGetZeroBtn.BackColor = SystemColors.Control;
-                    //  OffsetV = OffsetV + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_4);
-                    //  OffsetX = OffsetX + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0);
-                    //  OffsetY = OffsetY + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0) + ConnectionData.GlobalX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1) + ConnectionData.GlobalY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_4, 0);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_0, 0);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_1, 0);
-                    OffsetX = OffsetX + ConnectionData.ToolX;
-                    OffsetY = OffsetY + ConnectionData.ToolY;
-                    OffsetZ3 = OffsetZ3 + ConnectionData.FeedBackZ3; //Convert.ToDouble(ZToolPos.Text);
-                                                                    //OffsetGl = OffsetGl + Convert.ToDouble(ZToolPos.Text);
-                    ConnectionData.OffsetXZero = OffsetX;
-                    ConnectionData.OffsetYZero = OffsetY;
-                    ConnectionData.OffsetZZero = OffsetZ3;
-                    ConnectionData.XZero = ConnectionData.FeedBackX;
-                    ConnectionData.YZero = ConnectionData.FeedBackY;
-                    ConnectionData.ZZero = ConnectionData.FeedBackZ3;
-                    ConnectionData.ZeroHead = 3;
-
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackZ3, "ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(4, "PrevTool", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(4, "StartTool", ConnectionData.Value.ACSC_NONE);
-                    StartTool = 3;
                 }
                 catch (COMException Ex)
                 {
                     ErorMsg(Ex);
                 }
             }
-        }
-
-        private void SpGetZeroBtn_Click(object sender, EventArgs e)
-        {
-            if (ConnectionData.bConnected)
-            {
-                try
-                {
-                    SpGetZeroBtn.BackColor = Color.YellowGreen;
-                    S1GetZeroBtn.BackColor = SystemColors.Control;
-                    S3GetZeroBtn.BackColor = SystemColors.Control;
-                    PFGetZeroBtn.BackColor = SystemColors.Control;
-                    S2GetZeroBtn.BackColor = SystemColors.Control;
-                    // OffsetW = OffsetW + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_5);
-                    // OffsetX = OffsetX + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0);
-                    // OffsetY = OffsetY + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0) + ConnectionData.GlobalX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1) + ConnectionData.GlobalY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_5, 0);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_0, 0);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_1, 0);
-                    OffsetX = OffsetX + ConnectionData.ToolX;
-                    OffsetY = OffsetY + ConnectionData.ToolY;
-                    OffsetW = OffsetW + ConnectionData.FeedBackZSp; //Convert.ToDouble(ZToolPos.Text);
-                                                                    //OffsetGl = OffsetGl + Convert.ToDouble(ZToolPos.Text);
-
-                    ConnectionData.OffsetXZero = OffsetX;
-                    ConnectionData.OffsetYZero = OffsetY;
-                    ConnectionData.OffsetZZero = OffsetW;
-                    ConnectionData.XZero = ConnectionData.FeedBackX;
-                    ConnectionData.YZero = ConnectionData.FeedBackY;
-                    ConnectionData.ZZero = ConnectionData.FeedBackZSp;
-                    ConnectionData.ZeroHead = 4;
-
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(ConnectionData.FeedBackZSp, "ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(5, "PrevTool", ConnectionData.Value.ACSC_NONE);
-                    ConnectionData.Value.WriteVariable(5, "StartTool", ConnectionData.Value.ACSC_NONE);
-                    StartTool = 4;
-                }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
-            }
-        }
-
-        private void PFGetZeroBtn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void EditMacroBtn_Click(object sender, EventArgs e)
-        {
-            if (MacroList.SelectedIndex != -1)
-            {
-                string Macrofile = Application.StartupPath + "\\Macro\\" + MacroList.SelectedItem.ToString();
-                //создаем новый процесс
-                Process proc = new Process();
-                //Запускаем Блокнто
-                proc.StartInfo.FileName = "Notepad.exe";
-                proc.StartInfo.Arguments = Macrofile;
-                proc.Start();
-            }
-        }
-
-        private void SendMessageToPLC_Click(object sender, EventArgs e)
-        {
-            if (ConnectionData.bConnected)
-            {
-                try
-                {
-                    HistoryBox.Text += SendTextBox.Text + Environment.NewLine;
-
-                    ConnectionData.Value.LoadBuffer(ConnectionData.Value.ACSC_BUFFER_1, "N10 " + SendTextBox.Text);
-                    ConnectionData.Value.AppendBuffer(ConnectionData.Value.ACSC_BUFFER_1,"N20 M02");
-                    ConnectionData.Value.CompileBuffer(ConnectionData.Value.ACSC_BUFFER_1);
-                    ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_1);
-                }  
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
-             }
         }
 
  /*       void Calibration(int Axis, double Point)
@@ -2779,100 +2342,7 @@ namespace BTP
             }
         }
 
-        private void PFCalibrateBtn_Click(object sender, EventArgs e)
-        {
-            if (ConnectionData.bConnected)
-            {
-                if (PFCalibrateBtn.BackColor == SystemColors.Control)
-                {
-                    PFCalibrateBtn.BackColor = Color.YellowGreen;
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityX, "VelX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityY, "VelY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalVelocityZ, "VelZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceX, "DistX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceY, "DistY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.CalDistanceZ, "DistZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.AXaxis, "StartX", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(ConnectionData.AYaxis, "StartY", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(0, "StartZ", ConnectionData.Value.ACSC_BUFFER_3);
-                    ConnectionData.Value.WriteVariable(6, "AxisNum", ConnectionData.Value.ACSC_BUFFER_3);
-                    if (ConnectionData.AccuracySelect == 1)
-                    {
-                        ConnectionData.Value.WriteVariable(ConnectionData.Accuracy1 / 1000, "ACCURACY", ConnectionData.Value.ACSC_BUFFER_3);
-                    }
-                    else if (ConnectionData.AccuracySelect == 2)
-                    {
-                        ConnectionData.Value.WriteVariable(ConnectionData.Accuracy2 / 1000, "ACCURACY", ConnectionData.Value.ACSC_BUFFER_3);
-                    }
-                    ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_3);
-                    //ConnectionData.Value.SetOutput(0, 7, 1);        // Выключение выхода OUT(0).7
-                }
-                else
-                {
-                    PFCalibrateBtn.BackColor = SystemColors.Control;
-                    ConnectionData.Value.KillM(axes);
-                    ConnectionData.Value.StopBuffer(ConnectionData.Value.ACSC_BUFFER_3);
-                    // ConnectionData.Value.SetOutput(0, 7, 0);        // Выключение выхода OUT(0).7
-                }
-            }
-        }
-
-        private void RunMacroBtn_Click(object sender, EventArgs e)
-        {
-            if (MacroList.SelectedIndex != -1)
-            {
-                if (ConnectionData.bConnected)
-                {
-                    try
-                    {
-                        string Macrofile = Application.StartupPath + "\\Macro\\" + MacroList.SelectedItem.ToString();
-                        //HistoryBox.Text = Macrofile;
-                        ConnectionData.Value.LoadBuffersFromFile(Macrofile);
-                        ConnectionData.Value.CompileBuffer(ConnectionData.Value.ACSC_BUFFER_1);
-                        ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_1);
-                    }
-                    catch (COMException Ex)
-                    {
-                        ErorMsg(Ex);
-                    }
-
-                }
-            }
-        }
-
         private void S1DiamTB_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            {
-                if (e.KeyChar == ',')
-                    e.KeyChar = '.';
-                if (e.KeyChar != 22)
-                    e.Handled = !Char.IsDigit(e.KeyChar) && (e.KeyChar != '.' || (((TextBox)sender).Text.Contains(".") && !((TextBox)sender).SelectedText.Contains("."))) && e.KeyChar != (char)Keys.Back;
-                else
-                {
-                    double d;
-                    e.Handled = !double.TryParse(Clipboard.GetText(), out d) || (d < 0 && (((TextBox)sender).SelectionStart != 0 || ((TextBox)sender).Text.Contains("-") && !((TextBox)sender).SelectedText.Contains("-"))) || ((d - (int)d) != 0 && ((TextBox)sender).Text.Contains(",") && !((TextBox)sender).SelectedText.Contains(","));
-                    MessageBox.Show(Dict.LangStrings.InsertBuffer);
-                }
-            }
-        }
-
-        private void PetriDishTB_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            {
-                if (e.KeyChar == ',')
-                    e.KeyChar = '.';
-                if (e.KeyChar != 22)
-                    e.Handled = !Char.IsDigit(e.KeyChar) && (e.KeyChar != '.' || (((TextBox)sender).Text.Contains(".") && !((TextBox)sender).SelectedText.Contains("."))) && e.KeyChar != (char)Keys.Back;
-                else
-                {
-                    double d;
-                    e.Handled = !double.TryParse(Clipboard.GetText(), out d) || (d < 0 && (((TextBox)sender).SelectionStart != 0 || ((TextBox)sender).Text.Contains("-") && !((TextBox)sender).SelectedText.Contains("-"))) || ((d - (int)d) != 0 && ((TextBox)sender).Text.Contains(",") && !((TextBox)sender).SelectedText.Contains(","));
-                    MessageBox.Show(Dict.LangStrings.InsertBuffer);
-                }
-            }
-        }
-
-        private void WellCountTB_KeyPress(object sender, KeyPressEventArgs e)
         {
             {
                 if (e.KeyChar == ',')
@@ -3015,23 +2485,6 @@ namespace BTP
                 }
             }
         }
-
-        private void PfMixTB_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            {
-                if (e.KeyChar == ',')
-                    e.KeyChar = '.';
-                if (e.KeyChar != 22)
-                    e.Handled = !Char.IsDigit(e.KeyChar) && (e.KeyChar != '.' || (((TextBox)sender).Text.Contains(".") && !((TextBox)sender).SelectedText.Contains("."))) && e.KeyChar != (char)Keys.Back;
-                else
-                {
-                    double d;
-                    e.Handled = !double.TryParse(Clipboard.GetText(), out d) || (d < 0 && (((TextBox)sender).SelectionStart != 0 || ((TextBox)sender).Text.Contains("-") && !((TextBox)sender).SelectedText.Contains("-"))) || ((d - (int)d) != 0 && ((TextBox)sender).Text.Contains(",") && !((TextBox)sender).SelectedText.Contains(","));
-                    MessageBox.Show(Dict.LangStrings.InsertBuffer);
-                }
-            }
-        }
-
         private void Manual_frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
@@ -3134,52 +2587,6 @@ namespace BTP
             }
         }
 
-        private void SetZeroXYSp_Click(object sender, EventArgs e)
-        {
-            if (ConnectionData.bConnected)
-            {
-                try
-                {
-                    // SetZeroXYSp.BackColor = Color.YellowGreen;
-                    //OffsetX = OffsetX + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0);
-                    //OffsetY = OffsetY + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0) + ConnectionData.GlobalX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1) + ConnectionData.GlobalY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_0, 0);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_1, 0);
-                    OffsetX = OffsetX + ConnectionData.ToolX;
-                    OffsetY = OffsetY + ConnectionData.ToolY;
-                }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
-            }
-        }
-
-        private void SetZeroXYPF_Click(object sender, EventArgs e)
-        {
-            if (ConnectionData.bConnected)
-            {
-                try
-                {
-                    //SetZeroXYPF.BackColor = Color.YellowGreen;
-                    //OffsetX = OffsetX + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0);
-                    //OffsetY = OffsetY + ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0) + ConnectionData.GlobalX, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.WriteVariable(ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1) + ConnectionData.GlobalY, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_0, 0);
-                    //ConnectionData.Value.SetFPosition(ConnectionData.Value.ACSC_AXIS_1, 0);
-                    OffsetX = OffsetX + ConnectionData.ToolX;
-                    OffsetY = OffsetY + ConnectionData.ToolY;
-                }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
-            }
-        }
-
         private void Preeflow_Timer_Tick(object sender, EventArgs e)
         {
             if (TimerTime >= StopTime)
@@ -3189,32 +2596,6 @@ namespace BTP
                 Preeflow_Timer.Enabled = false;
             }
             TimerTime = TimerTime + 1;
-        }
-
-        private void HistoryBox_TextChanged(object sender, EventArgs e)
-        {
-            HistoryBox.SelectionStart = HistoryBox.Text.Length;
-            HistoryBox.ScrollToCaret();
-        }
-
-        private void Accuracy1_Btn_Click(object sender, EventArgs e)
-        {
-            if (Accuracy1_Btn.BackColor == SystemColors.Control)
-            {
-                Accuracy2_Btn.BackColor = SystemColors.Control;
-                Accuracy1_Btn.BackColor = Color.YellowGreen;
-                ConnectionData.AccuracySelect = 1;
-            }
-        }
-
-        private void Accuracy2_Btn_Click(object sender, EventArgs e)
-        {
-            if (Accuracy2_Btn.BackColor == SystemColors.Control)
-            {
-                Accuracy1_Btn.BackColor = SystemColors.Control;
-                Accuracy2_Btn.BackColor = Color.YellowGreen;
-                ConnectionData.AccuracySelect = 2;
-            }
         }
 
         private void S1DiamPrTB_KeyDown(object sender, KeyEventArgs e)
@@ -3286,6 +2667,33 @@ namespace BTP
                 double d;
                 e.Handled = !double.TryParse(Clipboard.GetText(), out d) || (d < 0 && (((TextBox)sender).SelectionStart != 0 || ((TextBox)sender).Text.Contains("-") && !((TextBox)sender).SelectedText.Contains("-"))) || ((d - (int)d) != 0 && ((TextBox)sender).Text.Contains(",") && !((TextBox)sender).SelectedText.Contains(","));
                 MessageBox.Show(Dict.LangStrings.InsertBuffer);
+            }
+        }
+
+        private void timer_printer_pos_Tick(object sender, EventArgs e)
+        {
+            var res = ConnectionData.Value.device.reseav();
+            if (res != null)
+            {
+                if (res.Length != 0)
+                {
+                    Console.Write(res);
+                    var res_spl = res.Split('\n');
+                    for (int i = 0; i < res_spl.Length; i++)
+                    {
+                        var res_spl_2 = res_spl[i].Split(' ');
+                        if (res_spl_2.Length >= 10)
+                        {
+                            if (res_spl_2[0].Contains("cur_pos"))
+                            {
+                                MachinePosX.Text = res_spl_2[1]; MachinePosY.Text = res_spl_2[2]; MachinePosZ.Text = res_spl_2[3];
+                                XToolPos.Text = res_spl_2[6]; YToolPos.Text = res_spl_2[7]; ZToolPos.Text = res_spl_2[8];
+                            }
+                        }
+
+                    }
+                }
+
             }
         }
     }

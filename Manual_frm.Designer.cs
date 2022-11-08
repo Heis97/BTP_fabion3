@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manual_frm));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.manual_xyz_gp = new System.Windows.Forms.GroupBox();
+            this.vels_GP = new System.Windows.Forms.GroupBox();
             this.CBVelocityTB = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.CBVelocity = new System.Windows.Forms.TrackBar();
@@ -44,61 +44,49 @@
             this.PtVelocityTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.PtVelocity = new System.Windows.Forms.TrackBar();
-            this.ZVelocityTB = new System.Windows.Forms.TextBox();
-            this.XYVelocityTB = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Zvelocity = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.XYVelocity = new System.Windows.Forms.TrackBar();
-            this.label44 = new System.Windows.Forms.Label();
-            this.Accuracy2_Btn = new System.Windows.Forms.Button();
-            this.Accuracy1_Btn = new System.Windows.Forms.Button();
-            this.label43 = new System.Windows.Forms.Label();
-            this.MachinePosZ = new System.Windows.Forms.Label();
+            this.XYVelocityTB = new System.Windows.Forms.TextBox();
+            this.ZVelocityTB = new System.Windows.Forms.TextBox();
+            this.Zvelocity = new System.Windows.Forms.TrackBar();
             this.YLL = new System.Windows.Forms.PictureBox();
             this.YRL = new System.Windows.Forms.PictureBox();
             this.XLL = new System.Windows.Forms.PictureBox();
             this.XRL = new System.Windows.Forms.PictureBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.WellCountTB = new System.Windows.Forms.TextBox();
-            this.PetriDishTB = new System.Windows.Forms.TextBox();
-            this.WellCNTRB = new System.Windows.Forms.RadioButton();
-            this.PetriDishRB = new System.Windows.Forms.RadioButton();
-            this.CustomRB = new System.Windows.Forms.RadioButton();
+            this.MachinePosZ = new System.Windows.Forms.Label();
             this.SetMachineZero = new System.Windows.Forms.Button();
             this.SetWorkZero = new System.Windows.Forms.Button();
             this.S3Btn = new System.Windows.Forms.Button();
             this.S2Btn = new System.Windows.Forms.Button();
             this.S1Btn = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
+            this.YToolPos = new System.Windows.Forms.Label();
+            this.MachinePosY = new System.Windows.Forms.Label();
             this.JogYPBtn = new System.Windows.Forms.Button();
             this.ImageY = new System.Windows.Forms.ImageList(this.components);
             this.JogYMBtn = new System.Windows.Forms.Button();
             this.JogXPBtn = new System.Windows.Forms.Button();
             this.ImageX = new System.Windows.Forms.ImageList(this.components);
-            this.JogXMBtn = new System.Windows.Forms.Button();
-            this.UVLightBtn = new System.Windows.Forms.Button();
-            this.CoolingBtn = new System.Windows.Forms.Button();
-            this.HotPlateBtn = new System.Windows.Forms.Button();
-            this.ZToolPos = new System.Windows.Forms.Label();
-            this.YToolPos = new System.Windows.Forms.Label();
-            this.XToolPos = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.JogXMBtn = new System.Windows.Forms.Button();
+            this.UVLightBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.CoolingBtn = new System.Windows.Forms.Button();
+            this.HotPlateBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.MachinePosX = new System.Windows.Forms.Label();
             this.LButBtn = new System.Windows.Forms.Button();
             this.ArrowsImage = new System.Windows.Forms.ImageList(this.components);
             this.RButBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.RBBtn = new System.Windows.Forms.Button();
             this.LBBtn = new System.Windows.Forms.Button();
             this.YPos001 = new System.Windows.Forms.Button();
+            this.XToolPos = new System.Windows.Forms.Label();
             this.YPos01 = new System.Windows.Forms.Button();
             this.YPos1 = new System.Windows.Forms.Button();
+            this.ZToolPos = new System.Windows.Forms.Label();
             this.YPos10 = new System.Windows.Forms.Button();
             this.YNeg10 = new System.Windows.Forms.Button();
             this.YNeg1 = new System.Windows.Forms.Button();
@@ -111,8 +99,6 @@
             this.PosX10 = new System.Windows.Forms.Button();
             this.PosX1 = new System.Windows.Forms.Button();
             this.Xpos01 = new System.Windows.Forms.Button();
-            this.MachinePosY = new System.Windows.Forms.Label();
-            this.MachinePosX = new System.Windows.Forms.Label();
             this.XPos001 = new System.Windows.Forms.Button();
             this.CameraImage = new System.Windows.Forms.ImageList(this.components);
             this.S1GB = new System.Windows.Forms.GroupBox();
@@ -190,27 +176,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.S2ZPosition = new System.Windows.Forms.Label();
             this.S2HomeBtn = new System.Windows.Forms.Button();
-            this.SpGB = new System.Windows.Forms.GroupBox();
-            this.SetZeroXYSp = new System.Windows.Forms.Button();
-            this.ZSpRL = new System.Windows.Forms.PictureBox();
-            this.ZSpLL = new System.Windows.Forms.PictureBox();
-            this.SpGetZeroBtn = new System.Windows.Forms.Button();
-            this.SPOnOff = new System.Windows.Forms.Button();
-            this.button72 = new System.Windows.Forms.Button();
-            this.label38 = new System.Windows.Forms.Label();
-            this.JogZSPMin = new System.Windows.Forms.Button();
-            this.ZSPMin001 = new System.Windows.Forms.Button();
-            this.ZSPMin01 = new System.Windows.Forms.Button();
-            this.ZSPMin1 = new System.Windows.Forms.Button();
-            this.ZSPMin10 = new System.Windows.Forms.Button();
-            this.JogZSPPos = new System.Windows.Forms.Button();
-            this.ZSPPos10 = new System.Windows.Forms.Button();
-            this.ZSPPos1 = new System.Windows.Forms.Button();
-            this.ZSPPos01 = new System.Windows.Forms.Button();
-            this.ZSPPos001 = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.SpZPosition = new System.Windows.Forms.Label();
             this.S3GB = new System.Windows.Forms.GroupBox();
             this.S3DiamTB = new System.Windows.Forms.TextBox();
             this.S3DiamPrTB = new System.Windows.Forms.TextBox();
@@ -248,58 +213,17 @@
             this.label19 = new System.Windows.Forms.Label();
             this.S3ZPosition = new System.Windows.Forms.Label();
             this.S3HomeBtn = new System.Windows.Forms.Button();
-            this.PFGB = new System.Windows.Forms.GroupBox();
-            this.SetZeroXYPF = new System.Windows.Forms.Button();
-            this.ZPFRL = new System.Windows.Forms.PictureBox();
-            this.ZPFLL = new System.Windows.Forms.PictureBox();
-            this.PFGetZeroBtn = new System.Windows.Forms.Button();
-            this.PFCalibrateBtn = new System.Windows.Forms.Button();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.JogPfPistMin = new System.Windows.Forms.Button();
-            this.PfPistMin01 = new System.Windows.Forms.Button();
-            this.PfPistMin1 = new System.Windows.Forms.Button();
-            this.PfPistMin10 = new System.Windows.Forms.Button();
-            this.PfPistMin100 = new System.Windows.Forms.Button();
-            this.JogPfPistPos = new System.Windows.Forms.Button();
-            this.PfPistPos100 = new System.Windows.Forms.Button();
-            this.PfPistPos10 = new System.Windows.Forms.Button();
-            this.PfPistPos1 = new System.Windows.Forms.Button();
-            this.PfPistPos01 = new System.Windows.Forms.Button();
-            this.JogZPfMin = new System.Windows.Forms.Button();
-            this.ZPfMin001 = new System.Windows.Forms.Button();
-            this.ZPfMin01 = new System.Windows.Forms.Button();
-            this.ZPfMin1 = new System.Windows.Forms.Button();
-            this.ZPfMin10 = new System.Windows.Forms.Button();
-            this.JogZPfPos = new System.Windows.Forms.Button();
-            this.ZPfPos10 = new System.Windows.Forms.Button();
-            this.ZPfPos1 = new System.Windows.Forms.Button();
-            this.ZPfPos01 = new System.Windows.Forms.Button();
-            this.ZPfPos001 = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.PFZPosition = new System.Windows.Forms.Label();
-            this.PFHomeBtn = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.SendTextBox = new System.Windows.Forms.TextBox();
-            this.SendMessageToPLC = new System.Windows.Forms.Button();
-            this.label42 = new System.Windows.Forms.Label();
-            this.HistoryBox = new System.Windows.Forms.RichTextBox();
-            this.EditMacroBtn = new System.Windows.Forms.Button();
-            this.RunMacroBtn = new System.Windows.Forms.Button();
-            this.MacroList = new System.Windows.Forms.ListBox();
-            this.PF2GB = new System.Windows.Forms.GroupBox();
-            this.PfMixTB = new System.Windows.Forms.TextBox();
-            this.MixTrackBar = new System.Windows.Forms.TrackBar();
             this.Preeflow_Timer = new System.Windows.Forms.Timer(this.components);
-            this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer_printer_pos = new System.Windows.Forms.Timer(this.components);
+            this.manual_xyz_gp.SuspendLayout();
+            this.vels_GP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CBVelocity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CTVelocity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PFVelocity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PtVelocity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Zvelocity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XYVelocity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zvelocity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YLL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YRL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XLL)).BeginInit();
@@ -310,102 +234,88 @@
             this.S2GB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZS2RL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZS2LL)).BeginInit();
-            this.SpGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ZSpRL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ZSpLL)).BeginInit();
             this.S3GB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZS3RL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZS3LL)).BeginInit();
-            this.PFGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ZPFRL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ZPFLL)).BeginInit();
-            this.groupBox10.SuspendLayout();
-            this.PF2GB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MixTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // manual_xyz_gp
             // 
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.YLL);
-            this.groupBox1.Controls.Add(this.YRL);
-            this.groupBox1.Controls.Add(this.XLL);
-            this.groupBox1.Controls.Add(this.XRL);
-            this.groupBox1.Controls.Add(this.MachinePosZ);
-            this.groupBox1.Controls.Add(this.label41);
-            this.groupBox1.Controls.Add(this.label39);
-            this.groupBox1.Controls.Add(this.WellCountTB);
-            this.groupBox1.Controls.Add(this.SetMachineZero);
-            this.groupBox1.Controls.Add(this.SetWorkZero);
-            this.groupBox1.Controls.Add(this.S3Btn);
-            this.groupBox1.Controls.Add(this.S2Btn);
-            this.groupBox1.Controls.Add(this.S1Btn);
-            this.groupBox1.Controls.Add(this.YToolPos);
-            this.groupBox1.Controls.Add(this.MachinePosY);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.JogYPBtn);
-            this.groupBox1.Controls.Add(this.JogYMBtn);
-            this.groupBox1.Controls.Add(this.JogXPBtn);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.JogXMBtn);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.UVLightBtn);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.CoolingBtn);
-            this.groupBox1.Controls.Add(this.HotPlateBtn);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.MachinePosX);
-            this.groupBox1.Controls.Add(this.LButBtn);
-            this.groupBox1.Controls.Add(this.RButBtn);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.RBBtn);
-            this.groupBox1.Controls.Add(this.LBBtn);
-            this.groupBox1.Controls.Add(this.YPos001);
-            this.groupBox1.Controls.Add(this.XToolPos);
-            this.groupBox1.Controls.Add(this.YPos01);
-            this.groupBox1.Controls.Add(this.YPos1);
-            this.groupBox1.Controls.Add(this.ZToolPos);
-            this.groupBox1.Controls.Add(this.YPos10);
-            this.groupBox1.Controls.Add(this.YNeg10);
-            this.groupBox1.Controls.Add(this.YNeg1);
-            this.groupBox1.Controls.Add(this.YNeg01);
-            this.groupBox1.Controls.Add(this.XMin001);
-            this.groupBox1.Controls.Add(this.XMin01);
-            this.groupBox1.Controls.Add(this.XMin1);
-            this.groupBox1.Controls.Add(this.XMin10);
-            this.groupBox1.Controls.Add(this.YNeg001);
-            this.groupBox1.Controls.Add(this.PosX10);
-            this.groupBox1.Controls.Add(this.PosX1);
-            this.groupBox1.Controls.Add(this.Xpos01);
-            this.groupBox1.Controls.Add(this.XPos001);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            this.manual_xyz_gp.Controls.Add(this.YNeg10);
+            this.manual_xyz_gp.Controls.Add(this.JogYMBtn);
+            this.manual_xyz_gp.Controls.Add(this.vels_GP);
+            this.manual_xyz_gp.Controls.Add(this.YLL);
+            this.manual_xyz_gp.Controls.Add(this.YRL);
+            this.manual_xyz_gp.Controls.Add(this.XLL);
+            this.manual_xyz_gp.Controls.Add(this.XRL);
+            this.manual_xyz_gp.Controls.Add(this.MachinePosZ);
+            this.manual_xyz_gp.Controls.Add(this.SetMachineZero);
+            this.manual_xyz_gp.Controls.Add(this.SetWorkZero);
+            this.manual_xyz_gp.Controls.Add(this.S3Btn);
+            this.manual_xyz_gp.Controls.Add(this.S2Btn);
+            this.manual_xyz_gp.Controls.Add(this.S1Btn);
+            this.manual_xyz_gp.Controls.Add(this.YToolPos);
+            this.manual_xyz_gp.Controls.Add(this.MachinePosY);
+            this.manual_xyz_gp.Controls.Add(this.JogYPBtn);
+            this.manual_xyz_gp.Controls.Add(this.JogXPBtn);
+            this.manual_xyz_gp.Controls.Add(this.label10);
+            this.manual_xyz_gp.Controls.Add(this.label9);
+            this.manual_xyz_gp.Controls.Add(this.JogXMBtn);
+            this.manual_xyz_gp.Controls.Add(this.UVLightBtn);
+            this.manual_xyz_gp.Controls.Add(this.label6);
+            this.manual_xyz_gp.Controls.Add(this.CoolingBtn);
+            this.manual_xyz_gp.Controls.Add(this.HotPlateBtn);
+            this.manual_xyz_gp.Controls.Add(this.label7);
+            this.manual_xyz_gp.Controls.Add(this.MachinePosX);
+            this.manual_xyz_gp.Controls.Add(this.LButBtn);
+            this.manual_xyz_gp.Controls.Add(this.RButBtn);
+            this.manual_xyz_gp.Controls.Add(this.label8);
+            this.manual_xyz_gp.Controls.Add(this.RBBtn);
+            this.manual_xyz_gp.Controls.Add(this.LBBtn);
+            this.manual_xyz_gp.Controls.Add(this.YPos001);
+            this.manual_xyz_gp.Controls.Add(this.XToolPos);
+            this.manual_xyz_gp.Controls.Add(this.YPos01);
+            this.manual_xyz_gp.Controls.Add(this.YPos1);
+            this.manual_xyz_gp.Controls.Add(this.ZToolPos);
+            this.manual_xyz_gp.Controls.Add(this.YPos10);
+            this.manual_xyz_gp.Controls.Add(this.YNeg1);
+            this.manual_xyz_gp.Controls.Add(this.YNeg01);
+            this.manual_xyz_gp.Controls.Add(this.XMin001);
+            this.manual_xyz_gp.Controls.Add(this.XMin01);
+            this.manual_xyz_gp.Controls.Add(this.XMin1);
+            this.manual_xyz_gp.Controls.Add(this.XMin10);
+            this.manual_xyz_gp.Controls.Add(this.YNeg001);
+            this.manual_xyz_gp.Controls.Add(this.PosX10);
+            this.manual_xyz_gp.Controls.Add(this.PosX1);
+            this.manual_xyz_gp.Controls.Add(this.Xpos01);
+            this.manual_xyz_gp.Controls.Add(this.XPos001);
+            resources.ApplyResources(this.manual_xyz_gp, "manual_xyz_gp");
+            this.manual_xyz_gp.Name = "manual_xyz_gp";
+            this.manual_xyz_gp.TabStop = false;
             // 
-            // groupBox4
+            // vels_GP
             // 
-            this.groupBox4.Controls.Add(this.CBVelocityTB);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.CBVelocity);
-            this.groupBox4.Controls.Add(this.CTVelocityTB);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.CTVelocity);
-            this.groupBox4.Controls.Add(this.PFVelocityTB);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.PFVelocity);
-            this.groupBox4.Controls.Add(this.PtVelocityTB);
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.PtVelocity);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.XYVelocity);
-            this.groupBox4.Controls.Add(this.XYVelocityTB);
-            this.groupBox4.Controls.Add(this.ZVelocityTB);
-            this.groupBox4.Controls.Add(this.Zvelocity);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
+            this.vels_GP.Controls.Add(this.CBVelocityTB);
+            this.vels_GP.Controls.Add(this.label12);
+            this.vels_GP.Controls.Add(this.CBVelocity);
+            this.vels_GP.Controls.Add(this.CTVelocityTB);
+            this.vels_GP.Controls.Add(this.label11);
+            this.vels_GP.Controls.Add(this.CTVelocity);
+            this.vels_GP.Controls.Add(this.PFVelocityTB);
+            this.vels_GP.Controls.Add(this.label3);
+            this.vels_GP.Controls.Add(this.PFVelocity);
+            this.vels_GP.Controls.Add(this.PtVelocityTB);
+            this.vels_GP.Controls.Add(this.label2);
+            this.vels_GP.Controls.Add(this.PtVelocity);
+            this.vels_GP.Controls.Add(this.label4);
+            this.vels_GP.Controls.Add(this.label1);
+            this.vels_GP.Controls.Add(this.XYVelocity);
+            this.vels_GP.Controls.Add(this.XYVelocityTB);
+            this.vels_GP.Controls.Add(this.ZVelocityTB);
+            this.vels_GP.Controls.Add(this.Zvelocity);
+            resources.ApplyResources(this.vels_GP, "vels_GP");
+            this.vels_GP.Name = "vels_GP";
+            this.vels_GP.TabStop = false;
             // 
             // CBVelocityTB
             // 
@@ -491,33 +401,10 @@
             this.PtVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.PtVelocity.Scroll += new System.EventHandler(this.PtVelocity_Scroll);
             // 
-            // ZVelocityTB
-            // 
-            resources.ApplyResources(this.ZVelocityTB, "ZVelocityTB");
-            this.ZVelocityTB.Name = "ZVelocityTB";
-            this.ZVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ZVelocityTB_KeyDown);
-            this.ZVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZVelocityTB_KeyPress);
-            // 
-            // XYVelocityTB
-            // 
-            resources.ApplyResources(this.XYVelocityTB, "XYVelocityTB");
-            this.XYVelocityTB.Name = "XYVelocityTB";
-            this.XYVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.XYVelocityTB_KeyDown);
-            this.XYVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.XYVelocityTB_KeyPress);
-            // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            // 
-            // Zvelocity
-            // 
-            resources.ApplyResources(this.Zvelocity, "Zvelocity");
-            this.Zvelocity.Maximum = 100;
-            this.Zvelocity.Name = "Zvelocity";
-            this.Zvelocity.TickFrequency = 10;
-            this.Zvelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.Zvelocity.Scroll += new System.EventHandler(this.Zvelocity_Scroll);
             // 
             // label1
             // 
@@ -533,34 +420,28 @@
             this.XYVelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.XYVelocity.Scroll += new System.EventHandler(this.XYVelocity_Scroll);
             // 
-            // label44
+            // XYVelocityTB
             // 
-            resources.ApplyResources(this.label44, "label44");
-            this.label44.Name = "label44";
+            resources.ApplyResources(this.XYVelocityTB, "XYVelocityTB");
+            this.XYVelocityTB.Name = "XYVelocityTB";
+            this.XYVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.XYVelocityTB_KeyDown);
+            this.XYVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.XYVelocityTB_KeyPress);
             // 
-            // Accuracy2_Btn
+            // ZVelocityTB
             // 
-            resources.ApplyResources(this.Accuracy2_Btn, "Accuracy2_Btn");
-            this.Accuracy2_Btn.Name = "Accuracy2_Btn";
-            this.Accuracy2_Btn.UseVisualStyleBackColor = true;
-            this.Accuracy2_Btn.Click += new System.EventHandler(this.Accuracy2_Btn_Click);
+            resources.ApplyResources(this.ZVelocityTB, "ZVelocityTB");
+            this.ZVelocityTB.Name = "ZVelocityTB";
+            this.ZVelocityTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ZVelocityTB_KeyDown);
+            this.ZVelocityTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZVelocityTB_KeyPress);
             // 
-            // Accuracy1_Btn
+            // Zvelocity
             // 
-            resources.ApplyResources(this.Accuracy1_Btn, "Accuracy1_Btn");
-            this.Accuracy1_Btn.Name = "Accuracy1_Btn";
-            this.Accuracy1_Btn.UseVisualStyleBackColor = true;
-            this.Accuracy1_Btn.Click += new System.EventHandler(this.Accuracy1_Btn_Click);
-            // 
-            // label43
-            // 
-            resources.ApplyResources(this.label43, "label43");
-            this.label43.Name = "label43";
-            // 
-            // MachinePosZ
-            // 
-            resources.ApplyResources(this.MachinePosZ, "MachinePosZ");
-            this.MachinePosZ.Name = "MachinePosZ";
+            resources.ApplyResources(this.Zvelocity, "Zvelocity");
+            this.Zvelocity.Maximum = 100;
+            this.Zvelocity.Name = "Zvelocity";
+            this.Zvelocity.TickFrequency = 10;
+            this.Zvelocity.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.Zvelocity.Scroll += new System.EventHandler(this.Zvelocity_Scroll);
             // 
             // YLL
             // 
@@ -590,60 +471,10 @@
             this.XRL.Name = "XRL";
             this.XRL.TabStop = false;
             // 
-            // label41
+            // MachinePosZ
             // 
-            resources.ApplyResources(this.label41, "label41");
-            this.label41.Name = "label41";
-            // 
-            // label39
-            // 
-            resources.ApplyResources(this.label39, "label39");
-            this.label39.Name = "label39";
-            // 
-            // label40
-            // 
-            resources.ApplyResources(this.label40, "label40");
-            this.label40.Name = "label40";
-            // 
-            // WellCountTB
-            // 
-            resources.ApplyResources(this.WellCountTB, "WellCountTB");
-            this.WellCountTB.Name = "WellCountTB";
-            this.WellCountTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WellCountTB_KeyDown);
-            this.WellCountTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WellCountTB_KeyPress);
-            // 
-            // PetriDishTB
-            // 
-            resources.ApplyResources(this.PetriDishTB, "PetriDishTB");
-            this.PetriDishTB.Name = "PetriDishTB";
-            this.PetriDishTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PetriDishTB_KeyDown);
-            this.PetriDishTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PetriDishTB_KeyPress);
-            // 
-            // WellCNTRB
-            // 
-            resources.ApplyResources(this.WellCNTRB, "WellCNTRB");
-            this.WellCNTRB.Name = "WellCNTRB";
-            this.WellCNTRB.UseVisualStyleBackColor = true;
-            this.WellCNTRB.CheckedChanged += new System.EventHandler(this.WellCNTRB_CheckedChanged);
-            this.WellCNTRB.Click += new System.EventHandler(this.WellCNTRB_Click);
-            // 
-            // PetriDishRB
-            // 
-            resources.ApplyResources(this.PetriDishRB, "PetriDishRB");
-            this.PetriDishRB.Name = "PetriDishRB";
-            this.PetriDishRB.UseVisualStyleBackColor = true;
-            this.PetriDishRB.CheckedChanged += new System.EventHandler(this.PetriDishRB_CheckedChanged);
-            this.PetriDishRB.Click += new System.EventHandler(this.PetriDishRB_Click);
-            // 
-            // CustomRB
-            // 
-            resources.ApplyResources(this.CustomRB, "CustomRB");
-            this.CustomRB.Checked = true;
-            this.CustomRB.Name = "CustomRB";
-            this.CustomRB.TabStop = true;
-            this.CustomRB.UseVisualStyleBackColor = true;
-            this.CustomRB.CheckedChanged += new System.EventHandler(this.CustomRB_CheckedChanged);
-            this.CustomRB.Click += new System.EventHandler(this.CustomRB_Click);
+            resources.ApplyResources(this.MachinePosZ, "MachinePosZ");
+            this.MachinePosZ.Name = "MachinePosZ";
             // 
             // SetMachineZero
             // 
@@ -680,10 +511,15 @@
             this.S1Btn.UseVisualStyleBackColor = true;
             this.S1Btn.Click += new System.EventHandler(this.S1Btn_Click);
             // 
-            // label13
+            // YToolPos
             // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
+            resources.ApplyResources(this.YToolPos, "YToolPos");
+            this.YToolPos.Name = "YToolPos";
+            // 
+            // MachinePosY
+            // 
+            resources.ApplyResources(this.MachinePosY, "MachinePosY");
+            this.MachinePosY.Name = "MachinePosY";
             // 
             // JogYPBtn
             // 
@@ -744,6 +580,16 @@
             this.ImageX.Images.SetKeyName(8, "XP1.png");
             this.ImageX.Images.SetKeyName(9, "XP10.png");
             // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
             // JogXMBtn
             // 
             resources.ApplyResources(this.JogXMBtn, "JogXMBtn");
@@ -760,6 +606,11 @@
             this.UVLightBtn.UseVisualStyleBackColor = true;
             this.UVLightBtn.Click += new System.EventHandler(this.UVLightBtn_Click);
             // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
             // CoolingBtn
             // 
             resources.ApplyResources(this.CoolingBtn, "CoolingBtn");
@@ -775,50 +626,15 @@
             this.HotPlateBtn.UseVisualStyleBackColor = false;
             this.HotPlateBtn.Click += new System.EventHandler(this.HotPlateBtn_Click);
             // 
-            // ZToolPos
-            // 
-            resources.ApplyResources(this.ZToolPos, "ZToolPos");
-            this.ZToolPos.Name = "ZToolPos";
-            // 
-            // YToolPos
-            // 
-            resources.ApplyResources(this.YToolPos, "YToolPos");
-            this.YToolPos.Name = "YToolPos";
-            // 
-            // XToolPos
-            // 
-            resources.ApplyResources(this.XToolPos, "XToolPos");
-            this.XToolPos.Name = "XToolPos";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // label5
+            // MachinePosX
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.MachinePosX, "MachinePosX");
+            this.MachinePosX.Name = "MachinePosX";
             // 
             // LButBtn
             // 
@@ -847,6 +663,11 @@
             this.RButBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RButBtn_MouseDown);
             this.RButBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.RButBtn_MouseUp);
             // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
             // RBBtn
             // 
             resources.ApplyResources(this.RBBtn, "RBBtn");
@@ -874,6 +695,11 @@
             this.YPos001.UseVisualStyleBackColor = false;
             this.YPos001.Click += new System.EventHandler(this.YPos001_Click);
             // 
+            // XToolPos
+            // 
+            resources.ApplyResources(this.XToolPos, "XToolPos");
+            this.XToolPos.Name = "XToolPos";
+            // 
             // YPos01
             // 
             this.YPos01.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -891,6 +717,11 @@
             this.YPos1.Name = "YPos1";
             this.YPos1.UseVisualStyleBackColor = false;
             this.YPos1.Click += new System.EventHandler(this.YPos1_Click);
+            // 
+            // ZToolPos
+            // 
+            resources.ApplyResources(this.ZToolPos, "ZToolPos");
+            this.ZToolPos.Name = "ZToolPos";
             // 
             // YPos10
             // 
@@ -999,16 +830,6 @@
             this.Xpos01.Name = "Xpos01";
             this.Xpos01.UseVisualStyleBackColor = false;
             this.Xpos01.Click += new System.EventHandler(this.Xpos01_Click);
-            // 
-            // MachinePosY
-            // 
-            resources.ApplyResources(this.MachinePosY, "MachinePosY");
-            this.MachinePosY.Name = "MachinePosY";
-            // 
-            // MachinePosX
-            // 
-            resources.ApplyResources(this.MachinePosX, "MachinePosX");
-            this.MachinePosX.Name = "MachinePosX";
             // 
             // XPos001
             // 
@@ -1681,184 +1502,6 @@
             this.S2HomeBtn.UseVisualStyleBackColor = true;
             this.S2HomeBtn.Click += new System.EventHandler(this.S2HomeBtn_Click);
             // 
-            // SpGB
-            // 
-            this.SpGB.Controls.Add(this.SetZeroXYSp);
-            this.SpGB.Controls.Add(this.ZSpRL);
-            this.SpGB.Controls.Add(this.ZSpLL);
-            this.SpGB.Controls.Add(this.SpGetZeroBtn);
-            this.SpGB.Controls.Add(this.SPOnOff);
-            this.SpGB.Controls.Add(this.button72);
-            this.SpGB.Controls.Add(this.label38);
-            this.SpGB.Controls.Add(this.JogZSPMin);
-            this.SpGB.Controls.Add(this.ZSPMin001);
-            this.SpGB.Controls.Add(this.ZSPMin01);
-            this.SpGB.Controls.Add(this.ZSPMin1);
-            this.SpGB.Controls.Add(this.ZSPMin10);
-            this.SpGB.Controls.Add(this.JogZSPPos);
-            this.SpGB.Controls.Add(this.ZSPPos10);
-            this.SpGB.Controls.Add(this.ZSPPos1);
-            this.SpGB.Controls.Add(this.ZSPPos01);
-            this.SpGB.Controls.Add(this.ZSPPos001);
-            this.SpGB.Controls.Add(this.label20);
-            this.SpGB.Controls.Add(this.label21);
-            this.SpGB.Controls.Add(this.SpZPosition);
-            resources.ApplyResources(this.SpGB, "SpGB");
-            this.SpGB.Name = "SpGB";
-            this.SpGB.TabStop = false;
-            // 
-            // SetZeroXYSp
-            // 
-            resources.ApplyResources(this.SetZeroXYSp, "SetZeroXYSp");
-            this.SetZeroXYSp.Name = "SetZeroXYSp";
-            this.SetZeroXYSp.UseVisualStyleBackColor = true;
-            this.SetZeroXYSp.Click += new System.EventHandler(this.SetZeroXYSp_Click);
-            // 
-            // ZSpRL
-            // 
-            this.ZSpRL.BackColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.ZSpRL, "ZSpRL");
-            this.ZSpRL.Name = "ZSpRL";
-            this.ZSpRL.TabStop = false;
-            // 
-            // ZSpLL
-            // 
-            this.ZSpLL.BackColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.ZSpLL, "ZSpLL");
-            this.ZSpLL.Name = "ZSpLL";
-            this.ZSpLL.TabStop = false;
-            // 
-            // SpGetZeroBtn
-            // 
-            resources.ApplyResources(this.SpGetZeroBtn, "SpGetZeroBtn");
-            this.SpGetZeroBtn.Name = "SpGetZeroBtn";
-            this.SpGetZeroBtn.UseVisualStyleBackColor = true;
-            this.SpGetZeroBtn.Click += new System.EventHandler(this.SpGetZeroBtn_Click);
-            // 
-            // SPOnOff
-            // 
-            resources.ApplyResources(this.SPOnOff, "SPOnOff");
-            this.SPOnOff.Name = "SPOnOff";
-            this.SPOnOff.UseVisualStyleBackColor = true;
-            this.SPOnOff.Click += new System.EventHandler(this.SPOnOff_Click);
-            // 
-            // button72
-            // 
-            resources.ApplyResources(this.button72, "button72");
-            this.button72.Name = "button72";
-            this.button72.UseVisualStyleBackColor = true;
-            this.button72.Click += new System.EventHandler(this.button72_Click);
-            // 
-            // label38
-            // 
-            resources.ApplyResources(this.label38, "label38");
-            this.label38.Name = "label38";
-            // 
-            // JogZSPMin
-            // 
-            resources.ApplyResources(this.JogZSPMin, "JogZSPMin");
-            this.JogZSPMin.ImageList = this.ImageY;
-            this.JogZSPMin.Name = "JogZSPMin";
-            this.JogZSPMin.UseVisualStyleBackColor = true;
-            this.JogZSPMin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.JogZSPMin_MouseDown);
-            this.JogZSPMin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.JogZSPMin_MouseUp);
-            // 
-            // ZSPMin001
-            // 
-            this.ZSPMin001.BackColor = System.Drawing.SystemColors.HotTrack;
-            resources.ApplyResources(this.ZSPMin001, "ZSPMin001");
-            this.ZSPMin001.ImageList = this.ImageY;
-            this.ZSPMin001.Name = "ZSPMin001";
-            this.ZSPMin001.UseVisualStyleBackColor = false;
-            this.ZSPMin001.Click += new System.EventHandler(this.ZSPMin001_Click);
-            // 
-            // ZSPMin01
-            // 
-            this.ZSPMin01.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            resources.ApplyResources(this.ZSPMin01, "ZSPMin01");
-            this.ZSPMin01.ImageList = this.ImageY;
-            this.ZSPMin01.Name = "ZSPMin01";
-            this.ZSPMin01.UseVisualStyleBackColor = false;
-            this.ZSPMin01.Click += new System.EventHandler(this.ZSPMin01_Click);
-            // 
-            // ZSPMin1
-            // 
-            this.ZSPMin1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            resources.ApplyResources(this.ZSPMin1, "ZSPMin1");
-            this.ZSPMin1.ImageList = this.ImageY;
-            this.ZSPMin1.Name = "ZSPMin1";
-            this.ZSPMin1.UseVisualStyleBackColor = false;
-            this.ZSPMin1.Click += new System.EventHandler(this.ZSPMin1_Click);
-            // 
-            // ZSPMin10
-            // 
-            this.ZSPMin10.BackColor = System.Drawing.SystemColors.ScrollBar;
-            resources.ApplyResources(this.ZSPMin10, "ZSPMin10");
-            this.ZSPMin10.ImageList = this.ImageY;
-            this.ZSPMin10.Name = "ZSPMin10";
-            this.ZSPMin10.UseVisualStyleBackColor = false;
-            this.ZSPMin10.Click += new System.EventHandler(this.ZSPMin10_Click);
-            // 
-            // JogZSPPos
-            // 
-            resources.ApplyResources(this.JogZSPPos, "JogZSPPos");
-            this.JogZSPPos.ImageList = this.ImageY;
-            this.JogZSPPos.Name = "JogZSPPos";
-            this.JogZSPPos.UseVisualStyleBackColor = true;
-            this.JogZSPPos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.JogZSPPos_MouseDown);
-            this.JogZSPPos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.JogZSPPos_MouseUp);
-            // 
-            // ZSPPos10
-            // 
-            this.ZSPPos10.BackColor = System.Drawing.SystemColors.ScrollBar;
-            resources.ApplyResources(this.ZSPPos10, "ZSPPos10");
-            this.ZSPPos10.ImageList = this.ImageY;
-            this.ZSPPos10.Name = "ZSPPos10";
-            this.ZSPPos10.UseVisualStyleBackColor = false;
-            this.ZSPPos10.Click += new System.EventHandler(this.ZSPPos10_Click);
-            // 
-            // ZSPPos1
-            // 
-            this.ZSPPos1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            resources.ApplyResources(this.ZSPPos1, "ZSPPos1");
-            this.ZSPPos1.ImageList = this.ImageY;
-            this.ZSPPos1.Name = "ZSPPos1";
-            this.ZSPPos1.UseVisualStyleBackColor = false;
-            this.ZSPPos1.Click += new System.EventHandler(this.ZSPPos1_Click);
-            // 
-            // ZSPPos01
-            // 
-            this.ZSPPos01.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            resources.ApplyResources(this.ZSPPos01, "ZSPPos01");
-            this.ZSPPos01.ImageList = this.ImageY;
-            this.ZSPPos01.Name = "ZSPPos01";
-            this.ZSPPos01.UseVisualStyleBackColor = false;
-            this.ZSPPos01.Click += new System.EventHandler(this.ZSPPos01_Click);
-            // 
-            // ZSPPos001
-            // 
-            this.ZSPPos001.BackColor = System.Drawing.SystemColors.HotTrack;
-            resources.ApplyResources(this.ZSPPos001, "ZSPPos001");
-            this.ZSPPos001.ImageList = this.ImageY;
-            this.ZSPPos001.Name = "ZSPPos001";
-            this.ZSPPos001.UseVisualStyleBackColor = false;
-            this.ZSPPos001.Click += new System.EventHandler(this.ZSPPos001_Click);
-            // 
-            // label20
-            // 
-            resources.ApplyResources(this.label20, "label20");
-            this.label20.Name = "label20";
-            // 
-            // label21
-            // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
-            // 
-            // SpZPosition
-            // 
-            resources.ApplyResources(this.SpZPosition, "SpZPosition");
-            this.SpZPosition.Name = "SpZPosition";
-            // 
             // S3GB
             // 
             this.S3GB.Controls.Add(this.S3DiamTB);
@@ -2177,398 +1820,24 @@
             this.S3HomeBtn.UseVisualStyleBackColor = true;
             this.S3HomeBtn.Click += new System.EventHandler(this.S3HomeBtn_Click);
             // 
-            // PFGB
-            // 
-            this.PFGB.Controls.Add(this.SetZeroXYPF);
-            this.PFGB.Controls.Add(this.ZPFRL);
-            this.PFGB.Controls.Add(this.ZPFLL);
-            this.PFGB.Controls.Add(this.PFGetZeroBtn);
-            this.PFGB.Controls.Add(this.PFCalibrateBtn);
-            this.PFGB.Controls.Add(this.label36);
-            this.PFGB.Controls.Add(this.label37);
-            this.PFGB.Controls.Add(this.JogPfPistMin);
-            this.PFGB.Controls.Add(this.PfPistMin01);
-            this.PFGB.Controls.Add(this.PfPistMin1);
-            this.PFGB.Controls.Add(this.PfPistMin10);
-            this.PFGB.Controls.Add(this.PfPistMin100);
-            this.PFGB.Controls.Add(this.JogPfPistPos);
-            this.PFGB.Controls.Add(this.PfPistPos100);
-            this.PFGB.Controls.Add(this.PfPistPos10);
-            this.PFGB.Controls.Add(this.PfPistPos1);
-            this.PFGB.Controls.Add(this.PfPistPos01);
-            this.PFGB.Controls.Add(this.JogZPfMin);
-            this.PFGB.Controls.Add(this.ZPfMin001);
-            this.PFGB.Controls.Add(this.ZPfMin01);
-            this.PFGB.Controls.Add(this.ZPfMin1);
-            this.PFGB.Controls.Add(this.ZPfMin10);
-            this.PFGB.Controls.Add(this.JogZPfPos);
-            this.PFGB.Controls.Add(this.ZPfPos10);
-            this.PFGB.Controls.Add(this.ZPfPos1);
-            this.PFGB.Controls.Add(this.ZPfPos01);
-            this.PFGB.Controls.Add(this.ZPfPos001);
-            this.PFGB.Controls.Add(this.label22);
-            this.PFGB.Controls.Add(this.label23);
-            this.PFGB.Controls.Add(this.PFZPosition);
-            this.PFGB.Controls.Add(this.PFHomeBtn);
-            resources.ApplyResources(this.PFGB, "PFGB");
-            this.PFGB.Name = "PFGB";
-            this.PFGB.TabStop = false;
-            // 
-            // SetZeroXYPF
-            // 
-            resources.ApplyResources(this.SetZeroXYPF, "SetZeroXYPF");
-            this.SetZeroXYPF.Name = "SetZeroXYPF";
-            this.SetZeroXYPF.UseVisualStyleBackColor = true;
-            this.SetZeroXYPF.Click += new System.EventHandler(this.SetZeroXYPF_Click);
-            // 
-            // ZPFRL
-            // 
-            this.ZPFRL.BackColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.ZPFRL, "ZPFRL");
-            this.ZPFRL.Name = "ZPFRL";
-            this.ZPFRL.TabStop = false;
-            // 
-            // ZPFLL
-            // 
-            this.ZPFLL.BackColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.ZPFLL, "ZPFLL");
-            this.ZPFLL.Name = "ZPFLL";
-            this.ZPFLL.TabStop = false;
-            // 
-            // PFGetZeroBtn
-            // 
-            resources.ApplyResources(this.PFGetZeroBtn, "PFGetZeroBtn");
-            this.PFGetZeroBtn.Name = "PFGetZeroBtn";
-            this.PFGetZeroBtn.UseVisualStyleBackColor = true;
-            this.PFGetZeroBtn.Click += new System.EventHandler(this.PFGetZeroBtn_Click);
-            // 
-            // PFCalibrateBtn
-            // 
-            resources.ApplyResources(this.PFCalibrateBtn, "PFCalibrateBtn");
-            this.PFCalibrateBtn.Name = "PFCalibrateBtn";
-            this.PFCalibrateBtn.UseVisualStyleBackColor = true;
-            this.PFCalibrateBtn.Click += new System.EventHandler(this.PFCalibrateBtn_Click);
-            // 
-            // label36
-            // 
-            resources.ApplyResources(this.label36, "label36");
-            this.label36.Name = "label36";
-            // 
-            // label37
-            // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
-            // 
-            // JogPfPistMin
-            // 
-            resources.ApplyResources(this.JogPfPistMin, "JogPfPistMin");
-            this.JogPfPistMin.ImageList = this.SyringImage;
-            this.JogPfPistMin.Name = "JogPfPistMin";
-            this.JogPfPistMin.UseVisualStyleBackColor = true;
-            this.JogPfPistMin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.JogPfPistMin_MouseDown);
-            this.JogPfPistMin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.JogPfPistMin_MouseUp);
-            // 
-            // PfPistMin01
-            // 
-            this.PfPistMin01.BackColor = System.Drawing.SystemColors.HotTrack;
-            resources.ApplyResources(this.PfPistMin01, "PfPistMin01");
-            this.PfPistMin01.ImageList = this.SyringImage;
-            this.PfPistMin01.Name = "PfPistMin01";
-            this.PfPistMin01.UseVisualStyleBackColor = false;
-            this.PfPistMin01.Click += new System.EventHandler(this.PfPistMin01_Click);
-            // 
-            // PfPistMin1
-            // 
-            this.PfPistMin1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            resources.ApplyResources(this.PfPistMin1, "PfPistMin1");
-            this.PfPistMin1.ImageList = this.SyringImage;
-            this.PfPistMin1.Name = "PfPistMin1";
-            this.PfPistMin1.UseVisualStyleBackColor = false;
-            this.PfPistMin1.Click += new System.EventHandler(this.PfPistMin1_Click);
-            // 
-            // PfPistMin10
-            // 
-            this.PfPistMin10.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            resources.ApplyResources(this.PfPistMin10, "PfPistMin10");
-            this.PfPistMin10.ImageList = this.SyringImage;
-            this.PfPistMin10.Name = "PfPistMin10";
-            this.PfPistMin10.UseVisualStyleBackColor = false;
-            this.PfPistMin10.Click += new System.EventHandler(this.PfPistMin10_Click);
-            // 
-            // PfPistMin100
-            // 
-            this.PfPistMin100.BackColor = System.Drawing.SystemColors.ScrollBar;
-            resources.ApplyResources(this.PfPistMin100, "PfPistMin100");
-            this.PfPistMin100.ImageList = this.SyringImage;
-            this.PfPistMin100.Name = "PfPistMin100";
-            this.PfPistMin100.UseVisualStyleBackColor = false;
-            this.PfPistMin100.Click += new System.EventHandler(this.PfPistMin100_Click);
-            // 
-            // JogPfPistPos
-            // 
-            resources.ApplyResources(this.JogPfPistPos, "JogPfPistPos");
-            this.JogPfPistPos.ImageList = this.SyringImage;
-            this.JogPfPistPos.Name = "JogPfPistPos";
-            this.JogPfPistPos.UseVisualStyleBackColor = true;
-            this.JogPfPistPos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.JogPfPistPos_MouseDown);
-            this.JogPfPistPos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.JogPfPistPos_MouseUp);
-            // 
-            // PfPistPos100
-            // 
-            this.PfPistPos100.BackColor = System.Drawing.SystemColors.ScrollBar;
-            resources.ApplyResources(this.PfPistPos100, "PfPistPos100");
-            this.PfPistPos100.ImageList = this.SyringImage;
-            this.PfPistPos100.Name = "PfPistPos100";
-            this.PfPistPos100.UseVisualStyleBackColor = false;
-            this.PfPistPos100.Click += new System.EventHandler(this.PfPistPos100_Click);
-            // 
-            // PfPistPos10
-            // 
-            this.PfPistPos10.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            resources.ApplyResources(this.PfPistPos10, "PfPistPos10");
-            this.PfPistPos10.ImageList = this.SyringImage;
-            this.PfPistPos10.Name = "PfPistPos10";
-            this.PfPistPos10.UseVisualStyleBackColor = false;
-            this.PfPistPos10.Click += new System.EventHandler(this.PfPistPos10_Click);
-            // 
-            // PfPistPos1
-            // 
-            this.PfPistPos1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            resources.ApplyResources(this.PfPistPos1, "PfPistPos1");
-            this.PfPistPos1.ImageList = this.SyringImage;
-            this.PfPistPos1.Name = "PfPistPos1";
-            this.PfPistPos1.UseVisualStyleBackColor = false;
-            this.PfPistPos1.Click += new System.EventHandler(this.PfPistPos1_Click);
-            // 
-            // PfPistPos01
-            // 
-            this.PfPistPos01.BackColor = System.Drawing.SystemColors.HotTrack;
-            resources.ApplyResources(this.PfPistPos01, "PfPistPos01");
-            this.PfPistPos01.ImageList = this.SyringImage;
-            this.PfPistPos01.Name = "PfPistPos01";
-            this.PfPistPos01.UseVisualStyleBackColor = false;
-            this.PfPistPos01.Click += new System.EventHandler(this.PfPistPos01_Click);
-            // 
-            // JogZPfMin
-            // 
-            resources.ApplyResources(this.JogZPfMin, "JogZPfMin");
-            this.JogZPfMin.ImageList = this.ImageY;
-            this.JogZPfMin.Name = "JogZPfMin";
-            this.JogZPfMin.UseVisualStyleBackColor = true;
-            this.JogZPfMin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.JogZPfMin_MouseDown);
-            this.JogZPfMin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.JogZPfMin_MouseUp);
-            // 
-            // ZPfMin001
-            // 
-            this.ZPfMin001.BackColor = System.Drawing.SystemColors.HotTrack;
-            resources.ApplyResources(this.ZPfMin001, "ZPfMin001");
-            this.ZPfMin001.ImageList = this.ImageY;
-            this.ZPfMin001.Name = "ZPfMin001";
-            this.ZPfMin001.UseVisualStyleBackColor = false;
-            this.ZPfMin001.Click += new System.EventHandler(this.ZPfMin001_Click);
-            // 
-            // ZPfMin01
-            // 
-            this.ZPfMin01.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            resources.ApplyResources(this.ZPfMin01, "ZPfMin01");
-            this.ZPfMin01.ImageList = this.ImageY;
-            this.ZPfMin01.Name = "ZPfMin01";
-            this.ZPfMin01.UseVisualStyleBackColor = false;
-            this.ZPfMin01.Click += new System.EventHandler(this.ZPfMin01_Click);
-            // 
-            // ZPfMin1
-            // 
-            this.ZPfMin1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            resources.ApplyResources(this.ZPfMin1, "ZPfMin1");
-            this.ZPfMin1.ImageList = this.ImageY;
-            this.ZPfMin1.Name = "ZPfMin1";
-            this.ZPfMin1.UseVisualStyleBackColor = false;
-            this.ZPfMin1.Click += new System.EventHandler(this.ZPfMin1_Click);
-            // 
-            // ZPfMin10
-            // 
-            this.ZPfMin10.BackColor = System.Drawing.SystemColors.ScrollBar;
-            resources.ApplyResources(this.ZPfMin10, "ZPfMin10");
-            this.ZPfMin10.ImageList = this.ImageY;
-            this.ZPfMin10.Name = "ZPfMin10";
-            this.ZPfMin10.UseVisualStyleBackColor = false;
-            this.ZPfMin10.Click += new System.EventHandler(this.ZPfMin10_Click);
-            // 
-            // JogZPfPos
-            // 
-            resources.ApplyResources(this.JogZPfPos, "JogZPfPos");
-            this.JogZPfPos.ImageList = this.ImageY;
-            this.JogZPfPos.Name = "JogZPfPos";
-            this.JogZPfPos.UseVisualStyleBackColor = true;
-            this.JogZPfPos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.JogZPfPos_MouseDown);
-            this.JogZPfPos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.JogZPfPos_MouseUp);
-            // 
-            // ZPfPos10
-            // 
-            this.ZPfPos10.BackColor = System.Drawing.SystemColors.ScrollBar;
-            resources.ApplyResources(this.ZPfPos10, "ZPfPos10");
-            this.ZPfPos10.ImageList = this.ImageY;
-            this.ZPfPos10.Name = "ZPfPos10";
-            this.ZPfPos10.UseVisualStyleBackColor = false;
-            this.ZPfPos10.Click += new System.EventHandler(this.ZPfPos10_Click);
-            // 
-            // ZPfPos1
-            // 
-            this.ZPfPos1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            resources.ApplyResources(this.ZPfPos1, "ZPfPos1");
-            this.ZPfPos1.ImageList = this.ImageY;
-            this.ZPfPos1.Name = "ZPfPos1";
-            this.ZPfPos1.UseVisualStyleBackColor = false;
-            this.ZPfPos1.Click += new System.EventHandler(this.ZPfPos1_Click);
-            // 
-            // ZPfPos01
-            // 
-            this.ZPfPos01.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            resources.ApplyResources(this.ZPfPos01, "ZPfPos01");
-            this.ZPfPos01.ImageList = this.ImageY;
-            this.ZPfPos01.Name = "ZPfPos01";
-            this.ZPfPos01.UseVisualStyleBackColor = false;
-            this.ZPfPos01.Click += new System.EventHandler(this.ZPfPos01_Click);
-            // 
-            // ZPfPos001
-            // 
-            this.ZPfPos001.BackColor = System.Drawing.SystemColors.HotTrack;
-            resources.ApplyResources(this.ZPfPos001, "ZPfPos001");
-            this.ZPfPos001.ImageList = this.ImageY;
-            this.ZPfPos001.Name = "ZPfPos001";
-            this.ZPfPos001.UseVisualStyleBackColor = false;
-            this.ZPfPos001.Click += new System.EventHandler(this.ZPfPos001_Click);
-            // 
-            // label22
-            // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
-            // 
-            // label23
-            // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
-            // 
-            // PFZPosition
-            // 
-            resources.ApplyResources(this.PFZPosition, "PFZPosition");
-            this.PFZPosition.Name = "PFZPosition";
-            // 
-            // PFHomeBtn
-            // 
-            resources.ApplyResources(this.PFHomeBtn, "PFHomeBtn");
-            this.PFHomeBtn.Name = "PFHomeBtn";
-            this.PFHomeBtn.UseVisualStyleBackColor = true;
-            this.PFHomeBtn.Click += new System.EventHandler(this.PFHomeBtn_Click);
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.SendTextBox);
-            this.groupBox10.Controls.Add(this.SendMessageToPLC);
-            this.groupBox10.Controls.Add(this.label42);
-            this.groupBox10.Controls.Add(this.HistoryBox);
-            this.groupBox10.Controls.Add(this.EditMacroBtn);
-            this.groupBox10.Controls.Add(this.RunMacroBtn);
-            this.groupBox10.Controls.Add(this.MacroList);
-            resources.ApplyResources(this.groupBox10, "groupBox10");
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.TabStop = false;
-            // 
-            // SendTextBox
-            // 
-            resources.ApplyResources(this.SendTextBox, "SendTextBox");
-            this.SendTextBox.Name = "SendTextBox";
-            // 
-            // SendMessageToPLC
-            // 
-            resources.ApplyResources(this.SendMessageToPLC, "SendMessageToPLC");
-            this.SendMessageToPLC.Name = "SendMessageToPLC";
-            this.SendMessageToPLC.UseVisualStyleBackColor = true;
-            this.SendMessageToPLC.Click += new System.EventHandler(this.SendMessageToPLC_Click);
-            // 
-            // label42
-            // 
-            resources.ApplyResources(this.label42, "label42");
-            this.label42.Name = "label42";
-            // 
-            // HistoryBox
-            // 
-            resources.ApplyResources(this.HistoryBox, "HistoryBox");
-            this.HistoryBox.Name = "HistoryBox";
-            this.HistoryBox.ReadOnly = true;
-            this.HistoryBox.TextChanged += new System.EventHandler(this.HistoryBox_TextChanged);
-            // 
-            // EditMacroBtn
-            // 
-            resources.ApplyResources(this.EditMacroBtn, "EditMacroBtn");
-            this.EditMacroBtn.Name = "EditMacroBtn";
-            this.EditMacroBtn.UseVisualStyleBackColor = true;
-            this.EditMacroBtn.Click += new System.EventHandler(this.EditMacroBtn_Click);
-            // 
-            // RunMacroBtn
-            // 
-            resources.ApplyResources(this.RunMacroBtn, "RunMacroBtn");
-            this.RunMacroBtn.Name = "RunMacroBtn";
-            this.RunMacroBtn.UseVisualStyleBackColor = true;
-            this.RunMacroBtn.Click += new System.EventHandler(this.RunMacroBtn_Click);
-            // 
-            // MacroList
-            // 
-            this.MacroList.FormattingEnabled = true;
-            resources.ApplyResources(this.MacroList, "MacroList");
-            this.MacroList.Name = "MacroList";
-            // 
-            // PF2GB
-            // 
-            this.PF2GB.Controls.Add(this.PfMixTB);
-            this.PF2GB.Controls.Add(this.MixTrackBar);
-            resources.ApplyResources(this.PF2GB, "PF2GB");
-            this.PF2GB.Name = "PF2GB";
-            this.PF2GB.TabStop = false;
-            // 
-            // PfMixTB
-            // 
-            resources.ApplyResources(this.PfMixTB, "PfMixTB");
-            this.PfMixTB.Name = "PfMixTB";
-            this.PfMixTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PfMixTB_KeyDown);
-            this.PfMixTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PfMixTB_KeyPress);
-            // 
-            // MixTrackBar
-            // 
-            resources.ApplyResources(this.MixTrackBar, "MixTrackBar");
-            this.MixTrackBar.Maximum = 100;
-            this.MixTrackBar.Minimum = -100;
-            this.MixTrackBar.Name = "MixTrackBar";
-            this.MixTrackBar.TickFrequency = 10;
-            this.MixTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.MixTrackBar.Scroll += new System.EventHandler(this.MixTrackBar_Scroll);
-            // 
             // Preeflow_Timer
             // 
             this.Preeflow_Timer.Interval = 10;
             this.Preeflow_Timer.Tick += new System.EventHandler(this.Preeflow_Timer_Tick);
             // 
+            // timer_printer_pos
+            // 
+            this.timer_printer_pos.Interval = 10;
+            this.timer_printer_pos.Tick += new System.EventHandler(this.timer_printer_pos_Tick);
+            // 
             // Manual_frm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.PF2GB);
-            this.Controls.Add(this.Accuracy1_Btn);
-            this.Controls.Add(this.Accuracy2_Btn);
-            this.Controls.Add(this.label44);
-            this.Controls.Add(this.groupBox10);
-            this.Controls.Add(this.PFGB);
-            this.Controls.Add(this.SpGB);
-            this.Controls.Add(this.label43);
             this.Controls.Add(this.S3GB);
             this.Controls.Add(this.S2GB);
             this.Controls.Add(this.S1GB);
-            this.Controls.Add(this.CustomRB);
-            this.Controls.Add(this.PetriDishRB);
-            this.Controls.Add(this.PetriDishTB);
-            this.Controls.Add(this.label40);
-            this.Controls.Add(this.WellCNTRB);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.manual_xyz_gp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Manual_frm";
@@ -2577,16 +1846,16 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Manual_frm_FormClosing);
             this.Load += new System.EventHandler(this.Manual_frm_Load);
             this.Shown += new System.EventHandler(this.Manual_frm_Shown);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.manual_xyz_gp.ResumeLayout(false);
+            this.manual_xyz_gp.PerformLayout();
+            this.vels_GP.ResumeLayout(false);
+            this.vels_GP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CBVelocity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CTVelocity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PFVelocity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PtVelocity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Zvelocity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XYVelocity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Zvelocity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YLL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YRL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XLL)).EndInit();
@@ -2599,31 +1868,17 @@
             this.S2GB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZS2RL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZS2LL)).EndInit();
-            this.SpGB.ResumeLayout(false);
-            this.SpGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ZSpRL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ZSpLL)).EndInit();
             this.S3GB.ResumeLayout(false);
             this.S3GB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZS3RL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZS3LL)).EndInit();
-            this.PFGB.ResumeLayout(false);
-            this.PFGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ZPFRL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ZPFLL)).EndInit();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.PF2GB.ResumeLayout(false);
-            this.PF2GB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MixTrackBar)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox manual_xyz_gp;
         private System.Windows.Forms.Label MachinePosX;
         private System.Windows.Forms.Button XPos001;
         private System.Windows.Forms.Label MachinePosY;
@@ -2635,7 +1890,7 @@
         private System.Windows.Forms.Button PosX10;
         private System.Windows.Forms.Button PosX1;
         private System.Windows.Forms.Button Xpos01;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox vels_GP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button YNeg10;
         private System.Windows.Forms.Button YNeg1;
@@ -2654,7 +1909,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label ZToolPos;
         private System.Windows.Forms.Label YToolPos;
         private System.Windows.Forms.Label XToolPos;
@@ -2671,10 +1925,7 @@
         private System.Windows.Forms.Button JogYMBtn;
         private System.Windows.Forms.GroupBox S1GB;
         private System.Windows.Forms.GroupBox S2GB;
-        private System.Windows.Forms.GroupBox SpGB;
         private System.Windows.Forms.GroupBox S3GB;
-        private System.Windows.Forms.GroupBox PFGB;
-        private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.TextBox CBVelocityTB;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TrackBar CBVelocity;
@@ -2690,14 +1941,11 @@
         private System.Windows.Forms.Button S3Btn;
         private System.Windows.Forms.Button S2Btn;
         private System.Windows.Forms.Button S1Btn;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button SetMachineZero;
         private System.Windows.Forms.Button SetWorkZero;
-        private System.Windows.Forms.RadioButton CustomRB;
         private System.Windows.Forms.Button S1HomeBtn;
         private System.Windows.Forms.Button S2HomeBtn;
         private System.Windows.Forms.Button S3HomeBtn;
-        private System.Windows.Forms.Button PFHomeBtn;
         private System.Windows.Forms.ImageList ArrowsImage;
         private System.Windows.Forms.Button JogZS1Min;
         private System.Windows.Forms.Button ZS1Min001;
@@ -2719,8 +1967,6 @@
         private System.Windows.Forms.Button S1PistPos10;
         private System.Windows.Forms.Button S1PistPos1;
         private System.Windows.Forms.Button S1PistPos01;
-        private System.Windows.Forms.RadioButton WellCNTRB;
-        private System.Windows.Forms.RadioButton PetriDishRB;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label S1ZPosition;
@@ -2731,12 +1977,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label S3ZPosition;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label SpZPosition;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label PFZPosition;
         private System.Windows.Forms.Button S1GetZeroBtn;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
@@ -2789,63 +2029,10 @@
         private System.Windows.Forms.Button ZS3Pos1;
         private System.Windows.Forms.Button ZS3Pos01;
         private System.Windows.Forms.Button ZS3Pos001;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Button JogPfPistMin;
-        private System.Windows.Forms.Button PfPistMin01;
-        private System.Windows.Forms.Button PfPistMin1;
-        private System.Windows.Forms.Button PfPistMin10;
-        private System.Windows.Forms.Button PfPistMin100;
-        private System.Windows.Forms.Button JogPfPistPos;
-        private System.Windows.Forms.Button PfPistPos100;
-        private System.Windows.Forms.Button PfPistPos10;
-        private System.Windows.Forms.Button PfPistPos1;
-        private System.Windows.Forms.Button PfPistPos01;
-        private System.Windows.Forms.Button JogZPfMin;
-        private System.Windows.Forms.Button ZPfMin001;
-        private System.Windows.Forms.Button ZPfMin01;
-        private System.Windows.Forms.Button ZPfMin1;
-        private System.Windows.Forms.Button ZPfMin10;
-        private System.Windows.Forms.Button JogZPfPos;
-        private System.Windows.Forms.Button ZPfPos10;
-        private System.Windows.Forms.Button ZPfPos1;
-        private System.Windows.Forms.Button ZPfPos01;
-        private System.Windows.Forms.Button ZPfPos001;
-        private System.Windows.Forms.GroupBox PF2GB;
-        private System.Windows.Forms.Button SPOnOff;
-        private System.Windows.Forms.Button button72;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Button JogZSPMin;
-        private System.Windows.Forms.Button ZSPMin001;
-        private System.Windows.Forms.Button ZSPMin01;
-        private System.Windows.Forms.Button ZSPMin1;
-        private System.Windows.Forms.Button ZSPMin10;
-        private System.Windows.Forms.Button JogZSPPos;
-        private System.Windows.Forms.Button ZSPPos10;
-        private System.Windows.Forms.Button ZSPPos1;
-        private System.Windows.Forms.Button ZSPPos01;
-        private System.Windows.Forms.Button ZSPPos001;
-        private System.Windows.Forms.TrackBar MixTrackBar;
-        private System.Windows.Forms.TextBox PfMixTB;
-        private System.Windows.Forms.TextBox PetriDishTB;
-        private System.Windows.Forms.TextBox WellCountTB;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Button S2GetZeroBtn;
         private System.Windows.Forms.Button S2CalibrateBtn;
-        private System.Windows.Forms.Button SpGetZeroBtn;
         private System.Windows.Forms.Button S3GetZeroBtn;
         private System.Windows.Forms.Button S3CalibrateBtn;
-        private System.Windows.Forms.Button PFGetZeroBtn;
-        private System.Windows.Forms.Button PFCalibrateBtn;
-        private System.Windows.Forms.ListBox MacroList;
-        private System.Windows.Forms.Button EditMacroBtn;
-        private System.Windows.Forms.Button RunMacroBtn;
-        private System.Windows.Forms.RichTextBox HistoryBox;
-        private System.Windows.Forms.TextBox SendTextBox;
-        private System.Windows.Forms.Button SendMessageToPLC;
-        private System.Windows.Forms.Label label42;
         private System.Windows.Forms.ImageList SyringImage;
         private System.Windows.Forms.ImageList CameraImage;
         private System.Windows.Forms.PictureBox XRL;
@@ -2856,25 +2043,15 @@
         private System.Windows.Forms.PictureBox ZS1LL;
         private System.Windows.Forms.PictureBox ZS2RL;
         private System.Windows.Forms.PictureBox ZS2LL;
-        private System.Windows.Forms.PictureBox ZSpRL;
-        private System.Windows.Forms.PictureBox ZSpLL;
         private System.Windows.Forms.PictureBox ZS3RL;
         private System.Windows.Forms.PictureBox ZS3LL;
-        private System.Windows.Forms.PictureBox ZPFRL;
-        private System.Windows.Forms.PictureBox ZPFLL;
         private System.Windows.Forms.Label MachinePosZ;
         private System.Windows.Forms.Button SetZeroXYS1;
         private System.Windows.Forms.Button SetZeroXYS2;
-        private System.Windows.Forms.Button SetZeroXYSp;
         private System.Windows.Forms.Button SetZeroXYS3;
-        private System.Windows.Forms.Button SetZeroXYPF;
         private System.Windows.Forms.ImageList ImageX;
         private System.Windows.Forms.ImageList ImageY;
         private System.Windows.Forms.Timer Preeflow_Timer;
-        private System.Windows.Forms.Button Accuracy2_Btn;
-        private System.Windows.Forms.Button Accuracy1_Btn;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox S1DiamPrTB;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox S2DiamPrTB;
@@ -2885,5 +2062,7 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer_printer_pos;
     }
 }
