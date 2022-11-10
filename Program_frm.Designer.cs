@@ -31,11 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Program_frm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.G_code_name = new System.Windows.Forms.Label();
             this.GCodeInputBox = new System.Windows.Forms.RichTextBox();
-            this.PasteBtn = new System.Windows.Forms.Button();
-            this.CopyBtn = new System.Windows.Forms.Button();
-            this.CutBtn = new System.Windows.Forms.Button();
+            this.G_code_name = new System.Windows.Forms.Label();
             this.UploadBtn = new System.Windows.Forms.Button();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.OpenBtn = new System.Windows.Forms.Button();
@@ -72,9 +69,6 @@
             // 
             this.groupBox1.Controls.Add(this.GCodeInputBox);
             this.groupBox1.Controls.Add(this.G_code_name);
-            this.groupBox1.Controls.Add(this.PasteBtn);
-            this.groupBox1.Controls.Add(this.CopyBtn);
-            this.groupBox1.Controls.Add(this.CutBtn);
             this.groupBox1.Controls.Add(this.UploadBtn);
             this.groupBox1.Controls.Add(this.SaveBtn);
             this.groupBox1.Controls.Add(this.OpenBtn);
@@ -83,37 +77,16 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // G_code_name
-            // 
-            resources.ApplyResources(this.G_code_name, "G_code_name");
-            this.G_code_name.Name = "G_code_name";
-            // 
             // GCodeInputBox
             // 
             resources.ApplyResources(this.GCodeInputBox, "GCodeInputBox");
             this.GCodeInputBox.Name = "GCodeInputBox";
             this.GCodeInputBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GCodeInputBox_KeyDown);
             // 
-            // PasteBtn
+            // G_code_name
             // 
-            resources.ApplyResources(this.PasteBtn, "PasteBtn");
-            this.PasteBtn.Name = "PasteBtn";
-            this.PasteBtn.UseVisualStyleBackColor = true;
-            this.PasteBtn.Click += new System.EventHandler(this.PasteBtn_Click);
-            // 
-            // CopyBtn
-            // 
-            resources.ApplyResources(this.CopyBtn, "CopyBtn");
-            this.CopyBtn.Name = "CopyBtn";
-            this.CopyBtn.UseVisualStyleBackColor = true;
-            this.CopyBtn.Click += new System.EventHandler(this.CopyBtn_Click);
-            // 
-            // CutBtn
-            // 
-            resources.ApplyResources(this.CutBtn, "CutBtn");
-            this.CutBtn.Name = "CutBtn";
-            this.CutBtn.UseVisualStyleBackColor = true;
-            this.CutBtn.Click += new System.EventHandler(this.CutBtn_Click);
+            resources.ApplyResources(this.G_code_name, "G_code_name");
+            this.G_code_name.Name = "G_code_name";
             // 
             // UploadBtn
             // 
@@ -379,9 +352,6 @@
         internal System.Windows.Forms.ToolStripButton tsbZoom;
         internal System.Windows.Forms.ToolStripButton tsbFence;
         internal System.Windows.Forms.ToolStripButton tsbPan;
-        private System.Windows.Forms.Button PasteBtn;
-        private System.Windows.Forms.Button CopyBtn;
-        private System.Windows.Forms.Button CutBtn;
         private System.Windows.Forms.Button UploadBtn;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button OpenBtn;

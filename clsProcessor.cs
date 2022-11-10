@@ -955,25 +955,33 @@ class clsProcessor
             }
             else
             {
-                //Word 
-                mCurAddress.Label = Char.ToUpper(ncWord.Value[0]);
-                mCurAddress.StringValue = ncWord.Groups[1].Value;
-                Console.WriteLine(ncWord.Groups[1].Value);
-                mCurAddress.Value = float.Parse(ncWord.Groups[1].Value);
-                if (mCurAddress.Matches(mMotion.SubCall))
+                try
                 {
-                    //M98 P. Use the next word value as the sub name 
-                    clsProg retProg = FindSubByValue(int.Parse(ncWord.NextMatch().Groups[1].Value));
-                    if ((retProg != null))
+                    //Word 
+                    mCurAddress.Label = Char.ToUpper(ncWord.Value[0]);
+                    mCurAddress.StringValue = ncWord.Groups[1].Value;
+                    Console.WriteLine(ncWord.Groups[1].Value);
+                    mCurAddress.Value = float.Parse(ncWord.Groups[1].Value);
+                    if (mCurAddress.Matches(mMotion.SubCall))
                     {
-                        if (retProg.TimesCalled > 100) return;//Prevent infinate loop 
-                        ProcessSubWords(retProg);//Call this subagain 
+                        //M98 P. Use the next word value as the sub name 
+                        clsProg retProg = FindSubByValue(int.Parse(ncWord.NextMatch().Groups[1].Value));
+                        if ((retProg != null))
+                        {
+                            if (retProg.TimesCalled > 100) return;//Prevent infinate loop 
+                            ProcessSubWords(retProg);//Call this subagain 
+                        }
+                    }
+                    else
+                    {
+                        EvaluateWord();
                     }
                 }
-                else
+                catch
                 {
-                    EvaluateWord();
+
                 }
+               
             }
         }
     }

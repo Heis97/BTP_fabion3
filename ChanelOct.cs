@@ -49,16 +49,43 @@ namespace BTP
         public int ACSC_POSITIVE_DIRECTION  { get; internal set; }
         public object ACSC_AMF_RELATIVE { get; internal set; }
 
-
+        public double xy_vel;
+        public double z_vel;
+        public double e_vel;
         public ChanelOct()
         {
             ACSC_AMF_RELATIVE = 1;
             device = new DeviceMarlin(ConnectionData.Comport);
+            xy_vel = 600;
+            z_vel = 300;
+            e_vel = 60;
         }
         public void HomeAll()
         {
             device.sendCommand("G28");
         }
+
+
+        public void upload_program(string[] prog)
+        {
+            device.sendCommand("M30 buf.gco");
+            device.sendCommand("M28 buf.gco");
+            foreach(var line in prog) device.sendCommand(line);
+            device.sendCommand("M29");
+
+        }
+
+        public void start_program()
+        {
+            device.sendCommand("M23 buf.gco");
+            device.sendCommand("M24");
+        }
+
+        public void pause_program()
+        {
+            device.sendCommand("M25");
+        }
+
 
         public void HomeDisp(int num)
         {
@@ -70,7 +97,7 @@ namespace BTP
         }
         public void startAutoPos()
         {
-            device.sendCommand("M154 S15");
+            device.sendCommand("M154 S25");
         }
         public void zeroDisp(int num)
         {
@@ -84,12 +111,12 @@ namespace BTP
         internal void ToPoint(object move_type, int Axis, int v)
         {
             device.sendCommand("G91", new string[] { }, new object[] { });
-            device.sendCommand("G1", new string[] { axis_from_num(Axis),"F" }, new object[] { v,300 });
+            device.sendCommand("G1", new string[] { axis_from_num(Axis),"F" }, new object[] { v, vel_from_num(Axis) });
         }
         internal void ToPoint(object move_type, int Axis, double v)
         {
             device.sendCommand("G91", new string[] { }, new object[] { });
-            device.sendCommand("G1", new string[] { axis_from_num(Axis), "F" }, new object[] { v,300 });
+            device.sendCommand("G1", new string[] { axis_from_num(Axis), "F" }, new object[] { v, vel_from_num(Axis) });
         }
 
         internal void fan_on( int num)
@@ -99,6 +126,20 @@ namespace BTP
         internal void fan_off(int num)
         {
             device.sendCommand("M107", new string[] { "P" }, new object[] { num });
+        }
+        double vel_from_num(int axis)
+        {
+            double vel = 0;
+            switch (axis)
+            {
+                case 0: vel = xy_vel; break;
+                case 1: vel = xy_vel; break;
+                case 4: vel = z_vel; break;
+                case 2: vel = z_vel; break;
+                case 6: vel = z_vel; break;
+                case 7: vel = e_vel; break;
+            }
+            return vel;
         }
         string axis_from_num(int axis)
         {

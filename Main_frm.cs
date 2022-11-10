@@ -213,33 +213,36 @@ namespace BTP
         // Обработка диаметров и прочей статической информации 
         private void SendDiam()
         {
+            ConnectionData.Value.xy_vel = ConnectionData.SetXYVel * 60;
+            ConnectionData.Value.z_vel = ConnectionData.SetZVel * 60;
+            ConnectionData.Value.e_vel = ConnectionData.SetPtVel*60;
             // Задание начальных скоростей
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_0, ConnectionData.SetXYVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_1, ConnectionData.SetXYVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_2, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_3, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_4, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_5, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_6, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_7, ConnectionData.SetPtVel);
+            /* ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_0, ConnectionData.SetXYVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_1, ConnectionData.SetXYVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_2, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_3, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_4, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_5, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_6, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_7, ConnectionData.SetPtVel);
 
-            // Запись диаметров
-            ConnectionData.Value.WriteVariable(ConnectionData.S1Diameter, "S1Diameter", ConnectionData.Value.ACSC_NONE);
-            ConnectionData.Value.WriteVariable(ConnectionData.S2Diameter, "S2Diameter", ConnectionData.Value.ACSC_NONE);
-            ConnectionData.Value.WriteVariable(ConnectionData.S3Diameter, "S3Diameter", ConnectionData.Value.ACSC_NONE);
+             // Запись диаметров
+             ConnectionData.Value.WriteVariable(ConnectionData.S1Diameter, "S1Diameter", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.S2Diameter, "S2Diameter", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.S3Diameter, "S3Diameter", ConnectionData.Value.ACSC_NONE);
 
-            ConnectionData.Value.WriteVariable(ConnectionData.X_Laser_offset, "X_Laser_offset", ConnectionData.Value.ACSC_NONE);
-            ConnectionData.Value.WriteVariable(ConnectionData.Y_Laser_offset, "Y_Laser_offset", ConnectionData.Value.ACSC_NONE);
-            ConnectionData.Value.WriteVariable(ConnectionData.Z_Laser_offset, "Z_Laser_offset", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.X_Laser_offset, "X_Laser_offset", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.Y_Laser_offset, "Y_Laser_offset", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.Z_Laser_offset, "Z_Laser_offset", ConnectionData.Value.ACSC_NONE);
 
-            ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityX,    "VelX", ConnectionData.Value.ACSC_BUFFER_4);
-            ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityY,    "VelY", ConnectionData.Value.ACSC_BUFFER_4);
-            ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityCam,  "VelCam", ConnectionData.Value.ACSC_BUFFER_4);
-            ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityZ,    "Veloc", ConnectionData.Value.ACSC_BUFFER_4);
+             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityX,    "VelX", ConnectionData.Value.ACSC_BUFFER_4);
+             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityY,    "VelY", ConnectionData.Value.ACSC_BUFFER_4);
+             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityCam,  "VelCam", ConnectionData.Value.ACSC_BUFFER_4);
+             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityZ,    "Veloc", ConnectionData.Value.ACSC_BUFFER_4);
 
-            Console.WriteLine("after send_vel");
-            // Системые переменные
-            ConnectionData.Value.WriteVariable(0.01, "XSEGRMIN", ConnectionData.Value.ACSC_NONE);
+             Console.WriteLine("after send_vel");
+             // Системые переменные
+             ConnectionData.Value.WriteVariable(0.01, "XSEGRMIN", ConnectionData.Value.ACSC_NONE);*/
         }
 
         // Загрузка данных при старте из файла+-
@@ -257,6 +260,8 @@ namespace BTP
             ConnectionData.MaxPFVel = Convert.ToDouble(manager.GetPrivateString("Velocity", "PFVelocity"));
             ConnectionData.MaxCTVel = Convert.ToDouble(manager.GetPrivateString("Velocity", "CTVelocity"));
             ConnectionData.MaxCBVel = Convert.ToDouble(manager.GetPrivateString("Velocity", "CBVelocity"));
+
+
 
             // Скорости поиска нулевой точки
             ConnectionData.HomeVelocityX = Convert.ToDouble(manager.GetPrivateString("Homing", "HomeVelocityX"));
@@ -481,11 +486,6 @@ namespace BTP
 
         bool init_bit = false;
 
-        private void timer_printer_res_Tick(object sender, EventArgs e)
-        {
-
-        }
-
         public void SetCommunication()
         {
             ConnectionData.Comport = SelectDrv.getPort();
@@ -521,7 +521,7 @@ namespace BTP
             LoadData();
             SetCommunication();
             programm_buffer = ConnectionData.Value.ACSC_BUFFER_1;
-            //  SendDiam();
+            SendDiam();
         }
 
         Manual_frm Manual;
@@ -620,83 +620,12 @@ namespace BTP
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            int[] ax = new int[]
-                                    {
-                                        ConnectionData.Value.ACSC_AXIS_0,
-                                        ConnectionData.Value.ACSC_AXIS_1,
-                                        ConnectionData.Value.ACSC_AXIS_2,
-                                        ConnectionData.Value.ACSC_AXIS_3,
-                                        ConnectionData.Value.ACSC_AXIS_4,
-                                        ConnectionData.Value.ACSC_AXIS_5,
-                                        ConnectionData.Value.ACSC_AXIS_6,
-                                        ConnectionData.Value.ACSC_AXIS_7,
-                                        -1
-                                    };
-            //ConnectionData.ProgramStart = false;
-            if (ConnectionData.ProgramStart == 30)
-            {
-                ConnectionData.Value.ExtToPointM(
-                    ConnectionData.Value.ACSC_AMF_VELOCITY, ax, 
-                    SaveCoordinates,
-                    ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0),
-                    ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0));
-                //ConnectionData.Value.HaltM(ax);
-                ConnectionData.Value.EndSequenceM(ax);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_0, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_1, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_2, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_3, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_4, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_5, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_6, 100000);
-                ConnectionData.Value.RunBuffer(programm_buffer);
-                ConnectionData.ProgramStart = 10;
-                PauseSignal = false;
-            }
-            else
-            {
-
-                if (Convert.ToBoolean(
-                    ((bool)ConnectionData.Value.GetProgramState(programm_buffer)) &
-                   (bool) (ConnectionData.Value.ACSC_PST_RUN)) == false)
-                {
-                    if (Convert.ToBoolean((bool)ConnectionData.Value.GetProgramState(programm_buffer)
-                        & (bool)(ConnectionData.Value.ACSC_PST_COMPILED)) == true)
-                    {
-
-                        ConnectionData.Value.RunBuffer(programm_buffer);
-                        ConnectionData.ProgramStart = 10;
-                        ConnectionData.DateStr = DateTime.Now.ToString("dd MMMM yyyy");
-                        ConnectionData.TimeStr = DateTime.Now.ToString("HH:mm:ss");
-                    }
-                }
-                else
-                    {
-                        MessageBox.Show("Buffer not compiled");
-                    }    
-            }
+            ConnectionData.Value.start_program();
         }
 
         private void StopBtn_Click(object sender, EventArgs e)
         {
-            axes = new int[]
-                           {
-                             ConnectionData.Value.ACSC_AXIS_0,
-                             ConnectionData.Value.ACSC_AXIS_1,
-                             ConnectionData.Value.ACSC_AXIS_2,
-                             ConnectionData.Value.ACSC_AXIS_3,
-                             ConnectionData.Value.ACSC_AXIS_4,
-                             ConnectionData.Value.ACSC_AXIS_5,
-                             ConnectionData.Value.ACSC_AXIS_6,
-                             ConnectionData.Value.ACSC_AXIS_7,
-                             -1
-                           };
-            if ((ConnectionData.ProgramStart == 10) || (ConnectionData.ProgramStart == 30))
-            {
-                ConnectionData.Value.HaltM(axes);
-                ConnectionData.Value.StopBuffer(programm_buffer);
-                ConnectionData.ProgramStart = 20;
-            }
+            ConnectionData.Value.pause_program();
         }
 
         bool PauseSignal;
@@ -705,37 +634,7 @@ namespace BTP
 
         private void PauseBtn_Click(object sender, EventArgs e)
         {
-            axes = new int[]
-               {
-                             ConnectionData.Value.ACSC_AXIS_0,
-                             ConnectionData.Value.ACSC_AXIS_1,
-                             ConnectionData.Value.ACSC_AXIS_2,
-                             ConnectionData.Value.ACSC_AXIS_3,
-                             ConnectionData.Value.ACSC_AXIS_4,
-                             ConnectionData.Value.ACSC_AXIS_5,
-                             ConnectionData.Value.ACSC_AXIS_6,
-                             ConnectionData.Value.ACSC_AXIS_7,
-                             -1
-               };
-            if (ConnectionData.ProgramStart == 10)
-                {
-                    ConnectionData.Value.HaltM(axes);
-                    ConnectionData.Value.EndSequenceM(axes);
-                    ConnectionData.Value.SuspendBuffer(programm_buffer);
-                    SaveCoordinates = new double[] 
-                        {
-                                ConnectionData.FeedBackX,
-                                ConnectionData.FeedBackY,
-                                ConnectionData.FeedBackZ1,
-                                ConnectionData.FeedBackZ2,
-                                ConnectionData.FeedBackZ3,
-
-                        };
-                    Line = ConnectionData.ExecLine;
-                    PauseSignal = true;
-                    ConnectionData.ProgramStart = 30;
-                }
-
+            ConnectionData.Value.pause_program();
         }
 
         private void ResetBtn_Click(object sender, EventArgs e)

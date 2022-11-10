@@ -348,23 +348,14 @@ namespace BTP
             {
                 try
                 {
-                    var conv = new ConverterGCodeToACS();
-                    var acs_code = conv.ConvertToAcsShort(GCodeInputBox.Text);
-                    ConnectionData.Value.LoadBuffer(1, acs_code);//re(ConnectionData.Value.ACSC_BUFFER_2, GCodeInputBox.Text);
-                    try
-                    {
-                        ConnectionData.Value.CompileBuffer(ConnectionData.Value.ACSC_BUFFER_1);
-                        ConnectionData.first_bit = false;
-                        MessageBox.Show(Dict.LangStrings.SavedOK);
-                        if (ConnectionData.BufferError != 0)
-                        {
-                            MessageBox.Show(Dict.LangStrings.WrongCompile + ConnectionData.BufferErrorString.ToString());
-                        }
-                    }
-                    catch (Exception Ex)
-                    {
-                        MessageBox.Show(Ex.Message);
-                    }
+                    var code = GCodeInputBox.Text;
+                    var progr = code.Split('\n');
+                    var progr_f = filtrCode( code.Split('\n'));
+                    var text_d = "";
+                    foreach (var line in progr_f) text_d += line+"\r\n";
+
+                    GCodeInputBox.Text = text_d;
+                    ConnectionData.Value.upload_program(progr_f);
                 }
                 catch (Exception Ex)
                 {
@@ -373,19 +364,25 @@ namespace BTP
             }
         }
 
-        private void PasteBtn_Click(object sender, EventArgs e)
+        string[] filtrCode(string[] code)
         {
-            GCodeInputBox.Paste();
-        }
-
-        private void CutBtn_Click(object sender, EventArgs e)
-        {
-            GCodeInputBox.Cut();
-        }
-
-        private void CopyBtn_Click(object sender, EventArgs e)
-        {
-            GCodeInputBox.Copy();
+            var code_f = new List<string>();
+            for(int i = 0; i < code.Length; i++)
+            {
+                if (code[i].Contains(";"))
+                {
+                    var ind_err = code[i].IndexOf(";");
+                    code[i] = code[i].Substring(0,ind_err);
+                }
+                //code[i] = code[i].Replace(" ", "");
+                code[i] = code[i].Replace("\r", "");
+                code[i] = code[i].Replace("\n", "");
+                if (code[i].Length>1)
+                {
+                    code_f.Add((code[i]));
+                }
+            }
+            return code_f.ToArray();
         }
 
         private void Program_frm_Shown(object sender, EventArgs e)

@@ -49,6 +49,7 @@ namespace BTP
                 {
                     timer_printer_pos.Enabled = true;
                     ConnectionData.Value.startAutoPos();
+                    ConnectionData.Value.device.sendCommand("G91");
                 }
             }
         }
@@ -340,25 +341,23 @@ namespace BTP
         {
             ConnectionData.SetXYVel = (double)XYVelocity.Value / 100 * ConnectionData.MaxXYVel;
             XYVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetXYVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_0, ConnectionData.SetXYVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_1, ConnectionData.SetXYVel);
+
+            ConnectionData.Value.xy_vel = ConnectionData.SetXYVel * 60;
+;
         }
 
         private void Zvelocity_Scroll(object sender, EventArgs e)
         {
             ConnectionData.SetZVel = (double)Zvelocity.Value / 100 * ConnectionData.MaxZVel;
             ZVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_2, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_3, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_4, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_5, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_6, ConnectionData.SetZVel);
+            ConnectionData.Value.z_vel = ConnectionData.SetZVel * 60;
         }
 
         private void PtVelocity_Scroll(object sender, EventArgs e)
         {
             ConnectionData.SetPtVel = (double)PtVelocity.Value / 100 * ConnectionData.MaxPtVel;
             PtVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetPtVel);
+            ConnectionData.Value.e_vel = ConnectionData.SetPtVel * 60;
         }
 
         private void PFVelocity_Scroll(object sender, EventArgs e)
@@ -709,52 +708,15 @@ namespace BTP
         private void S1Btn_Click(object sender, EventArgs e)
         {
             ConnectionData.Value.setActiveDisp(2);
-                if (S1Btn.BackColor == SystemColors.Control)
-                {
-                    
-                    prev_head = head;
-                    S1Btn.BackColor = Color.YellowGreen;
-                    head = 1;
-                    ConnectionData.HeadNum = 2;
-                    S2Btn.BackColor = SystemColors.Control;
-                    S3Btn.BackColor = SystemColors.Control;
-                    S1GB.Enabled = true;
-                    S2GB.Enabled = false;
-                    S3GB.Enabled = false;
-
-                    switch (prev_head)
-                    {
-                        case 1:
-                            minX = ConnectionData.XZoffsets;
-                            minY = ConnectionData.YZoffsets;
-                            break;
-                        case 2:
-                            minX = ConnectionData.XUoffsets;
-                            minY = ConnectionData.YUoffsets;
-                            break;
-                        case 3:
-                            minX = ConnectionData.XVoffsets;
-                            minY = ConnectionData.YVoffsets;
-                            break;
-                        case 4:
-                            minX = ConnectionData.WXaxis;
-                            minY = ConnectionData.WYaxis;
-                            break;
-                        case 5:
-                            minX = ConnectionData.XAoffsets;
-                            minY = ConnectionData.YAoffsets;
-                            break;
-                        default:
-                            minX = 0;
-                            minY = 0;
-                            break;
-                    }
-
-                    OffsetX = ConnectionData.FeedBackX - ConnectionData.ToolX + ConnectionData.XZoffsets - minX;
-                    OffsetY = ConnectionData.FeedBackY - ConnectionData.ToolY + ConnectionData.YZoffsets - minY;
-
-
-                }
+            if (S1Btn.BackColor == SystemColors.Control)
+            {
+                S1Btn.BackColor = Color.YellowGreen;
+                S2Btn.BackColor = SystemColors.Control;
+                S3Btn.BackColor = SystemColors.Control;
+                S1GB.Enabled = true;
+                S2GB.Enabled = false;
+                S3GB.Enabled = false;
+            }
             
         }
 
@@ -762,101 +724,29 @@ namespace BTP
         {
             ConnectionData.Value.setActiveDisp(0);
             if (S2Btn.BackColor == SystemColors.Control)
-                {
-                    prev_head = head;
-                    S2Btn.BackColor = Color.YellowGreen;
-                    head = 2;
-                    ConnectionData.HeadNum = 3;
-                    S1Btn.BackColor = SystemColors.Control;
-                    S3Btn.BackColor = SystemColors.Control;
-                    S1GB.Enabled = false;
-                    S2GB.Enabled = true;
-                    S3GB.Enabled = false;
-
-                    switch (prev_head)
-                    {
-                        case 1:
-                            minX = ConnectionData.XZoffsets;
-                            minY = ConnectionData.YZoffsets;
-                            break;
-                        case 2:
-                            minX = ConnectionData.XUoffsets;
-                            minY = ConnectionData.YUoffsets;
-                            break;
-                        case 3:
-                            minX = ConnectionData.XVoffsets;
-                            minY = ConnectionData.YVoffsets;
-                            break;
-                        case 4:
-                            minX = ConnectionData.WXaxis;
-                            minY = ConnectionData.WYaxis;
-                            break;
-                        case 5:
-                            minX = ConnectionData.XAoffsets;
-                            minY = ConnectionData.YAoffsets;
-                            break;
-                        default:
-                            minX = 0;
-                            minY = 0;
-                            break;
-                    }
-
-                    OffsetX = ConnectionData.FeedBackX - ConnectionData.ToolX + ConnectionData.XUoffsets - minX;
-                    OffsetY = ConnectionData.FeedBackY - ConnectionData.ToolY + ConnectionData.YUoffsets - minY;
-
-
-                }
-            
+            {
+                S2Btn.BackColor = Color.YellowGreen;
+                S1Btn.BackColor = SystemColors.Control;
+                S3Btn.BackColor = SystemColors.Control;
+                S1GB.Enabled = false;
+                S2GB.Enabled = true;
+                S3GB.Enabled = false;
+            }            
         }
 
         private void S3Btn_Click(object sender, EventArgs e)
         {
             ConnectionData.Value.setActiveDisp(1);
             if (S3Btn.BackColor == SystemColors.Control)
-                {
-                    prev_head = head;
-                    S3Btn.BackColor = Color.YellowGreen;
-                    head = 3;
-                    ConnectionData.HeadNum = 4;
-                    S1Btn.BackColor = SystemColors.Control;
-                    S2Btn.BackColor = SystemColors.Control;
-                    S1GB.Enabled = false;
-                    S2GB.Enabled = false;
+            {
+                S3Btn.BackColor = Color.YellowGreen;
+                S1Btn.BackColor = SystemColors.Control;
+                S2Btn.BackColor = SystemColors.Control;
+                S1GB.Enabled = false;
+                S2GB.Enabled = false;
+                S3GB.Enabled = true;
 
-
-                    switch (prev_head)
-                    {
-                        case 1:
-                            minX = ConnectionData.XZoffsets;
-                            minY = ConnectionData.YZoffsets;
-                            break;
-                        case 2:
-                            minX = ConnectionData.XUoffsets;
-                            minY = ConnectionData.YUoffsets;
-                            break;
-                        case 3:
-                            minX = ConnectionData.XVoffsets;
-                            minY = ConnectionData.YVoffsets;
-                            break;
-                        case 4:
-                            minX = ConnectionData.WXaxis;
-                            minY = ConnectionData.WYaxis;
-                            break;
-                        case 5:
-                            minX = ConnectionData.XAoffsets;
-                            minY = ConnectionData.YAoffsets;
-                            break;
-                        default:
-                            minX = 0;
-                            minY = 0;
-                            break;
-                    }
-
-                    OffsetX = ConnectionData.FeedBackX - ConnectionData.ToolX + ConnectionData.XVoffsets - minX;
-                    OffsetY = ConnectionData.FeedBackY - ConnectionData.ToolY + ConnectionData.YVoffsets - minY;
-
-
-                }
+            }
             
         }
 
@@ -1046,12 +936,8 @@ namespace BTP
         {
             if (ConnectionData.bConnected)
             {
-                string CurDir = Application.StartupPath + "\\Macro";
-
                 XYVelocity.Value = (int)(100 * ConnectionData.SetXYVel / ConnectionData.MaxXYVel);
                 Zvelocity.Value = (int)(100 * ConnectionData.SetZVel / ConnectionData.MaxZVel);
-                Console.WriteLine("ConnectionData.SetPtVel: " + ConnectionData.SetPtVel);
-                Console.WriteLine("ConnectionData.MaxPtVel: " + ConnectionData.MaxPtVel);
                 PtVelocity.Value = (int)(100 * ConnectionData.SetPtVel / ConnectionData.MaxPtVel);
 
                 XYVelocityTB.Text = string.Format("{0:F2}", ConnectionData.SetXYVel);
@@ -1065,89 +951,6 @@ namespace BTP
                 S1DiamPrTB.Text = string.Format("{0:F0}", ConnectionData.S1ProcDiameter);
                 S2DiamPrTB.Text = string.Format("{0:F0}", ConnectionData.S2ProcDiameter);
                 S3DiamPrTB.Text = string.Format("{0:F0}", ConnectionData.S3ProcDiameter);
-
-
-                DirectoryInfo dir = new DirectoryInfo(@CurDir);
-
-
-                //UpdateDataThread = new Thread(new ThreadStart(UpdateData));
-                //UpdateDataThread.IsBackground = true;
-                //UpdateDataThread.Start();
-
-                OffsetX = ConnectionData.OffsetXZero;
-                OffsetY = ConnectionData.OffsetYZero;
-
-                switch (ConnectionData.ZeroHead)
-                {
-                    case 0:
-                        S1GetZeroBtn.BackColor = SystemColors.Control;
-                        S2GetZeroBtn.BackColor = SystemColors.Control;
-                        S3GetZeroBtn.BackColor = SystemColors.Control;
-                        break;
-                    case 1:
-                        S1GetZeroBtn.BackColor = Color.YellowGreen;
-                        S2GetZeroBtn.BackColor = SystemColors.Control;
-                        S3GetZeroBtn.BackColor = SystemColors.Control;
-                        OffsetZ1 = ConnectionData.OffsetZZero;
-                        ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.ZZero, "ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(2, "PrevTool", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(2, "StartTool", ConnectionData.Value.ACSC_NONE);
-                        StartTool = 1;
-                        break;
-                    case 2:
-                        S1GetZeroBtn.BackColor = SystemColors.Control;
-                        S2GetZeroBtn.BackColor = Color.YellowGreen;
-                        S3GetZeroBtn.BackColor = SystemColors.Control;
-                        OffsetZ2 = ConnectionData.OffsetZZero;
-                        ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.ZZero, "ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(3, "PrevTool", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(3, "StartTool", ConnectionData.Value.ACSC_NONE);
-                        StartTool = 2;
-                        break;
-                    case 3:
-                        S1GetZeroBtn.BackColor = SystemColors.Control;
-                        S2GetZeroBtn.BackColor = SystemColors.Control;
-                        S3GetZeroBtn.BackColor = Color.YellowGreen;
-                        OffsetZ3 = ConnectionData.OffsetZZero;
-                        ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.ZZero, "ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(4, "PrevTool", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(4, "StartTool", ConnectionData.Value.ACSC_NONE);
-                        StartTool = 3;
-                        break;
-                    case 4:
-                        S1GetZeroBtn.BackColor = SystemColors.Control;
-                        S2GetZeroBtn.BackColor = SystemColors.Control;
-                        S3GetZeroBtn.BackColor = SystemColors.Control;
-                        OffsetW = ConnectionData.OffsetZZero;
-                        ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.ZZero, "ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(5, "PrevTool", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(5, "StartTool", ConnectionData.Value.ACSC_NONE);
-                        StartTool = 4;
-                        break;
-                    case 5:
-                        S1GetZeroBtn.BackColor = SystemColors.Control;
-                        S2GetZeroBtn.BackColor = SystemColors.Control;
-                        S3GetZeroBtn.BackColor = SystemColors.Control;
-                        OffsetA = ConnectionData.OffsetZZero;
-                        ConnectionData.Value.WriteVariable(ConnectionData.XZero, "XGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.YZero, "YGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(ConnectionData.ZZero, "ZGLOBAL", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(6, "PrevTool", ConnectionData.Value.ACSC_NONE);
-                        ConnectionData.Value.WriteVariable(6, "StartTool", ConnectionData.Value.ACSC_NONE);
-                        StartTool = 5;
-                        break;
-                    default:
-
-                    break;
-                }
             }
         }
 
@@ -1187,8 +990,7 @@ namespace BTP
             {
                 ConnectionData.SetXYVel = Convert.ToDouble(XYVelocityTB.Text);
                 XYVelocity.Value = (int)(100 * ConnectionData.SetXYVel / ConnectionData.MaxXYVel);
-                ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_0, ConnectionData.SetXYVel);
-                ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_1, ConnectionData.SetXYVel);
+                ConnectionData.Value.xy_vel = ConnectionData.SetXYVel * 60;
             }
         }
 
@@ -2677,7 +2479,7 @@ namespace BTP
             {
                 if (res.Length != 0)
                 {
-                    Console.Write(res);
+                    //Console.Write(res);
                     var res_spl = res.Split('\n');
                     for (int i = 0; i < res_spl.Length; i++)
                     {

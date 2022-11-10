@@ -49,10 +49,9 @@ namespace Connection
         {
             try
             {
-                Console.WriteLine("try open1 " + port + " " + baudrate);
                 serialPort.PortName = port;
                 serialPort.BaudRate = baudrate;
-                Console.WriteLine("try open2 " + port + " " + baudrate);
+                Console.WriteLine("try open " + port + " " + baudrate);
                 serialPort.Open();
                 isConnected = true;
                 Console.WriteLine("open " + port + " " + baudrate);
@@ -125,10 +124,18 @@ namespace Connection
         {
             try
             {
+                
                 var res = serialPort.ReadExisting();
                 if(res!=null)
                     if(res.Length!=0)
+                    {
+                        if (buff.Length > 1000)
+                        {
+                            buff.Clear();
+                        }
                         buff.Append(res);
+                        
+                    }                      
                 return res;
             }
             catch
