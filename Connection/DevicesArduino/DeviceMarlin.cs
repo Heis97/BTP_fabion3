@@ -54,7 +54,7 @@ namespace Connection
             serialPort.Write(command_marl);
             cur_com++;
             reseav();
-            Thread.Sleep(2);
+            Thread.Sleep(1);
             bool err = false;
            // Console.WriteLine("res_all: "+res_all+" end");
             try

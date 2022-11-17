@@ -110,13 +110,30 @@ namespace BTP
         }
         internal void ToPoint(object move_type, int Axis, int v)
         {
-            device.sendCommand("G91", new string[] { }, new object[] { });
+            device.sendCommand("G91");
             device.sendCommand("G1", new string[] { axis_from_num(Axis),"F" }, new object[] { v, vel_from_num(Axis) });
         }
         internal void ToPoint(object move_type, int Axis, double v)
         {
-            device.sendCommand("G91", new string[] { }, new object[] { });
+            device.sendCommand("G91");
             device.sendCommand("G1", new string[] { axis_from_num(Axis), "F" }, new object[] { v, vel_from_num(Axis) });
+        }
+
+        internal void JogM(object aCSC_AMF_VELOCITY, int[] axes, int[] directions, double setXYVel)
+        {
+            //throw new NotImplementedException();
+        }
+
+        internal void Jog(int Axis, double veloc)
+        {
+            string sign = "";
+            if (veloc < 0) sign = "-";
+            device.sendCommand("G1", new string[] { axis_from_num(Axis), "F" }, new object[] { sign+ "10", vel_from_num(Axis) });
+        }
+
+        internal void Kill(int aCSC_AXIS_0)
+        {
+            device.sendCommand("M410");
         }
 
         internal void fan_on( int num)
@@ -316,20 +333,7 @@ namespace BTP
             throw new NotImplementedException();
         }
 
-        internal void JogM(object aCSC_AMF_VELOCITY, int[] axes, int[] directions, double setXYVel)
-        {
-            //throw new NotImplementedException();
-        }
-
-        internal void Jog(object aCSC_AMF_VELOCITY, int aCSC_AXIS_1, double v)
-        {
-           // throw new NotImplementedException();
-        }
-
-        internal void Kill(int aCSC_AXIS_0)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         
         internal void LoadBuffersFromFile(string macrofile)

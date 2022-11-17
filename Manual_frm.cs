@@ -409,7 +409,7 @@ namespace BTP
             
             try
             {
-                ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, axis, veloc);
+                ConnectionData.Value.Jog(axis, veloc);
             }
             catch (COMException Ex)
             {
@@ -560,7 +560,8 @@ namespace BTP
 
         private void UVLightBtn_Click(object sender, EventArgs e)
         {
-            if (ConnectionData.bConnected)
+            ConnectionData.Value.device.sendCommand("M410");
+            /*if (ConnectionData.bConnected)
             {
                 if (UVLightBtn.BackColor == SystemColors.Control)
                 {
@@ -574,7 +575,7 @@ namespace BTP
                     ConnectionData.Value.WriteVariable(ConnectionData.Value.ReadVariable("OutVar", ConnectionData.Value.ACSC_NONE) - 4, "OutVar", ConnectionData.Value.ACSC_NONE);
                     //ConnectionData.Value.SetOutput(3, 10, 0); // Выключение выхода OUT(0).2
                 }
-            }
+            }*/
         }
 
         private void JogXPBtn_MouseUp(object sender, MouseEventArgs e)
@@ -915,6 +916,7 @@ namespace BTP
         private void JogZS1Pos_MouseUp(object sender, MouseEventArgs e)
         {
             ConnectionData.Value.Kill(Z1);
+            Console.WriteLine("up");
         }
 
         private void JogZS1Min_MouseUp(object sender, MouseEventArgs e)
@@ -930,6 +932,7 @@ namespace BTP
         private void JogZS1Pos_MouseDown(object sender, MouseEventArgs e)
         {
             jogAxis(Z1, ConnectionData.SetZVel);
+            Console.WriteLine("down");
         }
 
         private void Manual_frm_Shown(object sender, EventArgs e)

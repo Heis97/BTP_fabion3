@@ -648,7 +648,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_12, -ConnectionData.SetCTVel);
+                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_12, -ConnectionData.SetCTVel);
                 }
                 catch (COMException Ex)
                 {
@@ -680,7 +680,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_12, ConnectionData.SetCTVel);
+                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_12, ConnectionData.SetCTVel);
                 }
                 catch (COMException Ex)
                 {
@@ -702,7 +702,7 @@ namespace BTP
                 {
                     if ((ConnectionData.FeedBackCam2Y >= 0) && (ConnectionData.FeedBackCam2Y < ConnectionData.Camera2YStrokeMax))
                     {
-                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_11, ConnectionData.SetCBVel);
+                        ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_11, ConnectionData.SetCBVel);
                     }
                     else
                     {
@@ -725,7 +725,7 @@ namespace BTP
                 {
                     if ((ConnectionData.FeedBackCam2Y > 0) && (ConnectionData.FeedBackCam2Y <= ConnectionData.Camera2YStrokeMax))
                     {
-                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_11, -ConnectionData.SetCBVel);
+                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_11, -ConnectionData.SetCBVel);
                     }
                     else
                     {
@@ -753,7 +753,7 @@ namespace BTP
                 {
                     if ((ConnectionData.FeedBackCam2X > 0) && (ConnectionData.FeedBackCam2X <= ConnectionData.Camera2XStrokeMax))
                     {
-                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_10, -ConnectionData.SetCBVel);
+                        ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_10, -ConnectionData.SetCBVel);
                     }
                     else
                     {
@@ -781,7 +781,7 @@ namespace BTP
                 {
                     if ((ConnectionData.FeedBackCam2X >= 0) && (ConnectionData.FeedBackCam2X < ConnectionData.Camera2XStrokeMax))
                     {
-                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_10, ConnectionData.SetCBVel);
+                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_10, ConnectionData.SetCBVel);
                     }
                     else
                     {

@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manual_frm));
             this.manual_xyz_gp = new System.Windows.Forms.GroupBox();
+            this.YNeg10 = new System.Windows.Forms.Button();
+            this.ImageY = new System.Windows.Forms.ImageList(this.components);
+            this.JogYMBtn = new System.Windows.Forms.Button();
             this.vels_GP = new System.Windows.Forms.GroupBox();
             this.CBVelocityTB = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -63,8 +66,6 @@
             this.YToolPos = new System.Windows.Forms.Label();
             this.MachinePosY = new System.Windows.Forms.Label();
             this.JogYPBtn = new System.Windows.Forms.Button();
-            this.ImageY = new System.Windows.Forms.ImageList(this.components);
-            this.JogYMBtn = new System.Windows.Forms.Button();
             this.JogXPBtn = new System.Windows.Forms.Button();
             this.ImageX = new System.Windows.Forms.ImageList(this.components);
             this.label10 = new System.Windows.Forms.Label();
@@ -88,7 +89,6 @@
             this.YPos1 = new System.Windows.Forms.Button();
             this.ZToolPos = new System.Windows.Forms.Label();
             this.YPos10 = new System.Windows.Forms.Button();
-            this.YNeg10 = new System.Windows.Forms.Button();
             this.YNeg1 = new System.Windows.Forms.Button();
             this.YNeg01 = new System.Windows.Forms.Button();
             this.XMin001 = new System.Windows.Forms.Button();
@@ -292,6 +292,41 @@
             resources.ApplyResources(this.manual_xyz_gp, "manual_xyz_gp");
             this.manual_xyz_gp.Name = "manual_xyz_gp";
             this.manual_xyz_gp.TabStop = false;
+            // 
+            // YNeg10
+            // 
+            this.YNeg10.BackColor = System.Drawing.SystemColors.ScrollBar;
+            resources.ApplyResources(this.YNeg10, "YNeg10");
+            this.YNeg10.ImageList = this.ImageY;
+            this.YNeg10.Name = "YNeg10";
+            this.YNeg10.UseVisualStyleBackColor = false;
+            this.YNeg10.Click += new System.EventHandler(this.YNeg10_Click);
+            // 
+            // ImageY
+            // 
+            this.ImageY.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageY.ImageStream")));
+            this.ImageY.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImageY.Images.SetKeyName(0, "YM.png");
+            this.ImageY.Images.SetKeyName(1, "YM001.png");
+            this.ImageY.Images.SetKeyName(2, "YM01.png");
+            this.ImageY.Images.SetKeyName(3, "YM1.png");
+            this.ImageY.Images.SetKeyName(4, "YM10.png");
+            this.ImageY.Images.SetKeyName(5, "YP.png");
+            this.ImageY.Images.SetKeyName(6, "YP001.png");
+            this.ImageY.Images.SetKeyName(7, "YP01.png");
+            this.ImageY.Images.SetKeyName(8, "YP1.png");
+            this.ImageY.Images.SetKeyName(9, "YP10.png");
+            this.ImageY.Images.SetKeyName(10, "ZM.png");
+            this.ImageY.Images.SetKeyName(11, "ZP.png");
+            // 
+            // JogYMBtn
+            // 
+            resources.ApplyResources(this.JogYMBtn, "JogYMBtn");
+            this.JogYMBtn.ImageList = this.ImageY;
+            this.JogYMBtn.Name = "JogYMBtn";
+            this.JogYMBtn.UseVisualStyleBackColor = true;
+            this.JogYMBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.JogYMBtn_MouseDown);
+            this.JogYMBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.JogYMBtn_MouseUp);
             // 
             // vels_GP
             // 
@@ -530,32 +565,6 @@
             this.JogYPBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.JogYPBtn_MouseDown);
             this.JogYPBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.JogYPBtn_MouseUp);
             // 
-            // ImageY
-            // 
-            this.ImageY.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageY.ImageStream")));
-            this.ImageY.TransparentColor = System.Drawing.Color.Transparent;
-            this.ImageY.Images.SetKeyName(0, "YM.png");
-            this.ImageY.Images.SetKeyName(1, "YM001.png");
-            this.ImageY.Images.SetKeyName(2, "YM01.png");
-            this.ImageY.Images.SetKeyName(3, "YM1.png");
-            this.ImageY.Images.SetKeyName(4, "YM10.png");
-            this.ImageY.Images.SetKeyName(5, "YP.png");
-            this.ImageY.Images.SetKeyName(6, "YP001.png");
-            this.ImageY.Images.SetKeyName(7, "YP01.png");
-            this.ImageY.Images.SetKeyName(8, "YP1.png");
-            this.ImageY.Images.SetKeyName(9, "YP10.png");
-            this.ImageY.Images.SetKeyName(10, "ZM.png");
-            this.ImageY.Images.SetKeyName(11, "ZP.png");
-            // 
-            // JogYMBtn
-            // 
-            resources.ApplyResources(this.JogYMBtn, "JogYMBtn");
-            this.JogYMBtn.ImageList = this.ImageY;
-            this.JogYMBtn.Name = "JogYMBtn";
-            this.JogYMBtn.UseVisualStyleBackColor = true;
-            this.JogYMBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.JogYMBtn_MouseDown);
-            this.JogYMBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.JogYMBtn_MouseUp);
-            // 
             // JogXPBtn
             // 
             resources.ApplyResources(this.JogXPBtn, "JogXPBtn");
@@ -731,15 +740,6 @@
             this.YPos10.Name = "YPos10";
             this.YPos10.UseVisualStyleBackColor = false;
             this.YPos10.Click += new System.EventHandler(this.YPos10_Click);
-            // 
-            // YNeg10
-            // 
-            this.YNeg10.BackColor = System.Drawing.SystemColors.ScrollBar;
-            resources.ApplyResources(this.YNeg10, "YNeg10");
-            this.YNeg10.ImageList = this.ImageY;
-            this.YNeg10.Name = "YNeg10";
-            this.YNeg10.UseVisualStyleBackColor = false;
-            this.YNeg10.Click += new System.EventHandler(this.YNeg10_Click);
             // 
             // YNeg1
             // 
