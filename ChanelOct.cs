@@ -123,23 +123,24 @@ namespace BTP
         {
             //throw new NotImplementedException();
         }
-
+        //
         internal void Jog(int Axis, double veloc)
         {
             string sign = "";
             if (veloc < 0) sign = "-";
             device.sendCommand("G1", new string[] { axis_from_num(Axis), "F" }, new object[] { sign+ "10", vel_from_num(Axis) });
         }
-
+        //остановка всех осей
         internal void Kill(int aCSC_AXIS_0)
         {
             device.sendCommand("M410");
         }
-
+        //включение переферии
         internal void fan_on( int num)
         {
             device.sendCommand("M106", new string[] { "P"}, new object[] {num });
         }
+        //выключение переферии
         internal void fan_off(int num)
         {
             device.sendCommand("M107", new string[] { "P" }, new object[] { num });
@@ -158,6 +159,7 @@ namespace BTP
             }
             return vel;
         }
+        //вывод номера оси в зависимости от символьного обозначения
         string axis_from_num(int axis)
         {
             string ax = "";
