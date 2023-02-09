@@ -49,6 +49,7 @@ namespace BTP
                 {
                     timer_printer_pos.Enabled = true;
                     ConnectionData.Value.startAutoPos();
+                    ConnectionData.Value.enableExtrud();
                     ConnectionData.Value.device.sendCommand("G91");
                 }
             }

@@ -99,6 +99,10 @@ namespace BTP
         {
             device.sendCommand("M154 S25");
         }
+        public void enableExtrud()
+        {
+            device.sendCommand("M302 S0");
+        }
         public void zeroDisp(int num)
         {
             device.sendCommand("G92", new string[] { "X","Y", axis_from_num(num) }, new object[] { 0,0,0 });
