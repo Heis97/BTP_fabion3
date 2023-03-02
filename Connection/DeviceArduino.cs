@@ -129,10 +129,9 @@ namespace Connection
                 if(res!=null)
                     if(res.Length!=0)
                     {
-                        if (buff.Length > 1000)
-                        {
-                            buff.Clear();
-                        }
+                        //if (buff.Length > 1000)
+                           //buff.Clear();
+                        
                         buff.Append(res);
                         
                     }                      

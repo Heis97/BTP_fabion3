@@ -76,9 +76,14 @@ namespace Connection
                         err = true;
                         buff = new StringBuilder();
                     }
+                    else
+                    {
+                        buff = new StringBuilder();
+                    }
                 }
                 if(err)
                 {
+
                     sendCommand(command);
                 }
                 

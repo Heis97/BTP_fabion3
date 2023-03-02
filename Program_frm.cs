@@ -241,6 +241,8 @@ namespace BTP
             {
                 list_pr.Clear();
                 GCodeInputBox.Text = File.ReadAllText(OpenGCode.FileName);
+
+
                 //list.Clear();
                 list_pr.AddRange(GCodeInputBox.Lines);
                 if (Properties.Settings.Default.Virgin == true)
@@ -305,6 +307,8 @@ namespace BTP
             //     return;
             // }
             // lblStatus.Text = "Processing...";
+
+            list = new List<string>( filtrCode(list.ToArray()));
             GcodeViewer.MotionBlocks.Clear();
 
             //StreamReader sr = new System.IO.StreamReader(fileName);
