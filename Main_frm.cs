@@ -375,7 +375,7 @@ namespace BTP
             string Path = Application.StartupPath + "\\Data\\Settings.dll";
             INIManager manager = new INIManager(Path);
             // IP адрес контроллера
-            manager.WritePrivateString("System", "IPAddress", ConnectionData.ControllerIP);
+          //  manager.WritePrivateString("System", "IPAddress", ConnectionData.ControllerIP);
 
             // Максимальные скорости
             manager.WritePrivateString("Velocity", "XYVelocity", ConnectionData.MaxXYVel.ToString());
@@ -648,9 +648,9 @@ namespace BTP
 
         private void Main_frm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
+           /* try
             {
-                /*
+                
                 if (ConnectionData.Camera1 != null)
                     {
                     ConnectionData.Camera1.Close();
@@ -664,7 +664,7 @@ namespace BTP
                     ConnectionData.Camera2.Dispose();
                     ConnectionData.Camera2 = null;
                 }
-                */
+                
 
                 if (ConnectionData.bConnected)
                 {
@@ -704,7 +704,7 @@ namespace BTP
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
-            }
+            }*/
         }
 
         private void Main_frm_Shown(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Connection;
+using System.Threading;
 
 namespace BTP
 {
@@ -65,25 +66,46 @@ namespace BTP
             device.sendCommand("G28");
         }
 
-
+        string buf_name= "buf2.gco";
         public void upload_program(string[] prog)
         {
-            device.sendCommand("M30 buf.gco");
-            device.sendCommand("M28 buf.gco");
-            foreach(var line in prog) device.sendCommand(line);
+            stopAutoPos();
+            device.sendCommand("M27 S0");
+            device.sendCommand("M30 " + buf_name);
+            Thread.Sleep(300);
+            device.sendCommand("M28 " + buf_name);
+            Thread.Sleep(200);
+            size_program(prog);
+            foreach (var line in prog) device.sendCommand(line);
+            Thread.Sleep(100);
             device.sendCommand("M29");
-
+            startAutoPos();
+        }
+        public void size_program(string[] prog)
+        {
+            int size = 0;
+            for(int i=0; i<prog.Length;i++)
+            {
+                for (int j = 0; j < prog[i].Length; j++)
+                {
+                    size ++;
+                }
+            }
+            Console.WriteLine(size);
         }
 
         public void start_program()
         {
-            device.sendCommand("M23 buf.gco");
+            device.sendCommand("M23 " + buf_name);
             device.sendCommand("M24");
+            device.sendCommand("M27 S100");
         }
 
         public void pause_program()
         {
+           // device.sendCommand("M410");
             device.sendCommand("M25");
+            
         }
 
 
@@ -98,6 +120,12 @@ namespace BTP
         public void startAutoPos()
         {
             device.sendCommand("M154 S25");
+          //  device.sendCommand("M154 S1000");
+        }
+        public void stopAutoPos()
+        {
+            device.sendCommand("M154 S0");
+            //  device.sendCommand("M154 S1000");
         }
         public void enableExtrud()
         {
@@ -209,32 +237,6 @@ namespace BTP
         }
 
         internal double ReadVariable(string v1, int aCSC_NONE, int v2, int v3)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal object GetFault(int x)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void OpenCommDirect()
-        {
-
-            throw new NotImplementedException();
-        }
-
-        internal void OpenCommEthernet(string controllerIP, object aCSC_SOCKET_STREAM_PORT)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void EnableM(int[] axes)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void OpenMessageBuffer(int v)
         {
             throw new NotImplementedException();
         }

@@ -216,6 +216,7 @@
             this.Preeflow_Timer = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer_printer_pos = new System.Windows.Forms.Timer(this.components);
+            this.lab_prog_cur = new System.Windows.Forms.Label();
             this.manual_xyz_gp.SuspendLayout();
             this.vels_GP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CBVelocity)).BeginInit();
@@ -241,6 +242,7 @@
             // 
             // manual_xyz_gp
             // 
+            this.manual_xyz_gp.Controls.Add(this.lab_prog_cur);
             this.manual_xyz_gp.Controls.Add(this.YNeg10);
             this.manual_xyz_gp.Controls.Add(this.JogYMBtn);
             this.manual_xyz_gp.Controls.Add(this.vels_GP);
@@ -1830,6 +1832,11 @@
             this.timer_printer_pos.Interval = 10;
             this.timer_printer_pos.Tick += new System.EventHandler(this.timer_printer_pos_Tick);
             // 
+            // lab_prog_cur
+            // 
+            resources.ApplyResources(this.lab_prog_cur, "lab_prog_cur");
+            this.lab_prog_cur.Name = "lab_prog_cur";
+            // 
             // Manual_frm
             // 
             resources.ApplyResources(this, "$this");
@@ -2064,5 +2071,6 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer_printer_pos;
+        private System.Windows.Forms.Label lab_prog_cur;
     }
 }

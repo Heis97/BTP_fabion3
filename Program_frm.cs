@@ -360,6 +360,9 @@ namespace BTP
 
                     GCodeInputBox.Text = text_d;
                     ConnectionData.Value.upload_program(progr_f);
+                    Console.WriteLine("upload done");
+                   // MessageBox.Show("upload done");
+
                 }
                 catch (Exception Ex)
                 {

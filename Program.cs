@@ -211,14 +211,8 @@ namespace BTP
         public static bool ZS2RLimit { get; set; }
         public static bool ZS3LLimit { get; set; }
         public static bool ZS3RLimit { get; set; }
-        public static bool ZSpLLimit { get; set; }
-        public static bool ZSpRLimit { get; set; }
-        public static bool ZPFLLimit { get; set; }
-        public static bool ZPFRLimit { get; set; }
         public static int ExecLine { get; set; }
         public static int BufferSize { get; set; }
-        public static int BufferError { get; set; }
-        public static int BufferErrorString { get; set; }
         public static bool first_bit { get; set; }
         public static double Camera2XStrokeMax { get; set; }
         public static double Camera2YStrokeMax { get; set; }
@@ -243,30 +237,13 @@ namespace BTP
         public static double AYaxis { get; set; }
         public static double WXaxis { get; set; }
         public static double WYaxis { get; set; }
-        public static double XZoffsets { get; set; }
-        public static double YZoffsets { get; set; }
-        public static double XVoffsets { get; set; }
-        public static double YVoffsets { get; set; }
-        public static double XUoffsets { get; set; }
-        public static double YUoffsets { get; set; }
-        public static double XAoffsets { get; set; }
-        public static double YAoffsets { get; set; }
+
         public static int ProgramStart { get; set; }
-        public static double GlobalX { get; set; }
-        public static double GlobalY { get; set; }
         public static double ToolX { get; set; }
         public static double ToolY { get; set; }
-        public static double FeedBackS1 { get; set; }
-        public static double FeedBackS2 { get; set; }
-        public static double FeedBackS3 { get; set; }
-        public static double FeedBackPF1 { get; set; }
-        public static double FeedBackPF2 { get; set; }
-        public static int HeadNum { get; set; }
         public static double PreeflowDiam { get; set; }
         public static double PetriX { get; set; }
         public static double PetriY { get; set; }
-        public static string DateStr { get; set; }
-        public static string TimeStr { get; set; }
         public static double DrawDishX { get; set; }
         public static double DrawDishY { get; set; }
         public static int DrawMode { get; set; }
@@ -297,9 +274,6 @@ namespace BTP
         public static double Y_Laser_offset { get; set; }
         public static double Z_Laser_offset { get; set; }
 
-        public static int Z1Calibrated { get; set; }
-        public static int Z2Calibrated { get; set; }
-        public static int Z3Calibrated { get; set; }
     }
 
 }

@@ -54,6 +54,47 @@ namespace BTP
                 }
             }
         }
+        private void timer_printer_pos_Tick(object sender, EventArgs e)
+        {
+            var res = ConnectionData.Value.device.reseav();
+            if (res != null)
+            {
+                if (res.Length != 0)
+                {
+                    //Console.Write(res);
+                    var res_spl = res.Split('\n');
+                    for (int i = 0; i < res_spl.Length; i++)
+                    {
+                        var res_spl_2 = res_spl[i].Split(' ');
+                        if (res_spl_2.Length >= 10)
+                        {
+                            if (res_spl_2[0].Contains("cur_pos"))
+                            {
+                                MachinePosX.Text = res_spl_2[1]; MachinePosY.Text = res_spl_2[2]; MachinePosZ.Text = res_spl_2[3];
+                                XToolPos.Text = res_spl_2[6]; YToolPos.Text = res_spl_2[7]; ZToolPos.Text = res_spl_2[8];
+                            }
+                        }
+                        if (res_spl_2.Length >= 4)
+                        {
+                            
+                            if (res_spl_2[0].Contains("SD"))
+                            {
+                                //Console.WriteLine(res);
+                                var prog = res_spl_2[3].Split('/');
+                                try
+                                {
+                                    var cur_pr = Convert.ToInt32(prog[0]);
+                                    var all_pr = Convert.ToInt32(prog[1]);
+                                    lab_prog_cur.Text = cur_pr + " from " + all_pr;
+                                }
+                                catch { }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
         void Reload(string param)
         {
 
@@ -2476,32 +2517,7 @@ namespace BTP
             }
         }
 
-        private void timer_printer_pos_Tick(object sender, EventArgs e)
-        {
-            var res = ConnectionData.Value.device.reseav();
-            if (res != null)
-            {
-                if (res.Length != 0)
-                {
-                    //Console.Write(res);
-                    var res_spl = res.Split('\n');
-                    for (int i = 0; i < res_spl.Length; i++)
-                    {
-                        var res_spl_2 = res_spl[i].Split(' ');
-                        if (res_spl_2.Length >= 10)
-                        {
-                            if (res_spl_2[0].Contains("cur_pos"))
-                            {
-                                MachinePosX.Text = res_spl_2[1]; MachinePosY.Text = res_spl_2[2]; MachinePosZ.Text = res_spl_2[3];
-                                XToolPos.Text = res_spl_2[6]; YToolPos.Text = res_spl_2[7]; ZToolPos.Text = res_spl_2[8];
-                            }
-                        }
-
-                    }
-                }
-
-            }
-        }
+        
     }
 }
 
