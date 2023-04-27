@@ -357,11 +357,11 @@ namespace BTP
                     var progr_f = filtrCode( code.Split('\n'));
                     var text_d = "";
                     foreach (var line in progr_f) text_d += line+"\r\n";
-
+                    
                     GCodeInputBox.Text = text_d;
                     ConnectionData.Value.upload_program(progr_f);
                     Console.WriteLine("upload done");
-                   // MessageBox.Show("upload done");
+                    MessageBox.Show("upload done");
 
                 }
                 catch (Exception Ex)

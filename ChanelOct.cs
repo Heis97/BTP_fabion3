@@ -67,8 +67,11 @@ namespace BTP
         }
 
         string buf_name= "buf2.gco";
+        public string[] prog;
+        public bool prog_loaded;
         public void upload_program(string[] prog)
         {
+            if (prog == null) return;
             stopAutoPos();
             device.sendCommand("M27 S0");
             device.sendCommand("M30 " + buf_name);
@@ -76,11 +79,14 @@ namespace BTP
             device.sendCommand("M28 " + buf_name);
             Thread.Sleep(200);
             size_program(prog);
+            this.prog = (string[])prog.Clone();
             foreach (var line in prog) device.sendCommand(line);
             Thread.Sleep(100);
             device.sendCommand("M29");
             startAutoPos();
         }
+        
+        int[] cur_line;
         public void size_program(string[] prog)
         {
             int size = 0;
@@ -90,8 +96,37 @@ namespace BTP
                 {
                     size ++;
                 }
+                size += 2;
             }
+            cur_line = new int[size];
+            size = 0;
+            for (int i = 0; i < prog.Length; i++)
+            {
+                for (int j = 0; j < prog[i].Length; j++)
+                {
+                    
+                    cur_line[size] = i;
+                    size++;
+                }
+                
+                cur_line[size] = i;
+                size++;
+                
+                cur_line[size] = i;
+                size++;
+            }
+
             Console.WriteLine(size);
+        }
+
+        public int get_cur_line(int cur_byte)
+        {
+
+            if (cur_line != null)
+                if (cur_byte < cur_line.Length)
+                    return cur_line[cur_byte];
+
+            return 0;
         }
 
         public void start_program()
@@ -135,8 +170,11 @@ namespace BTP
         {
             device.sendCommand("G92", new string[] { "X","Y", axis_from_num(num) }, new object[] { 0,0,0 });
         }
+
+        public int active_disp = 0;
         internal void setActiveDisp(int num)
         {
+            active_disp = num;
             device.sendCommand("M302", new string[] { "S"}, new object[] {0 });
             device.sendCommand("", new string[] {"T" }, new object[] { num});
         }
@@ -160,12 +198,13 @@ namespace BTP
         {
             string sign = "";
             if (veloc < 0) sign = "-";
-            device.sendCommand("G1", new string[] { axis_from_num(Axis), "F" }, new object[] { sign+ "10", vel_from_num(Axis) });
+            device.sendCommand("G1", new string[] { axis_from_num(Axis), "F" }, new object[] { sign+ "0.1", vel_from_num(Axis) });
         }
         //остановка всех осей
         internal void Kill(int aCSC_AXIS_0)
         {
             device.sendCommand("M410");
+            //device.sendCommand("M999");
         }
         //включение переферии
         internal void fan_on( int num)

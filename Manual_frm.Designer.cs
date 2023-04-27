@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manual_frm));
             this.manual_xyz_gp = new System.Windows.Forms.GroupBox();
+            this.lab_prog_cur = new System.Windows.Forms.Label();
             this.YNeg10 = new System.Windows.Forms.Button();
             this.ImageY = new System.Windows.Forms.ImageList(this.components);
             this.JogYMBtn = new System.Windows.Forms.Button();
@@ -215,8 +216,6 @@
             this.S3HomeBtn = new System.Windows.Forms.Button();
             this.Preeflow_Timer = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer_printer_pos = new System.Windows.Forms.Timer(this.components);
-            this.lab_prog_cur = new System.Windows.Forms.Label();
             this.manual_xyz_gp.SuspendLayout();
             this.vels_GP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CBVelocity)).BeginInit();
@@ -294,6 +293,11 @@
             resources.ApplyResources(this.manual_xyz_gp, "manual_xyz_gp");
             this.manual_xyz_gp.Name = "manual_xyz_gp";
             this.manual_xyz_gp.TabStop = false;
+            // 
+            // lab_prog_cur
+            // 
+            resources.ApplyResources(this.lab_prog_cur, "lab_prog_cur");
+            this.lab_prog_cur.Name = "lab_prog_cur";
             // 
             // YNeg10
             // 
@@ -1827,16 +1831,6 @@
             this.Preeflow_Timer.Interval = 10;
             this.Preeflow_Timer.Tick += new System.EventHandler(this.Preeflow_Timer_Tick);
             // 
-            // timer_printer_pos
-            // 
-            this.timer_printer_pos.Interval = 10;
-            this.timer_printer_pos.Tick += new System.EventHandler(this.timer_printer_pos_Tick);
-            // 
-            // lab_prog_cur
-            // 
-            resources.ApplyResources(this.lab_prog_cur, "lab_prog_cur");
-            this.lab_prog_cur.Name = "lab_prog_cur";
-            // 
             // Manual_frm
             // 
             resources.ApplyResources(this, "$this");
@@ -2070,7 +2064,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer_printer_pos;
         private System.Windows.Forms.Label lab_prog_cur;
     }
 }

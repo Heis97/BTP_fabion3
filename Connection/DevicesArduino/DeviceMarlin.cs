@@ -55,6 +55,7 @@ namespace Connection
         }
         public void sendCommand(string command)
         {
+            if (!serialPort.IsOpen) return;
             var command_marl = "N" + cur_com.ToString() + " " + command;
             command_marl+= "*" + calcSum(command_marl).ToString() + "\n";
 
@@ -62,16 +63,19 @@ namespace Connection
             cur_com++;
             
             int k = 0;
-            var resv = reseav();
+            reseav();
+            var resv = buff.ToString();
             while ((resv.Contains("ok") == false)&&
                 (resv.Contains("Re") == false) &&
-                (k<10))
+                (k<50))
             {
                 sleep100mks();
-                resv = reseav();
+                reseav();
+                resv = buff.ToString();
                 k++;
+
             };
-            Console.WriteLine("k: " + k);
+            //Console.WriteLine("k: " + k);
             
             bool err = false;
            // Console.WriteLine("res_all: "+res_all+" end");
@@ -80,7 +84,7 @@ namespace Connection
                 var res_all_arr = buff.ToString().Split('\n');
                 foreach(var res in res_all_arr)
                 {
-                    Console.WriteLine("res "+res+" end");
+                   // Console.WriteLine("res "+res+" end");
                     if (res.Contains("Resend"))
                     {
                         var ind_err = res.IndexOf("Resend");
@@ -88,7 +92,7 @@ namespace Connection
                         var res_spl = res_sub.Split(':');
                        
                         var err_n = Convert.ToInt32(res_spl[1].Trim());
-                        Console.WriteLine("err :" + err_n); 
+                       // Console.WriteLine("err :" + err_n); 
                         cur_com = err_n;
                         err = true;
                         buff = new StringBuilder();

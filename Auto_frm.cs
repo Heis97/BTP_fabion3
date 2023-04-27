@@ -48,9 +48,14 @@ namespace BTP
 
         string Operator;
 
+        int old_line = 0;
+        int cur_line = 0;
+
         public Auto_frm()
         {
+
             CallBackMy3.callbackEventHandler = new CallBackMy3.callbackEvent(this.Reload);
+            Console.WriteLine("callbeck3");
             InitializeComponent();
 
             mViewerAuto = this.GCodeViewer;
@@ -71,8 +76,46 @@ namespace BTP
             mProcessor.Init(mSetup.Machine);
         }
 
+        public void set_g_code(string[] prog)
+        {
+            GCodeBox.Items.Clear();
+            list.Clear();
+
+            foreach (string s in prog)
+            {
+                GCodeBox.Items.Add(s);
+                list.Add(s);
+            }
+        }
+
+        public void set_cur_line(int byte_i)
+        {
+            cur_line = ConnectionData.Value.get_cur_line(byte_i);
+            //Console.WriteLine(cur_line);
+        }
+        public void redraw()
+        {
+            if (GCodeBox.Items.Count > 0)
+            {
+                GCodeBox.SelectedIndex = cur_line;
+
+                if (cur_line != old_line)
+                {
+                    mViewerAuto.BreakPoint = cur_line;
+                    mViewerAuto.Redraw(true);
+                    old_line = cur_line;
+
+                }
+
+                var point = new Point(14, 12);
+                this.Location = point;
+            }
+        }
         void Reload(string param)
         {
+            Console.WriteLine("reload");
+            
+
             try
             {
                 #region labels
@@ -209,7 +252,7 @@ namespace BTP
             {
 
             }
-            }
+        }
 
         public void ChangeFormLanguage(AvaliableLocalizations newLocalization)
         {

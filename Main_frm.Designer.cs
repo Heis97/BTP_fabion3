@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_frm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.PrintheadBtn = new System.Windows.Forms.Button();
@@ -86,6 +87,7 @@
             this.Indicator = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel19 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.timer_printer_pos = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SS_Status.SuspendLayout();
@@ -513,6 +515,11 @@
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
+            // timer_printer_pos
+            // 
+            this.timer_printer_pos.Interval = 10;
+            this.timer_printer_pos.Tick += new System.EventHandler(this.timer_printer_pos_Tick);
+            // 
             // Main_frm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -597,6 +604,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel18;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel19;
         private System.Windows.Forms.Button PrintheadBtn;
+        private System.Windows.Forms.Timer timer_printer_pos;
     }
 }
 

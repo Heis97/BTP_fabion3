@@ -485,6 +485,70 @@ namespace BTP
         }
 
         bool init_bit = false;
+        public void startTimer()
+        {
+            if (ConnectionData.bConnected)
+            {
+                if (!timer_printer_pos.Enabled)
+                {
+                    timer_printer_pos.Enabled = true;
+                    ConnectionData.Value.startAutoPos();
+                    ConnectionData.Value.enableExtrud();
+                    ConnectionData.Value.device.sendCommand("G91");
+                }
+            }
+        }
+        public int cur_byte_sd_print;
+        private void timer_printer_pos_Tick(object sender, EventArgs e)
+        {
+            var res = ConnectionData.Value.device.reseav();
+            if (ConnectionData.Value.prog != null && !ConnectionData.Value.prog_loaded)
+            {
+                Auto.set_g_code(ConnectionData.Value.prog);
+                ConnectionData.Value.prog_loaded = true;
+            }
+           
+            if (res != null)
+            {
+                if (res.Length != 0)
+                {
+                    //Console.Write(res);
+                    var res_spl = res.Split('\n');
+                    for (int i = 0; i < res_spl.Length; i++)
+                    {
+                        var res_spl_2 = res_spl[i].Split(' ');
+                        if (res_spl_2.Length > 10)
+                        {
+                            if (res_spl_2[0].Contains("cur_pos"))
+                            {
+                                //Console.WriteLine(res_spl[i]);
+                                Manual.set_pos_lab(res_spl_2); 
+                            }
+                        }
+                        if (res_spl_2.Length >= 4)
+                        {
+
+                            if (res_spl_2[0].Contains("SD"))
+                            {
+                                //Console.WriteLine(res);
+                                var prog = res_spl_2[3].Split('/');
+                                try
+                                {
+                                    var cur_pr = Convert.ToInt32(prog[0]);
+                                    var all_pr = Convert.ToInt32(prog[1]);
+                                    cur_byte_sd_print = cur_pr;
+                                    Auto.set_cur_line(cur_pr);
+                                    Auto.redraw();
+                                   //lab_prog_cur.Text = cur_pr + " from " + all_pr;
+                                }
+                                catch { }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
 
         public void SetCommunication()
         {
@@ -494,7 +558,7 @@ namespace BTP
             
 
             ConnectionData.bConnected = true;
-            Manual.startTimer();
+            startTimer();
             axes = new int[]
                             {
                              ConnectionData.Value.ACSC_AXIS_0,
@@ -648,63 +712,64 @@ namespace BTP
 
         private void Main_frm_FormClosed(object sender, FormClosedEventArgs e)
         {
-           /* try
-            {
-                
-                if (ConnectionData.Camera1 != null)
-                    {
-                    ConnectionData.Camera1.Close();
-                    ConnectionData.Camera1.Dispose();
-                    ConnectionData.Camera1 = null;
-                    }
+            ConnectionData.Value?.device.sendCommand("M29");
+            /* try
+             {
 
-                if (ConnectionData.Camera2 != null)
-                {
-                    ConnectionData.Camera2.Close();
-                    ConnectionData.Camera2.Dispose();
-                    ConnectionData.Camera2 = null;
-                }
-                
+                 if (ConnectionData.Camera1 != null)
+                     {
+                     ConnectionData.Camera1.Close();
+                     ConnectionData.Camera1.Dispose();
+                     ConnectionData.Camera1 = null;
+                     }
 
-                if (ConnectionData.bConnected)
-                {
-                    ConnectionData.Value.CloseMessageBuffer();
-                    ConnectionData.Value.KillAll();
-                    ConnectionData.Value.StopBuffer(ConnectionData.Value.ACSC_NONE);
+                 if (ConnectionData.Camera2 != null)
+                 {
+                     ConnectionData.Camera2.Close();
+                     ConnectionData.Camera2.Dispose();
+                     ConnectionData.Camera2 = null;
+                 }
 
-                    MotorStateThr.Abort();//прерываем поток
-                    ConnectionData.Value.DisableAll();
-                    ConnectionData.Value.CancelOperation();
-                    ConnectionData.Value.CloseComm();
-                }
-                string TempFile = Application.StartupPath + "\\Temp\\CNC.tmp";
-                if (File.Exists(TempFile))
-                {
-                    System.IO.File.Delete(TempFile);
-                }
-                
-                TempFile = Application.StartupPath + "\\Temp\\Visu.tmp";
 
-                if (File.Exists(TempFile))
-                {
-                    System.IO.File.Delete(TempFile);
-                }
+                 if (ConnectionData.bConnected)
+                 {
+                     ConnectionData.Value.CloseMessageBuffer();
+                     ConnectionData.Value.KillAll();
+                     ConnectionData.Value.StopBuffer(ConnectionData.Value.ACSC_NONE);
 
-                                
-                TempFile = Application.StartupPath + "\\Temp\\Report.xlsx";
+                     MotorStateThr.Abort();//прерываем поток
+                     ConnectionData.Value.DisableAll();
+                     ConnectionData.Value.CancelOperation();
+                     ConnectionData.Value.CloseComm();
+                 }
+                 string TempFile = Application.StartupPath + "\\Temp\\CNC.tmp";
+                 if (File.Exists(TempFile))
+                 {
+                     System.IO.File.Delete(TempFile);
+                 }
 
-                if (File.Exists(TempFile))
-                {
-                    System.IO.File.Delete(TempFile);
-                }
+                 TempFile = Application.StartupPath + "\\Temp\\Visu.tmp";
 
-                ConnectionData.streamWriter.Close();
-                ConnectionData.fileStream.Close();
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-            }*/
+                 if (File.Exists(TempFile))
+                 {
+                     System.IO.File.Delete(TempFile);
+                 }
+
+
+                 TempFile = Application.StartupPath + "\\Temp\\Report.xlsx";
+
+                 if (File.Exists(TempFile))
+                 {
+                     System.IO.File.Delete(TempFile);
+                 }
+
+                 ConnectionData.streamWriter.Close();
+                 ConnectionData.fileStream.Close();
+             }
+             catch (Exception Ex)
+             {
+                 MessageBox.Show(Ex.Message);
+             }*/
         }
 
         private void Main_frm_Shown(object sender, EventArgs e)
