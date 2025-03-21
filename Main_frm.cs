@@ -578,8 +578,8 @@ namespace BTP
         {
             string LogFile = Application.StartupPath + "\\Log\\Log_" + DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss") + ".log";
             Console.WriteLine(LogFile);
-            ConnectionData.fileStream = new FileStream(LogFile, FileMode.Create, FileAccess.Write);
-            ConnectionData.streamWriter = new StreamWriter(ConnectionData.fileStream);
+            //ConnectionData.fileStream = new FileStream(LogFile, FileMode.Create, FileAccess.Write);
+           // ConnectionData.streamWriter = new StreamWriter(ConnectionData.fileStream);
             
             this.DoubleBuffered = true;
             LoadData();
@@ -660,6 +660,7 @@ namespace BTP
 
         private void Main_frm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
             SaveData();
         }
 
@@ -712,6 +713,7 @@ namespace BTP
 
         private void Main_frm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            ConnectionData.Value.stopAutoPos();
             ConnectionData.Value?.device.sendCommand("M29");
             /* try
              {

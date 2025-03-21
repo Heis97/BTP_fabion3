@@ -8,8 +8,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using uEye.Streaming.Defines;
 
 namespace BTP
 {
@@ -405,8 +407,16 @@ namespace BTP
             //string filename = System.IO.Directory.GetCurrentDirectory() + "\\Temp\\Visu.tmp";
             if (e.KeyCode == Keys.Enter)
             {
+                var progr_f = filtrCode(GCodeInputBox.Text.Split('\n'));
+                var text_d = "";
+                foreach (var line in progr_f) text_d += line + "\r\n";
+
+                GCodeInputBox.Text = text_d;
                 list_pr.Clear();
                 list_pr.AddRange(GCodeInputBox.Lines);
+                ProcessFileProgram(list_pr);
+
+                
                 //    System.IO.File.Delete(filename);  
                 //    File.WriteAllText(filename, GCodeInputBox.Text);
                 if (Properties.Settings.Default.Virgin == true)
@@ -422,7 +432,9 @@ namespace BTP
                 var point = new Point(14, 12);
                 this.Location = point;
                 Properties.Settings.Default.Virgin = false;
-              //  DrawLayers();
+
+                
+                //  DrawLayers();
             }
         }
 
