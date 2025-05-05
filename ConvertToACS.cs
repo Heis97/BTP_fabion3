@@ -13,7 +13,7 @@ namespace BTP
         public ConverterGCodeToACS()
         {
             begin_part = File.ReadAllText(@"GcodeToAcs\begin.txt");
-            end_part = File.ReadAllText(@"GcodeToAcs\end_short.txt");
+            end_part = File.ReadAllText(@"GcodeToAcs\end_short_2403.txt");
         }
         public string ConvertToAcs(string gCode)
         {
@@ -38,6 +38,7 @@ namespace BTP
         }
         public string ConvertToAcsShort(string gCode)
         {
+
             var gCode_lines = gCode.Split('\n');
             List<gFrame> frames = new List<gFrame>();
             string acs_commands = begin_part;
@@ -90,7 +91,7 @@ namespace BTP
                     }
                 }
                 
-                Console.WriteLine("i " + i);
+                //Console.WriteLine("i " + i);
                 g_code +=printFrame(gA_res.ToArray(), gV_res.ToArray(), frames[i].gCom, gA_ind.ToArray(), gV_ind.ToArray());
             }
             return g_code;

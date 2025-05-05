@@ -630,7 +630,6 @@
             // 
             resources.ApplyResources(this.OperatorTB, "OperatorTB");
             this.OperatorTB.Name = "OperatorTB";
-            //this.OperatorTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OperatorTB_KeyDown);
             // 
             // label29
             // 
@@ -642,7 +641,6 @@
             resources.ApplyResources(this.PrintReportBtn, "PrintReportBtn");
             this.PrintReportBtn.Name = "PrintReportBtn";
             this.PrintReportBtn.UseVisualStyleBackColor = true;
-            //this.PrintReportBtn.Click += new System.EventHandler(this.PrintReportBtn_Click);
             // 
             // SaveReport
             // 

@@ -82,8 +82,8 @@ namespace BTP
                 ZoomLable.Text = Dict.LangStrings.Zoom + string.Format("{0:F0}", 4) + "X";
             }
 
-                if (Convert.ToBoolean(ConnectionData.Value.ReadVariable("MFLAGS", ConnectionData.Value.ACSC_NONE, 11, 11) & 8) &&
-                Convert.ToBoolean(ConnectionData.Value.ReadVariable("MFLAGS", ConnectionData.Value.ACSC_NONE, 10, 10) & 8))
+                if (Convert.ToBoolean((int)ConnectionData.Value.ReadVariable("MFLAGS", ConnectionData.Value.ACSC_NONE, 11, 11) & 8) &&
+                Convert.ToBoolean((int)ConnectionData.Value.ReadVariable("MFLAGS", ConnectionData.Value.ACSC_NONE, 10, 10) & 8))
             {
                 if ((ConnectionData.FeedBackCam2Y < 0) || (ConnectionData.FeedBackCam2Y > ConnectionData.Camera2YStrokeMax))
                 {
@@ -117,6 +117,7 @@ namespace BTP
         // Отображение на экране
         public static void ContinuousShot(Camera cam)
             {
+            
                 if (cam != null)
                 {
                     try
@@ -647,7 +648,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_12, -ConnectionData.SetCTVel);
+                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_12, -ConnectionData.SetCTVel);
                 }
                 catch (COMException Ex)
                 {
@@ -679,7 +680,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_12, ConnectionData.SetCTVel);
+                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_12, ConnectionData.SetCTVel);
                 }
                 catch (COMException Ex)
                 {
@@ -701,7 +702,7 @@ namespace BTP
                 {
                     if ((ConnectionData.FeedBackCam2Y >= 0) && (ConnectionData.FeedBackCam2Y < ConnectionData.Camera2YStrokeMax))
                     {
-                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_11, ConnectionData.SetCBVel);
+                        ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_11, ConnectionData.SetCBVel);
                     }
                     else
                     {
@@ -724,7 +725,7 @@ namespace BTP
                 {
                     if ((ConnectionData.FeedBackCam2Y > 0) && (ConnectionData.FeedBackCam2Y <= ConnectionData.Camera2YStrokeMax))
                     {
-                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_11, -ConnectionData.SetCBVel);
+                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_11, -ConnectionData.SetCBVel);
                     }
                     else
                     {
@@ -752,7 +753,7 @@ namespace BTP
                 {
                     if ((ConnectionData.FeedBackCam2X > 0) && (ConnectionData.FeedBackCam2X <= ConnectionData.Camera2XStrokeMax))
                     {
-                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_10, -ConnectionData.SetCBVel);
+                        ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_10, -ConnectionData.SetCBVel);
                     }
                     else
                     {
@@ -780,7 +781,7 @@ namespace BTP
                 {
                     if ((ConnectionData.FeedBackCam2X >= 0) && (ConnectionData.FeedBackCam2X < ConnectionData.Camera2XStrokeMax))
                     {
-                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_10, ConnectionData.SetCBVel);
+                        ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_10, ConnectionData.SetCBVel);
                     }
                     else
                     {

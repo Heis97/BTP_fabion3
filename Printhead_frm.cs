@@ -9,9 +9,9 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
 using System.Threading;
-using System.Text.Json;
 using Active_Directory_Worker.Interfaces;
 using System.Runtime.InteropServices;
+
 
 namespace BTP
 {
@@ -567,25 +567,25 @@ namespace BTP
         async private void Macro1(int eng, double value, double h = 1, int delay=1000)
         {
             addtask(1, 1);
-            send_mes_1eng(ConnectionData.Value.ACSC_AMF_RELATIVE, eng, value);            
+            send_mes_1eng((int)ConnectionData.Value.ACSC_AMF_RELATIVE, eng, value);            
             await Task.Delay(delay);
-            send_mes_1eng(ConnectionData.Value.ACSC_AMF_RELATIVE, 3, -h);            
+            send_mes_1eng((int)ConnectionData.Value.ACSC_AMF_RELATIVE, 3, -h);            
             await Task.Delay(delay);
-            send_mes_1eng(ConnectionData.Value.ACSC_AMF_RELATIVE, 3, h);
+            send_mes_1eng((int)ConnectionData.Value.ACSC_AMF_RELATIVE, 3, h);
             await Task.Delay(delay);
             //X = 0
             //Y = 1
         }
         async private void Macro2(double valueX, double valueY, double h, int delay)
         {
-            send_mes_1eng(ConnectionData.Value.ACSC_AMF_RELATIVE, 3, -h);
+            send_mes_1eng((int)ConnectionData.Value.ACSC_AMF_RELATIVE, 3, -h);
             await Task.Delay(delay);
-            send_mes_1eng(ConnectionData.Value.ACSC_AMF_RELATIVE, 0, valueX);
-            send_mes_1eng(ConnectionData.Value.ACSC_AMF_RELATIVE, 1, valueY);
+            send_mes_1eng((int)ConnectionData.Value.ACSC_AMF_RELATIVE, 0, valueX);
+            send_mes_1eng((int)ConnectionData.Value.ACSC_AMF_RELATIVE, 1, valueY);
             //X = 0
             //Y = 1
             await Task.Delay(delay);
-            send_mes_1eng(ConnectionData.Value.ACSC_AMF_RELATIVE, 3, h);
+            send_mes_1eng((int)ConnectionData.Value.ACSC_AMF_RELATIVE, 3, h);
             await Task.Delay(delay);
         }
         #region XY buttons
@@ -632,7 +632,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_8, ConnectionData.SetPtVel);
+                    ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_8, ConnectionData.SetPtVel);
                 }
                 catch (COMException Ex)
                 {
@@ -650,7 +650,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_8, -ConnectionData.SetPtVel);
+                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_8, -ConnectionData.SetPtVel);
                 }
                 catch (COMException Ex)
                 {
@@ -777,7 +777,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_3, -ConnectionData.SetZVel);
+                    ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_3, -ConnectionData.SetZVel);
                 }
                 catch (COMException Ex)
                 {
@@ -907,7 +907,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_3, ConnectionData.SetZVel);
+                    ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_3, ConnectionData.SetZVel);
                 }
                 catch (COMException Ex)
                 {
@@ -1165,7 +1165,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_1, ConnectionData.SetXYVel);
+                    ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_1, ConnectionData.SetXYVel);
                 }
                 catch (COMException Ex)
                 {
@@ -1179,7 +1179,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_0, ConnectionData.SetXYVel);
+                    ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_0, ConnectionData.SetXYVel);
                 }
                 catch (COMException Ex)
                 {
@@ -1193,7 +1193,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_1, -ConnectionData.SetXYVel);
+                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AXIS_1, -ConnectionData.SetXYVel);
                 }
                 catch (COMException Ex)
                 {
@@ -1207,7 +1207,7 @@ namespace BTP
             {
                 try
                 {
-                    ConnectionData.Value.Jog(ConnectionData.Value.ACSC_AMF_VELOCITY, ConnectionData.Value.ACSC_AXIS_0, -ConnectionData.SetXYVel);
+                    ConnectionData.Value.Jog( ConnectionData.Value.ACSC_AXIS_0, -ConnectionData.SetXYVel);
                 }
                 catch (COMException Ex)
                 {

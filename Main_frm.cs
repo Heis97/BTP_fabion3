@@ -44,7 +44,8 @@ namespace BTP
         // Кнопка завершения работы
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-                Close();
+            ConnectionData.Value.device.connectStop();           
+            Close();
         }
 
         // Кнопка ручного режима работы
@@ -69,6 +70,7 @@ namespace BTP
             PauseBtn.Enabled = true;
             ResetBtn.Enabled = true;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
 
         }
         // Кнопка работы по программе
@@ -92,6 +94,7 @@ namespace BTP
             PauseBtn.Enabled = true;
             ResetBtn.Enabled = true;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
         }
         // Кнопка автоматического режима 
         private void AutoBtn_Click(object sender, EventArgs e)
@@ -115,6 +118,7 @@ namespace BTP
             PauseBtn.Enabled = true;
             ResetBtn.Enabled = true;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
         }
         // Кнопка настроек
         private void SettingsBtn_Click(object sender, EventArgs e)
@@ -137,6 +141,7 @@ namespace BTP
             PauseBtn.Enabled = false;
             ResetBtn.Enabled = false;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
         }
         // Кнопка диагностики
         private void DiagnosticsBtn_Click(object sender, EventArgs e)
@@ -159,6 +164,7 @@ namespace BTP
             PauseBtn.Enabled = true;
             ResetBtn.Enabled = true;
             PrintheadBtn.Enabled = true;
+            PrintheadBtn.Enabled = false;
         }
         private void PrintheadBtn_Click(object sender, EventArgs e)
         {
@@ -200,39 +206,43 @@ namespace BTP
                 ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_0);
                 ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_9);
                 ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_8);
-                //ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_4);
+               // ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_4);
             }
         }
 
         // Обработка диаметров и прочей статической информации 
         private void SendDiam()
         {
+            ConnectionData.Value.xy_vel = ConnectionData.SetXYVel * 60;
+            ConnectionData.Value.z_vel = ConnectionData.SetZVel * 60;
+            ConnectionData.Value.e_vel = ConnectionData.SetPtVel*60;
             // Задание начальных скоростей
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_0, ConnectionData.SetXYVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_1, ConnectionData.SetXYVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_2, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_3, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_4, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_5, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_6, ConnectionData.SetZVel);
-            ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_7, ConnectionData.SetPtVel);
+            /* ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_0, ConnectionData.SetXYVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_1, ConnectionData.SetXYVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_2, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_3, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_4, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_5, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_6, ConnectionData.SetZVel);
+             ConnectionData.Value.SetVelocity(ConnectionData.Value.ACSC_AXIS_7, ConnectionData.SetPtVel);
 
-            Console.WriteLine("after send_ax");
-            // Запись диаметров
-            Console.WriteLine("after pf diam_ax");
-            // Установка программных конечных выключателей
-            Console.WriteLine("after send_lim");
-            //Задание скоростей поиска нулевой точки
-            ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityX,    "VelX", ConnectionData.Value.ACSC_BUFFER_4);
-            ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityY,    "VelY", ConnectionData.Value.ACSC_BUFFER_4);
-            ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityCam,  "VelCam", ConnectionData.Value.ACSC_BUFFER_4);
-            ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityZ,    "Veloc", ConnectionData.Value.ACSC_BUFFER_4);
+             // Запись диаметров
+             ConnectionData.Value.WriteVariable(ConnectionData.S1Diameter, "S1Diameter", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.S2Diameter, "S2Diameter", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.S3Diameter, "S3Diameter", ConnectionData.Value.ACSC_NONE);
 
-            Console.WriteLine("after send_vel");
-            // Системые переменные
-            ConnectionData.Value.WriteVariable(0.01, "XSEGRMIN", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.X_Laser_offset, "X_Laser_offset", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.Y_Laser_offset, "Y_Laser_offset", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.Z_Laser_offset, "Z_Laser_offset", ConnectionData.Value.ACSC_NONE);
 
-            ConnectionData.Value.WriteVariable(ConnectionData.PreeflowDiam,     "PFDose", ConnectionData.Value.ACSC_NONE);
+             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityX,    "VelX", ConnectionData.Value.ACSC_BUFFER_4);
+             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityY,    "VelY", ConnectionData.Value.ACSC_BUFFER_4);
+             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityCam,  "VelCam", ConnectionData.Value.ACSC_BUFFER_4);
+             ConnectionData.Value.WriteVariable(ConnectionData.HomeVelocityZ,    "Veloc", ConnectionData.Value.ACSC_BUFFER_4);
+
+             Console.WriteLine("after send_vel");
+             // Системые переменные
+             ConnectionData.Value.WriteVariable(0.01, "XSEGRMIN", ConnectionData.Value.ACSC_NONE);*/
         }
 
         // Загрузка данных при старте из файла+-
@@ -250,6 +260,8 @@ namespace BTP
             ConnectionData.MaxPFVel = Convert.ToDouble(manager.GetPrivateString("Velocity", "PFVelocity"));
             ConnectionData.MaxCTVel = Convert.ToDouble(manager.GetPrivateString("Velocity", "CTVelocity"));
             ConnectionData.MaxCBVel = Convert.ToDouble(manager.GetPrivateString("Velocity", "CBVelocity"));
+
+
 
             // Скорости поиска нулевой точки
             ConnectionData.HomeVelocityX = Convert.ToDouble(manager.GetPrivateString("Homing", "HomeVelocityX"));
@@ -278,7 +290,13 @@ namespace BTP
             ConnectionData.PetriDishDiam = Convert.ToDouble(manager.GetPrivateString("Data", "PetriDishDiam"));
             ConnectionData.WellNum = Convert.ToDouble(manager.GetPrivateString("Data", "WellCount"));
 
-            // Чтение параметров для камеры
+            //ConnectionData.X_Laser_offset = Convert.ToDouble(manager.GetPrivateString("Data", "X_Laser_offset"));
+            //ConnectionData.Y_Laser_offset = Convert.ToDouble(manager.GetPrivateString("Data", "Y_Laser_offset"));
+            //ConnectionData.Z_Laser_offset = Convert.ToDouble(manager.GetPrivateString("Data", "Z_Laser_offset"));
+            ConnectionData.X_Laser_offset = 67.76;
+            ConnectionData.Y_Laser_offset = 73.24;
+            ConnectionData.Z_Laser_offset = -5.51;
+            //Чтение параметров для камеры
             ConnectionData.Camera1SN = manager.GetPrivateString("Cameras", "SerialNumberCam1");
             ConnectionData.Camera2SN = manager.GetPrivateString("Cameras", "SerialNumberCam2");
             ConnectionData.ScaleCam1 = Convert.ToDouble(manager.GetPrivateString("Cameras", "ScaleCam1"));
@@ -357,7 +375,7 @@ namespace BTP
             string Path = Application.StartupPath + "\\Data\\Settings.dll";
             INIManager manager = new INIManager(Path);
             // IP адрес контроллера
-            manager.WritePrivateString("System", "IPAddress", ConnectionData.ControllerIP);
+          //  manager.WritePrivateString("System", "IPAddress", ConnectionData.ControllerIP);
 
             // Максимальные скорости
             manager.WritePrivateString("Velocity", "XYVelocity", ConnectionData.MaxXYVel.ToString());
@@ -373,7 +391,7 @@ namespace BTP
             manager.WritePrivateString("Homing", "HomeVelocityZ", ConnectionData.HomeVelocityZ.ToString());
             manager.WritePrivateString("Homing", "HomeVelocityCam", ConnectionData.HomeVelocityCam.ToString());
 
-            // Установленные скорости
+            // Установленные скорости.
             manager.WritePrivateString("Dynamic", "XYVeloc", ConnectionData.SetXYVel.ToString());
             manager.WritePrivateString("Dynamic", "ZVeloc", ConnectionData.SetZVel.ToString());
             manager.WritePrivateString("Dynamic", "PtVeloc", ConnectionData.SetPtVel.ToString());
@@ -394,6 +412,9 @@ namespace BTP
             manager.WritePrivateString("Data", "PetriDishDiam", ConnectionData.PetriDishDiam.ToString());
             manager.WritePrivateString("Data", "WellCount", ConnectionData.WellNum.ToString());
 
+            manager.WritePrivateString("Data", "X_Laser_offset", ConnectionData.X_Laser_offset.ToString());
+            manager.WritePrivateString("Data", "Y_Laser_offset", ConnectionData.Y_Laser_offset.ToString());
+            manager.WritePrivateString("Data", "Z_Laser_offset", ConnectionData.Z_Laser_offset.ToString());
             // Параметры для камер
             manager.WritePrivateString("Cameras", "SerialNumberCam1", ConnectionData.Camera1SN);
             manager.WritePrivateString("Cameras", "SerialNumberCam2", ConnectionData.Camera2SN);
@@ -464,197 +485,80 @@ namespace BTP
         }
 
         bool init_bit = false;
-        
-        // Связь с контроллером ACS
-        private void GetMotorState()
+        public void startTimer()
         {
-            int X = ConnectionData.Value.ACSC_AXIS_0;
-            int Y = ConnectionData.Value.ACSC_AXIS_1;
-
-            int Z3 = ConnectionData.Value.ACSC_AXIS_2;
-            int F3 = ConnectionData.Value.ACSC_AXIS_3;
-
-            int Z1 = ConnectionData.Value.ACSC_AXIS_4;
-            int F1 = ConnectionData.Value.ACSC_AXIS_5;
-
-            int Z2 = ConnectionData.Value.ACSC_AXIS_6;
-            int F2 = ConnectionData.Value.ACSC_AXIS_7;
-            while (true)
+            if (ConnectionData.bConnected)
             {
-                try
+                if (!timer_printer_pos.Enabled)
                 {
-                    CheckForIllegalCrossThreadCalls = false;
-
-                    switch (ConnectionData.ProgramStart)
+                    timer_printer_pos.Enabled = true;
+                    ConnectionData.Value.startAutoPos();
+                    ConnectionData.Value.enableExtrud();
+                    ConnectionData.Value.device.sendCommand("G91");
+                }
+            }
+        }
+        public int cur_byte_sd_print;
+        private void timer_printer_pos_Tick(object sender, EventArgs e)
+        {
+            var res = ConnectionData.Value.device.reseav();
+            if (ConnectionData.Value.prog != null && !ConnectionData.Value.prog_loaded)
+            {
+                Auto.set_g_code(ConnectionData.Value.prog);
+                ConnectionData.Value.prog_loaded = true;
+            }
+           
+            if (res != null)
+            {
+                if (res.Length != 0)
+                {
+                    //Console.Write(res);
+                    var res_spl = res.Split('\n');
+                    for (int i = 0; i < res_spl.Length; i++)
                     {
-                        case 10:
-                            Indicator.BackColor = Color.YellowGreen;
-                            Indicator.Text = Dict.LangStrings.StatusRun;
-                            break;
-                        case 20:
-                            Indicator.BackColor = Color.Red;
-                            Indicator.Text = Dict.LangStrings.StatusStop;
-                            break;
-                        case 30:
-                            Indicator.BackColor = Color.Yellow;
-                            Indicator.Text = Dict.LangStrings.StatusPause;
-                            break;
-                        default:
-                            Indicator.BackColor = Color.LightBlue;
-                            Indicator.Text = Dict.LangStrings.StatusManual;
-                            break;
+                        var res_spl_2 = res_spl[i].Split(' ');
+                        if (res_spl_2.Length > 10)
+                        {
+                            if (res_spl_2[0].Contains("cur_pos"))
+                            {
+                                //Console.WriteLine(res_spl[i]);
+                                Manual.set_pos_lab(res_spl_2); 
+                            }
+                        }
+                        if (res_spl_2.Length >= 4)
+                        {
+
+                            if (res_spl_2[0].Contains("SD"))
+                            {
+                                //Console.WriteLine(res);
+                                var prog = res_spl_2[3].Split('/');
+                                try
+                                {
+                                    var cur_pr = Convert.ToInt32(prog[0]);
+                                    var all_pr = Convert.ToInt32(prog[1]);
+                                    cur_byte_sd_print = cur_pr;
+                                    Auto.set_cur_line(cur_pr);
+                                    Auto.redraw();
+                                   //lab_prog_cur.Text = cur_pr + " from " + all_pr;
+                                }
+                                catch { }
+                            }
+                        }
                     }
-
-                    // Текущее положение осей
-                    ConnectionData.FeedBackX =   ConnectionData.Value.GetFPosition(X);
-                    ConnectionData.FeedBackY =   ConnectionData.Value.GetFPosition(Y);
-                    ConnectionData.FeedBackZ1 = ConnectionData.Value.GetFPosition(Z1);
-                    ConnectionData.FeedBackZ2 = ConnectionData.Value.GetFPosition(Z2);
-                    ConnectionData.FeedBackZ3 = ConnectionData.Value.GetFPosition(Z3);
-
-                    ConnectionData.GlobalX = ConnectionData.Value.ReadVariable("XGLOBAL", ConnectionData.Value.ACSC_NONE, 0, 0);
-                    ConnectionData.GlobalY = ConnectionData.Value.ReadVariable("YGLOBAL", ConnectionData.Value.ACSC_NONE, 0, 0);
-
-                    ConnectionData.XZoffsets = ConnectionData.Value.ReadVariable("OffsetX", ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.YZoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 2, 2);
-
-                    ConnectionData.XUoffsets = ConnectionData.Value.ReadVariable("OffsetX", ConnectionData.Value.ACSC_NONE, 3, 3);
-                    ConnectionData.YUoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 3, 3);
-
-                    ConnectionData.XVoffsets = ConnectionData.Value.ReadVariable("OffsetX", ConnectionData.Value.ACSC_NONE, 4, 4);
-                    ConnectionData.YVoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 4, 4);
-
-                    ConnectionData.XAoffsets = ConnectionData.Value.ReadVariable("OffsetX", ConnectionData.Value.ACSC_NONE, 6, 6);
-                    ConnectionData.YAoffsets = ConnectionData.Value.ReadVariable("OffsetY", ConnectionData.Value.ACSC_NONE, 6, 6);
-
-                    // Чтение состояния конечных выключателей
-                    ConnectionData.XLLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(X) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.XRLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(X) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.YLLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(Y) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.YRLimit =    Convert.ToBoolean(ConnectionData.Value.GetFault(Y) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS1LLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z1) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS1RLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z1) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS2LLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z2) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS2RLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z2) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    ConnectionData.ZS3LLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z3) & ConnectionData.Value.ACSC_SAFETY_LL);
-                    ConnectionData.ZS3RLimit =  Convert.ToBoolean(ConnectionData.Value.GetFault(Z3) & ConnectionData.Value.ACSC_SAFETY_RL);
-                    
-                    // Чтение номера строки выполняемой в буффере 1 - исполнение G-кода
-                    ConnectionData.ExecLine =           ConnectionData.Value.ReadVariable("PEXL",   ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferSize =         ConnectionData.Value.ReadVariable("PCHARS",  ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferError =        ConnectionData.Value.ReadVariable("PERR",    ConnectionData.Value.ACSC_NONE, 2, 2);
-                    ConnectionData.BufferErrorString =  ConnectionData.Value.ReadVariable("PERL",    ConnectionData.Value.ACSC_NONE, 2, 2);
-
-                    //label1.Text = (ConnectionData.Value.GetFault(ConnectionData.Value.ACSC_AXIS_0)).ToString();
-
-                    // Обновление данные на других осях
-                    //CallBackMy.callbackEventHandler("UpdateCamera");
-                    CallBackMy2.callbackEventHandler("UpdateManual");
-                    CallBackMy3.callbackEventHandler("UpdateAuto");
-                    //CallBackMy4.callbackEventHandler("UpdateSettings");
-                    CallBackMy5.callbackEventHandler("UpdateDiagnostics");
-                    CallBackMy6.callbackEventHandler("UpdatePrinthead");
-                    IPAdressLabel.Text = ConnectionData.ControllerIP;
-
-
-                    IPAdressLabel.Text = ConnectionData.ControllerIP;
-
-                    // Статус осей
-                    int MotorStateX = ConnectionData.Value.GetMotorState(X);
-                    int MotorStateY = ConnectionData.Value.GetMotorState(Y);
-                    int MotorStateZ1 = ConnectionData.Value.GetMotorState(Z1);
-                    int MotorStateZ2 = ConnectionData.Value.GetMotorState(Z2);
-                    int MotorStateZ3 = ConnectionData.Value.GetMotorState(Z3);
-                    int MotorStateS1 = ConnectionData.Value.GetMotorState(F1);
-                    int MotorStateS2 = ConnectionData.Value.GetMotorState(F2);
-                    int MotorStateS3 = ConnectionData.Value.GetMotorState(F3);
-
-                    if (Convert.ToBoolean(MotorStateX & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            XStatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            XStatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateY & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            YStatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            YStatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateZ1 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            Z1StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            Z1StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateZ2 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            Z2StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            Z2StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateZ3 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            Z3StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            Z3StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateS1 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            S1StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            S1StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateS2 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            S2StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            S2StatusTL.BackColor = SystemColors.Control;
-                        }
-
-                    if (Convert.ToBoolean(MotorStateS3 & ConnectionData.Value.ACSC_MST_MOVE))
-                        {
-                            S3StatusTL.BackColor = Color.YellowGreen;
-                        }
-                    else
-                        {
-                            S3StatusTL.BackColor = SystemColors.Control;
-                        }
-/*
-                   */
                 }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
-                //Thread.Sleep(10);
+
             }
         }
 
-        // Установка связи с контроллером
         public void SetCommunication()
         {
-            ConnectionData.Value = new SPIIPLUSCOM660Lib.Channel();
+            ConnectionData.Comport = SelectDrv.getPort();
+            ConnectionData.Value = new ChanelOct();
+            //ConnectionData.Value.device.connectStart();
+            
+
+            ConnectionData.bConnected = true;
+            startTimer();
             axes = new int[]
                             {
                              ConnectionData.Value.ACSC_AXIS_0,
@@ -667,69 +571,21 @@ namespace BTP
                              ConnectionData.Value.ACSC_AXIS_7,
                              -1
                             };
-             try
-            {
-                if (ConnectionData.ControllerIP == "localhost")
-                {
-                    // Работа с симулятором
-                    ConnectionData.Value.OpenCommDirect(); 
-                }
-                else
-                {
-                    // Работа с настоящим контроллером
-                    ConnectionData.Value.OpenCommEthernet(ConnectionData.ControllerIP, ConnectionData.Value.ACSC_SOCKET_STREAM_PORT);
-                }
-                Console.WriteLine("before thread");
-                // Запуск потока
-                // Организация потока данных
-                MotorStateThr = new Thread(new ThreadStart(GetMotorState));
-                Console.WriteLine("after thread");
-                MotorStateThr.IsBackground = true;
-                MotorStateThr.Start();
-                Console.WriteLine("after motState Start");
-                // MotorStateThr.Suspend();
-                // MotorStateThr.Resume();
-                // Вывод информации в трей
-                ConnectionData.bConnected = true;
 
-                // Запуск осей
-                try
-                {
-                    SendDiam();
-                    ConnectionData.Value.EnableM(axes);
-                    // ConnectionData.Value.RunBuffer(ConnectionData.Value.ACSC_BUFFER_9);
-                    Console.WriteLine("after run buf");
-                    ConnectionData.Value.OpenMessageBuffer(5000);
-                    Console.WriteLine("after open");
-                    FindHome();
-                    Console.WriteLine("after home");
-                }
-                catch (COMException Ex)
-                {
-                    ErorMsg(Ex);
-                }
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-                SelectDrv.Hide();
-                SelectDrv.Show(this);
-                //SelectDrv.Owner = this;
-            }
         }
 
         private void BTP_Load(object sender, EventArgs e)
         {
             string LogFile = Application.StartupPath + "\\Log\\Log_" + DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss") + ".log";
             Console.WriteLine(LogFile);
-            ConnectionData.fileStream = new FileStream(LogFile, FileMode.Create, FileAccess.Write);
-            ConnectionData.streamWriter = new StreamWriter(ConnectionData.fileStream);
+            //ConnectionData.fileStream = new FileStream(LogFile, FileMode.Create, FileAccess.Write);
+           // ConnectionData.streamWriter = new StreamWriter(ConnectionData.fileStream);
             
             this.DoubleBuffered = true;
             LoadData();
             SetCommunication();
             programm_buffer = ConnectionData.Value.ACSC_BUFFER_1;
-            //  SendDiam();
+            SendDiam();
         }
 
         Manual_frm Manual;
@@ -804,6 +660,7 @@ namespace BTP
 
         private void Main_frm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
             SaveData();
         }
 
@@ -828,76 +685,12 @@ namespace BTP
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            int[] ax = new int[]
-                                    {
-                                        ConnectionData.Value.ACSC_AXIS_0,
-                                        ConnectionData.Value.ACSC_AXIS_1,
-                                        ConnectionData.Value.ACSC_AXIS_2,
-                                        ConnectionData.Value.ACSC_AXIS_3,
-                                        ConnectionData.Value.ACSC_AXIS_4,
-                                        ConnectionData.Value.ACSC_AXIS_5,
-                                        ConnectionData.Value.ACSC_AXIS_6,
-                                        ConnectionData.Value.ACSC_AXIS_7,
-                                        -1
-                                    };
-            //ConnectionData.ProgramStart = false;
-            if (ConnectionData.ProgramStart == 30)
-            {
-                ConnectionData.Value.ExtToPointM(ConnectionData.Value.ACSC_AMF_VELOCITY, ax, SaveCoordinates, ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0), ConnectionData.Value.GetVelocity(ConnectionData.Value.ACSC_AXIS_0));
-                //ConnectionData.Value.HaltM(ax);
-                ConnectionData.Value.EndSequenceM(ax);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_0, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_1, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_2, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_3, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_4, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_5, 100000);
-                ConnectionData.Value.WaitMotionEnd(ConnectionData.Value.ACSC_AXIS_6, 100000);
-                ConnectionData.Value.RunBuffer(programm_buffer);
-                ConnectionData.ProgramStart = 10;
-                PauseSignal = false;
-            }
-            else
-            {
-
-                if (Convert.ToBoolean((ConnectionData.Value.GetProgramState(programm_buffer)) & (ConnectionData.Value.ACSC_PST_RUN)) == false)
-                {
-                    if (Convert.ToBoolean(ConnectionData.Value.GetProgramState(programm_buffer) & (ConnectionData.Value.ACSC_PST_COMPILED)) == true)
-                    {
-
-                        ConnectionData.Value.RunBuffer(programm_buffer);
-                        ConnectionData.ProgramStart = 10;
-                        ConnectionData.DateStr = DateTime.Now.ToString("dd MMMM yyyy");
-                        ConnectionData.TimeStr = DateTime.Now.ToString("HH:mm:ss");
-                    }
-                }
-                else
-                    {
-                        MessageBox.Show("Buffer not compiled");
-                    }    
-            }
+            ConnectionData.Value.start_program();
         }
 
         private void StopBtn_Click(object sender, EventArgs e)
         {
-            axes = new int[]
-                           {
-                             ConnectionData.Value.ACSC_AXIS_0,
-                             ConnectionData.Value.ACSC_AXIS_1,
-                             ConnectionData.Value.ACSC_AXIS_2,
-                             ConnectionData.Value.ACSC_AXIS_3,
-                             ConnectionData.Value.ACSC_AXIS_4,
-                             ConnectionData.Value.ACSC_AXIS_5,
-                             ConnectionData.Value.ACSC_AXIS_6,
-                             ConnectionData.Value.ACSC_AXIS_7,
-                             -1
-                           };
-            if ((ConnectionData.ProgramStart == 10) || (ConnectionData.ProgramStart == 30))
-            {
-                ConnectionData.Value.HaltM(axes);
-                ConnectionData.Value.StopBuffer(programm_buffer);
-                ConnectionData.ProgramStart = 20;
-            }
+            ConnectionData.Value.pause_program();
         }
 
         bool PauseSignal;
@@ -906,37 +699,7 @@ namespace BTP
 
         private void PauseBtn_Click(object sender, EventArgs e)
         {
-            axes = new int[]
-               {
-                             ConnectionData.Value.ACSC_AXIS_0,
-                             ConnectionData.Value.ACSC_AXIS_1,
-                             ConnectionData.Value.ACSC_AXIS_2,
-                             ConnectionData.Value.ACSC_AXIS_3,
-                             ConnectionData.Value.ACSC_AXIS_4,
-                             ConnectionData.Value.ACSC_AXIS_5,
-                             ConnectionData.Value.ACSC_AXIS_6,
-                             ConnectionData.Value.ACSC_AXIS_7,
-                             -1
-               };
-            if (ConnectionData.ProgramStart == 10)
-                {
-                    ConnectionData.Value.HaltM(axes);
-                    ConnectionData.Value.EndSequenceM(axes);
-                    ConnectionData.Value.SuspendBuffer(programm_buffer);
-                    SaveCoordinates = new double[] 
-                        {
-                                ConnectionData.FeedBackX,
-                                ConnectionData.FeedBackY,
-                                ConnectionData.FeedBackZ1,
-                                ConnectionData.FeedBackZ2,
-                                ConnectionData.FeedBackZ3,
-
-                        };
-                    Line = ConnectionData.ExecLine;
-                    PauseSignal = true;
-                    ConnectionData.ProgramStart = 30;
-                }
-
+            ConnectionData.Value.pause_program();
         }
 
         private void ResetBtn_Click(object sender, EventArgs e)
@@ -950,62 +713,65 @@ namespace BTP
 
         private void Main_frm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
-            {
-                if (ConnectionData.Camera1 != null)
-                    {
-                    ConnectionData.Camera1.Close();
-                    ConnectionData.Camera1.Dispose();
-                    ConnectionData.Camera1 = null;
-                    }
+            ConnectionData.Value.stopAutoPos();
+            ConnectionData.Value?.device.sendCommand("M29");
+            /* try
+             {
 
-                if (ConnectionData.Camera2 != null)
-                {
-                    ConnectionData.Camera2.Close();
-                    ConnectionData.Camera2.Dispose();
-                    ConnectionData.Camera2 = null;
-                }
+                 if (ConnectionData.Camera1 != null)
+                     {
+                     ConnectionData.Camera1.Close();
+                     ConnectionData.Camera1.Dispose();
+                     ConnectionData.Camera1 = null;
+                     }
+
+                 if (ConnectionData.Camera2 != null)
+                 {
+                     ConnectionData.Camera2.Close();
+                     ConnectionData.Camera2.Dispose();
+                     ConnectionData.Camera2 = null;
+                 }
 
 
-                if (ConnectionData.bConnected)
-                {
-                    ConnectionData.Value.CloseMessageBuffer();
-                    ConnectionData.Value.KillAll();
-                    ConnectionData.Value.StopBuffer(ConnectionData.Value.ACSC_NONE);
+                 if (ConnectionData.bConnected)
+                 {
+                     ConnectionData.Value.CloseMessageBuffer();
+                     ConnectionData.Value.KillAll();
+                     ConnectionData.Value.StopBuffer(ConnectionData.Value.ACSC_NONE);
 
-                    MotorStateThr.Abort();//прерываем поток
-                    ConnectionData.Value.DisableAll();
-                    ConnectionData.Value.CancelOperation();
-                    ConnectionData.Value.CloseComm();
-                }
-                string TempFile = Application.StartupPath + "\\Temp\\CNC.tmp";
-                if (File.Exists(TempFile))
-                {
-                    System.IO.File.Delete(TempFile);
-                }
-                
-                TempFile = Application.StartupPath + "\\Temp\\Visu.tmp";
+                     MotorStateThr.Abort();//прерываем поток
+                     ConnectionData.Value.DisableAll();
+                     ConnectionData.Value.CancelOperation();
+                     ConnectionData.Value.CloseComm();
+                 }
+                 string TempFile = Application.StartupPath + "\\Temp\\CNC.tmp";
+                 if (File.Exists(TempFile))
+                 {
+                     System.IO.File.Delete(TempFile);
+                 }
 
-                if (File.Exists(TempFile))
-                {
-                    System.IO.File.Delete(TempFile);
-                }
+                 TempFile = Application.StartupPath + "\\Temp\\Visu.tmp";
 
-                                
-                TempFile = Application.StartupPath + "\\Temp\\Report.xlsx";
+                 if (File.Exists(TempFile))
+                 {
+                     System.IO.File.Delete(TempFile);
+                 }
 
-                if (File.Exists(TempFile))
-                {
-                    System.IO.File.Delete(TempFile);
-                }
 
-                ConnectionData.streamWriter.Close();
-                ConnectionData.fileStream.Close();
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-            }
+                 TempFile = Application.StartupPath + "\\Temp\\Report.xlsx";
+
+                 if (File.Exists(TempFile))
+                 {
+                     System.IO.File.Delete(TempFile);
+                 }
+
+                 ConnectionData.streamWriter.Close();
+                 ConnectionData.fileStream.Close();
+             }
+             catch (Exception Ex)
+             {
+                 MessageBox.Show(Ex.Message);
+             }*/
         }
 
         private void Main_frm_Shown(object sender, EventArgs e)

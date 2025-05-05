@@ -71,12 +71,15 @@ namespace BTP
 
         void Reload(string param)
         {
+            Console.WriteLine("diagn_reload");
             if (ConnectionData.bConnected)
             {
+                LogData_RTB.Text = ConnectionData.Value.device.buff.ToString();
                 try
                 {
+                    
                     // Actual postition
-                XPosActText.Text = string.Format("{0:F2}", ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0));
+                    XPosActText.Text = string.Format("{0:F2}", ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_0));
                 YPosActText.Text = string.Format("{0:F2}", ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_1));
                 S1PosActText.Text = string.Format("{0:F2}", ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_2));
                 S2PosActText.Text = string.Format("{0:F2}", ConnectionData.Value.GetFPosition(ConnectionData.Value.ACSC_AXIS_3));
@@ -231,6 +234,7 @@ namespace BTP
                         Start_old = ConnectionData.ProgramStart;
                         return;
                     }
+                    
                 }
 
                 try

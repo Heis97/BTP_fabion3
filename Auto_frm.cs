@@ -48,9 +48,14 @@ namespace BTP
 
         string Operator;
 
+        int old_line = 0;
+        int cur_line = 0;
+
         public Auto_frm()
         {
+
             CallBackMy3.callbackEventHandler = new CallBackMy3.callbackEvent(this.Reload);
+            Console.WriteLine("callbeck3");
             InitializeComponent();
 
             mViewerAuto = this.GCodeViewer;
@@ -71,8 +76,46 @@ namespace BTP
             mProcessor.Init(mSetup.Machine);
         }
 
+        public void set_g_code(string[] prog)
+        {
+            GCodeBox.Items.Clear();
+            list.Clear();
+
+            foreach (string s in prog)
+            {
+                GCodeBox.Items.Add(s);
+                list.Add(s);
+            }
+        }
+
+        public void set_cur_line(int byte_i)
+        {
+            cur_line = ConnectionData.Value.get_cur_line(byte_i);
+            //Console.WriteLine(cur_line);
+        }
+        public void redraw()
+        {
+            if (GCodeBox.Items.Count > 0)
+            {
+                GCodeBox.SelectedIndex = cur_line;
+
+                if (cur_line != old_line)
+                {
+                    mViewerAuto.BreakPoint = cur_line;
+                    mViewerAuto.Redraw(true);
+                    old_line = cur_line;
+
+                }
+
+                var point = new Point(14, 12);
+                this.Location = point;
+            }
+        }
         void Reload(string param)
         {
+            Console.WriteLine("reload");
+            
+
             try
             {
                 #region labels
@@ -112,21 +155,21 @@ namespace BTP
                 if (ConnectionData.ProgramStart == 10)
                 {
                         groupBox2.Enabled = true;
-                        if (ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_0) != 0)
+                        if ((double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_0) != 0)
                         {
-                            StopVelocityX = ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_0);
+                            StopVelocityX = (double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_0);
                         }
-                        if (ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_1) != 0)
+                        if ((double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_1) != 0)
                         {
-                            StopVelocityY = ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_1);
+                            StopVelocityY = (double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_1);
                         }
-                        if (ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_7) != 0)
+                        if ((double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_7) != 0)
                         {
-                            StopVelocityS = ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_7);
+                            StopVelocityS = (double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_7);
                         }
-                        if (ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_14) != 0)
+                        if ((double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_14) != 0)
                         {
-                            StopVelocityPF = ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_14);
+                            StopVelocityPF = (double)ConnectionData.Value.GetFVelocity(ConnectionData.Value.ACSC_AXIS_14);
                         }
                   }
                 else if (ConnectionData.ProgramStart == 20)
@@ -134,7 +177,7 @@ namespace BTP
                     groupBox2.Enabled = false;
                 }
 
-                if (Convert.ToBoolean(ConnectionData.Value.GetProgramState(ConnectionData.Value.ACSC_BUFFER_2) & ConnectionData.Value.ACSC_PST_RUN) == false)
+                if (Convert.ToBoolean((bool)ConnectionData.Value.GetProgramState(ConnectionData.Value.ACSC_BUFFER_2) & (bool)ConnectionData.Value.ACSC_PST_RUN) == false)
                 {
                     if (ConnectionData.ProgramStart == 10)
                   {
@@ -151,7 +194,7 @@ namespace BTP
                             GCodeBox.Items.Clear();
                             list.Clear();
 
-                            string[] words = ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2).Split(new char[] { (char)10 });
+                            string[] words =((string) ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2)).Split(new char[] { (char)10 });
 
                             foreach (string s in words)
                             {
@@ -209,7 +252,7 @@ namespace BTP
             {
 
             }
-            }
+        }
 
         public void ChangeFormLanguage(AvaliableLocalizations newLocalization)
         {
@@ -381,7 +424,7 @@ namespace BTP
                             GCodeBox.Items.Clear();
                             list.Clear();
 
-                            string[] words = ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2).Split(new char[] { (char)10 });
+                            string[] words = ((string)ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2)).Split(new char[] { (char)10 });
 
                             foreach (string s in words)
                                 {
@@ -391,7 +434,7 @@ namespace BTP
 
                             string TempFile = Application.StartupPath + "\\Temp\\CNC.tmp";
 
-                            System.IO.File.WriteAllText(TempFile, ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2));
+                            System.IO.File.WriteAllText(TempFile, (string)ConnectionData.Value.UploadBuffer(ConnectionData.Value.ACSC_BUFFER_2));
 
                             if (Properties.Settings.Default.Virgin == true)
                                 {

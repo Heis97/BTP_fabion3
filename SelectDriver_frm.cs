@@ -33,14 +33,16 @@ namespace BTP
 
         private void OKBtn_Click(object sender, EventArgs e)
         {
-            if (SimulatorRadioBtn.Checked == true)
+           /* if (SimulatorRadioBtn.Checked == true)
             {
                 ConnectionData.ControllerIP = "localhost";
             }
             else if (ControllerRadioBtn.Checked == true)
             {
                 ConnectionData.ControllerIP = IPMaskedText.ToString();
-            }
+            }*/
+
+            
 
             Main_frm Mform = this.Owner as Main_frm;  //создаём ссылку на главную форму
             if (Mform != null)                        //проверяем, если преобразование удалось, переменная form1 получит ссылку, если нет, то будет null
@@ -49,8 +51,12 @@ namespace BTP
                 Mform.SetCommunication();              //если ссылка получена, можно приступать к работе с ней
 
             }
-        }
 
+        }
+        public string getPort()
+        {
+            return tb_comport.Text;
+        }
         private void ControllerRadioBtn_CheckedChanged(object sender, EventArgs e)
         {
             SimulatorRadioBtn.Checked = false;
